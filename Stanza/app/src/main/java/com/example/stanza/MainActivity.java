@@ -10,7 +10,7 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,7 +21,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity
+public class MainActivity extends AppCompatActivity
 implements LoaderManager.LoaderCallbacks<Cursor>
 {
     private static final int EDITOR_REQUEST_CODE = 1001;
@@ -40,7 +40,7 @@ implements LoaderManager.LoaderCallbacks<Cursor>
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, EditorActivity.class);
+                Intent intent = new Intent(MainActivity.this, EditPoemActivity.class);
                 Uri uri = Uri.parse(NotesProvider.CONTENT_URI + "/" + id);
                 intent.putExtra(NotesProvider.CONTENT_ITEM_TYPE, uri);
                 startActivityForResult(intent, EDITOR_REQUEST_CODE);
@@ -53,7 +53,7 @@ implements LoaderManager.LoaderCallbacks<Cursor>
 
     private void insertNote(String noteText) {
         ContentValues values = new ContentValues();
-        values.put(DBOpenHelper.NOTE_TEXT, noteText);
+        values.put(DBOpenHelper.POEM_TEXT, noteText);
         Uri noteUri = getContentResolver().insert(NotesProvider.CONTENT_URI,
                 values);
         Log.d("MainActivity", "Inserted note " + noteUri.getLastPathSegment());
@@ -77,6 +77,10 @@ implements LoaderManager.LoaderCallbacks<Cursor>
                 break;
             case R.id.action_delete_all:
                 deleteAllNotes();
+                break;
+            case R.id.action_open_friend_board:
+                Intent intent = new Intent(this,FriendBoardActivity.class);
+                startActivity(intent);
                 break;
         }
 
@@ -137,8 +141,9 @@ implements LoaderManager.LoaderCallbacks<Cursor>
         cursorAdapter.swapCursor(null);
     }
 
+
     public void openEditorForNewNote(View view) {
-        Intent intent = new Intent(this, EditorActivity.class);
+        Intent intent = new Intent(this, EditPoemActivity.class);
         startActivityForResult(intent, EDITOR_REQUEST_CODE);
 
     }

@@ -12,7 +12,7 @@
         android:name="com.android.tools.fd.runtime.BootstrapApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Stanza"
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.stanza.MainActivity"
@@ -30,12 +30,28 @@
             android:exported="false" />
 
         <activity
-            android:name="com.example.stanza.EditorActivity"
-            android:label="@string/title_activity_editor"
+            android:name="com.example.stanza.EditPoemActivity"
+            android:label="@string/poetry_editor"
             android:parentActivityName="com.example.stanza.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.stanza.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.stanza.FriendBoardActivity"
+            android:label="@string/friend_board"
+            android:parentActivityName="com.example.stanza.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.stanza.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.stanza.ViewPoemActivity"
+            android:label="@string/view_friends_poem"
+            android:parentActivityName="com.example.stanza.FriendBoardActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.stanza.FriendBoardActivity" />
         </activity>
     </application>
 

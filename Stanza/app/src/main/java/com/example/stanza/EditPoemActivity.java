@@ -4,15 +4,15 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
 
-public class EditorActivity extends ActionBarActivity {
+public class EditPoemActivity extends AppCompatActivity {
     private String action;
     private EditText editor;
     private String noteFilter;
@@ -31,12 +31,12 @@ public class EditorActivity extends ActionBarActivity {
             setTitle(getString(R.string.new_note));
         } else {
             action = Intent.ACTION_EDIT;
-            noteFilter = DBOpenHelper.NOTE_ID + "=" + uri.getLastPathSegment();
+            noteFilter = DBOpenHelper.POEM_ID + "=" + uri.getLastPathSegment();
 
             Cursor cursor = getContentResolver().query(uri, DBOpenHelper.ALL_COLUMNS
                     , noteFilter, null, null);
             cursor.moveToFirst();
-            oldText = cursor.getString(cursor.getColumnIndex(DBOpenHelper.NOTE_TEXT));
+            oldText = cursor.getString(cursor.getColumnIndex(DBOpenHelper.POEM_TEXT));
             editor.setText(oldText);
             editor.requestFocus();
         }
@@ -103,7 +103,7 @@ public class EditorActivity extends ActionBarActivity {
 
     private void updateNote(String noteText) {
         ContentValues values = new ContentValues();
-        values.put(DBOpenHelper.NOTE_TEXT, noteText);
+        values.put(DBOpenHelper.POEM_TEXT, noteText);
         getContentResolver().update(NotesProvider.CONTENT_URI, values, noteFilter, null);
         Toast.makeText(this, R.string.note_updated, Toast.LENGTH_SHORT).show();
         setResult(RESULT_OK);
@@ -111,7 +111,7 @@ public class EditorActivity extends ActionBarActivity {
 
     private void insertNote(String noteText) {
         ContentValues values = new ContentValues();
-        values.put(DBOpenHelper.NOTE_TEXT, noteText);
+        values.put(DBOpenHelper.POEM_TEXT, noteText);
         getContentResolver().insert(NotesProvider.CONTENT_URI, values);
         setResult(RESULT_OK);
     }

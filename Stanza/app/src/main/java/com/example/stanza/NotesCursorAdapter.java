@@ -24,7 +24,7 @@ public class NotesCursorAdapter extends CursorAdapter{
     public void bindView(View view, Context context, Cursor cursor) {
 
         String noteText = cursor.getString(
-                cursor.getColumnIndex(DBOpenHelper.NOTE_TEXT));
+                cursor.getColumnIndex(DBOpenHelper.POEM_TEXT));
 
         int pos = noteText.indexOf(10);
         if (pos != -1) {

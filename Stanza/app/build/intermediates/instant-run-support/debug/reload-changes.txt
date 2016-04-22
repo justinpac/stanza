@@ -1,0 +1,11 @@
+CHANGED,C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\android\tools\fd\runtime\AppPatchesLoaderImpl.class
+CHANGED,C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\stanza\NotesCursorAdapter$override.class
+CHANGED,C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\stanza\NotesProvider$override.class
+CHANGED,C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\stanza\MainActivity$1$override.class
+CHANGED,C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\stanza\MainActivity$override.class
+CHANGED,C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\stanza\EditPoemActivity$override.class
+CHANGED,C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\stanza\DBOpenHelper$override.class
+CHANGED,C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\stanza\FriendBoardActivity$1$override.class
+CHANGED,C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\stanza\ViewPoemActivity$override.class
+CHANGED,C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\stanza\MainActivity$2$override.class
+CHANGED,C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\stanza\FriendBoardActivity$override.class
