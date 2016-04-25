@@ -95,8 +95,6 @@ public class EditPoemActivity extends AppCompatActivity {
         switch (action) {
             case Intent.ACTION_INSERT:
                 if (newText.length() == 0 && newTitle.length() == 0) {
-                    //insertNote(" ");
-                    //insertTitle(" ");
                     insertTitle ("unnamed poem");
                     setResult(RESULT_CANCELED);
                 }
@@ -125,7 +123,7 @@ public class EditPoemActivity extends AppCompatActivity {
         ContentValues values = new ContentValues();
         values.put(DBOpenHelper.POEM_TEXT, poemText);
         getContentResolver().update(NotesProvider.CONTENT_URI, values, noteFilter, null);
-        Toast.makeText(this, getString(R.string.note_updated), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, getString(R.string.note_updated), Toast.LENGTH_SHORT).show();
         setResult(RESULT_OK);
     }
 
@@ -133,7 +131,7 @@ public class EditPoemActivity extends AppCompatActivity {
         ContentValues values = new ContentValues();
         values.put(DBOpenHelper.POEM_TITLE, titleText);
         getContentResolver().update(NotesProvider.CONTENT_URI, values, noteFilter, null);
-        Toast.makeText(this, "Title updated", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Title updated", Toast.LENGTH_SHORT).show();
         setResult(RESULT_OK);
     }
 
