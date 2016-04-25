@@ -5,27 +5,37 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.stanza.DBOpenHelper;
+
 
 public class EditPoemActivity extends AppCompatActivity {
+
     private String action;
+    private EditText editorTitle;
     private EditText editor;
     private String noteFilter;
     private String oldText;
+    private String oldTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
 
+        editorTitle = (EditText) findViewById(R.id.editText2);
         editor = (EditText) findViewById(R.id.editText);
+
         Intent intent = getIntent();
+
         Uri uri = intent.getParcelableExtra(NotesProvider.CONTENT_ITEM_TYPE);
+
         if (uri == null) {
             action = Intent.ACTION_INSERT;
             setTitle(getString(R.string.new_note));
@@ -33,11 +43,13 @@ public class EditPoemActivity extends AppCompatActivity {
             action = Intent.ACTION_EDIT;
             noteFilter = DBOpenHelper.POEM_ID + "=" + uri.getLastPathSegment();
 
-            Cursor cursor = getContentResolver().query(uri, DBOpenHelper.ALL_COLUMNS
-                    , noteFilter, null, null);
+            Cursor cursor = getContentResolver().query(uri,
+                    DBOpenHelper.ALL_COLUMNS, noteFilter, null, null);
             cursor.moveToFirst();
             oldText = cursor.getString(cursor.getColumnIndex(DBOpenHelper.POEM_TEXT));
+            oldTitle = cursor.getString(cursor.getColumnIndex(DBOpenHelper.POEM_TITLE));
             editor.setText(oldText);
+            editorTitle.setText(oldTitle);
             editor.requestFocus();
         }
     }
@@ -45,8 +57,7 @@ public class EditPoemActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        if(action.equals(Intent.ACTION_EDIT)) {
+        if (action.equals(Intent.ACTION_EDIT)) {
             getMenuInflater().inflate(R.menu.menu_editor, menu);
         }
         return true;
@@ -54,70 +65,94 @@ public class EditPoemActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        switch (item.getItemId()) {
+        switch (id) {
             case android.R.id.home:
-                finishedEditing();
+                finishEditing();
                 break;
             case R.id.action_delete:
                 deleteNote();
                 break;
         }
 
-        return true; //always handled menu selection
+        return true;
     }
 
     private void deleteNote() {
-        getContentResolver().delete(NotesProvider.CONTENT_URI,noteFilter,null);
-        Toast.makeText(this, R.string.note_deleted,Toast.LENGTH_SHORT).show();
+        getContentResolver().delete(NotesProvider.CONTENT_URI,
+                noteFilter, null);
+        Toast.makeText(this, getString(R.string.note_deleted),
+                Toast.LENGTH_SHORT).show();
         setResult(RESULT_OK);
         finish();
     }
 
-    private void finishedEditing() {
+    private void finishEditing() {
         String newText = editor.getText().toString().trim();
+        String newTitle = editorTitle.getText().toString().trim();
 
-        switch(action) {
+        switch (action) {
             case Intent.ACTION_INSERT:
-                if (newText.length() == 0) {
+                if (newText.length() == 0 && newTitle.length() == 0) {
+                    //insertNote(" ");
+                    //insertTitle(" ");
+                    insertTitle ("unnamed poem");
                     setResult(RESULT_CANCELED);
-                } else {
-                    insertNote(newText);
+                }
+                else {
+                    if (newText.length() != 0) {
+                        insertNote(newText);
+                    }
+                    if (newTitle.length() != 0) {
+                        insertTitle(newTitle);
+                    }
                 }
                 break;
             case Intent.ACTION_EDIT:
-                if (newText.length() == 0) {
+                if (newText.length() == 0 && newTitle.length() == 0) {
                     deleteNote();
-                } else if (oldText.equals(newText)) {
-                    setResult(RESULT_CANCELED);
                 } else {
                     updateNote(newText);
+                    if (newTitle.length() == 0) {updateTitle("unnamed poem");}
+                    else updateTitle(newTitle);
                 }
         }
         finish();
     }
 
-    private void updateNote(String noteText) {
+    private void updateNote(String poemText) {
         ContentValues values = new ContentValues();
-        values.put(DBOpenHelper.POEM_TEXT, noteText);
+        values.put(DBOpenHelper.POEM_TEXT, poemText);
         getContentResolver().update(NotesProvider.CONTENT_URI, values, noteFilter, null);
-        Toast.makeText(this, R.string.note_updated, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.note_updated), Toast.LENGTH_SHORT).show();
         setResult(RESULT_OK);
     }
 
-    private void insertNote(String noteText) {
+    private void updateTitle(String titleText) {
         ContentValues values = new ContentValues();
-        values.put(DBOpenHelper.POEM_TEXT, noteText);
+        values.put(DBOpenHelper.POEM_TITLE, titleText);
+        getContentResolver().update(NotesProvider.CONTENT_URI, values, noteFilter, null);
+        Toast.makeText(this, "Title updated", Toast.LENGTH_SHORT).show();
+        setResult(RESULT_OK);
+    }
+
+    private void insertNote(String poemText) {
+        ContentValues values = new ContentValues();
+        values.put(DBOpenHelper.POEM_TEXT, poemText);
+        getContentResolver().insert(NotesProvider.CONTENT_URI, values);
+        setResult(RESULT_OK);
+    }
+
+    private void insertTitle(String titleText) {
+        ContentValues values = new ContentValues();
+        values.put(DBOpenHelper.POEM_TITLE, titleText);
         getContentResolver().insert(NotesProvider.CONTENT_URI, values);
         setResult(RESULT_OK);
     }
 
     @Override
     public void onBackPressed() {
-        finishedEditing();
+        finishEditing();
     }
 }

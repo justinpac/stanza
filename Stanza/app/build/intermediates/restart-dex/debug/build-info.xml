@@ -1,45 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
     abi="x86"
-    api-level="23"
+    api-level="21"
     density="560dpi"
     format="7"
-    timestamp="5823413835131"
-    verifier="FIELD_REMOVED" >
+    timestamp="1461610095704830000"
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="543" />
+        duration="233" />
     <task
         name="instant-run-dex"
-        duration="0" />
+        duration="581" />
     <task
         name="instant-run-transform"
-        duration="209" />
+        duration="24" />
     <task
         name="verifier"
-        duration="33" />
+        duration="3" />
 
     <artifact
-        location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
-        type="DEX" />
+        location="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/reload-dex/debug/classes.dex"
+        type="RELOAD_DEX" />
 
-    <build timestamp="2813889759688" >
+    <build timestamp="1461608722035175000" >
         <artifact
-            location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\outputs\apk\app-debug.apk"
+            location="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
     </build>
-    <build timestamp="3186991902364" >
+    <build timestamp="1461609884628574000" >
         <artifact
-            location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\res\resources-debug.ap_"
-            type="RESOURCES" />
+            location="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_5/classes.dex"
+            type="DEX" />
     </build>
     <build
-        timestamp="5823413835131"
-        verifier="FIELD_REMOVED" >
+        timestamp="1461609952556789000"
+        verifier="COMPATIBLE" >
         <artifact
-            location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
-            type="DEX" />
+            location="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/builds/debug/1461609952556789000/classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="1461610095704830000"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/reload-dex/debug/classes.dex"
+            type="RELOAD_DEX" />
     </build>
 
 </instant-run>
