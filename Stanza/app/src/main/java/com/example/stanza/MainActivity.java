@@ -32,6 +32,7 @@ implements LoaderManager.LoaderCallbacks<Cursor>
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         cursorAdapter = new NotesCursorAdapter(this, null, 0);
 
         ListView list = (ListView) findViewById(android.R.id.list);

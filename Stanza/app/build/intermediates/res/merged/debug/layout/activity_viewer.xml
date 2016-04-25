@@ -19,9 +19,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/friend_poem_text"
         android:layout_below="@+id/friend_poem_title"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

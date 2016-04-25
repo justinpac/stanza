@@ -1,3 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3be474b1b21b31cf2fa93fe6bd641ae108d96452">
+        <dex dex="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.2.1_afe60e59fdef1ce06b782086a8cd9e329d618859\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3469cb457f10f74c28cbc05f069b6c894f6cbdd0">
+        <dex dex="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.2.1_84072da827b64726a1eeaed5271a4c932731b080\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e4d0cbb0b999604b349062f0214a0a228a7fd151">
+        <dex dex="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.2.1_70c489821230553e41abd054989597ecc24a0380\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\exploded-aar\com.github.markushi\circlebutton\1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ebe3b1f14fa79ba3cd1588acda4e6517ee9fe611">
+        <dex dex="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.github.markushi-circlebutton-1.1_8648d48b05dd086923cd50b0d63c1288a7f833a0\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d8b6de34dc3b704f5556b7889f363d52673dcdbb">
+        <dex dex="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_0c1adce7dfab5cdf0ab4c83b962c7089ed63c22e\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="673d77a5bbddd766037f088e775df525c46407f0">
+        <dex dex="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.2.1_8afcdb6f05e94dabf16a53a257b8655dcf3e04b0\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\jars\libs\internal_impl-23.2.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="607a3d0b8013b4ccbfeb0b7cb293351994e021fb">
+        <dex dex="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.2.1_d81786b492d56bbd0e37c1b342ca44913c903d54\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Brianna\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.2.1\support-annotations-23.2.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ccb693bc0774fcb637246f7360de25b4af7df318">
+        <dex dex="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.2.1_10135e1b8b168885345bbcfd99eab18425f130c3\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="96eeecf37c5433bd34543c3d30481c0f46463894">
+        <dex dex="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_7635416dbb9bffdbbc0086579c9fb418b36bd5ab\classes.dex" />
+    </item>
+
+</items>

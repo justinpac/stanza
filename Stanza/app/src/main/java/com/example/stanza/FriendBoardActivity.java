@@ -52,12 +52,13 @@ implements LoaderManager.LoaderCallbacks<Cursor>
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 
-        return new CursorLoader(this, NotesProvider.CONTENT_URI,
+        return new CursorLoader(this, NotesProvider.CONTENT_URI2,
                 null, null, null, null);
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+
         cursorAdapter.swapCursor(data);
     }
 
