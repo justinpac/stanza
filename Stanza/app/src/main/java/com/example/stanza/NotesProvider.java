@@ -89,10 +89,14 @@ public class NotesProvider extends ContentProvider{
     public Uri insert(Uri uri, ContentValues values) {
         long id = database.insert(DBOpenHelper.TABLE_POEMS,
                 null, values);
+        Uri result;
 
         System.out.println(id);
 
-            return Uri.parse(BASE_PATH + "/" + id);
+        System.out.println(Uri.parse(BASE_PATH + "/" + id));
+        result = Uri.parse(BASE_PATH + "/" + id);
+        System.out.println("in insert " + result.getLastPathSegment());
+        return result;
 
     }
 
@@ -103,6 +107,7 @@ public class NotesProvider extends ContentProvider{
 
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+        //selection = "_id=" + uri.getLastPathSegment();
         return database.update(DBOpenHelper.TABLE_POEMS,
                 values, selection, selectionArgs);
     }

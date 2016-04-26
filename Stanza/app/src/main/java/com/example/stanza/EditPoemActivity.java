@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -33,17 +34,18 @@ public class EditPoemActivity extends AppCompatActivity {
         editor = (EditText) findViewById(R.id.editText);
 
         Intent intent = getIntent();
+        long id = intent.getLongExtra(NotesProvider.CONTENT_ITEM_TYPE,-1);
+               
 
-        Uri uri = intent.getParcelableExtra(NotesProvider.CONTENT_ITEM_TYPE);
-
-        if (uri == null) {
+        if (id == -1) {
             action = Intent.ACTION_INSERT;
             setTitle(getString(R.string.new_note));
         } else {
             action = Intent.ACTION_EDIT;
-            noteFilter = DBOpenHelper.POEM_ID + "=" + uri.getLastPathSegment();
+            //System.out.println("last path segment " + uri.getLastPathSegment());
+            noteFilter = DBOpenHelper.POEM_ID + "=" + id; //uri.getLastPathSegment();
 
-            Cursor cursor = getContentResolver().query(uri,
+            Cursor cursor = getContentResolver().query(NotesProvider.CONTENT_URI,
                     DBOpenHelper.ALL_COLUMNS, noteFilter, null, null);
             cursor.moveToFirst();
             oldText = cursor.getString(cursor.getColumnIndex(DBOpenHelper.POEM_TEXT));
@@ -114,6 +116,7 @@ public class EditPoemActivity extends AppCompatActivity {
                     if(newTitle.length() == 0) newTitle = "Untitled";
                     updateNote(newText, newTitle);
                 }
+                break;
         }
         finish();
     }
@@ -122,6 +125,7 @@ public class EditPoemActivity extends AppCompatActivity {
         ContentValues values = new ContentValues();
         values.put(DBOpenHelper.POEM_TEXT, poemText);
         values.put(DBOpenHelper.POEM_TITLE,poemTitle);
+        System.out.println("notefilter " + noteFilter);
         getContentResolver().update(NotesProvider.CONTENT_URI, values, noteFilter, null);
         //Toast.makeText(this, getString(R.string.note_updated), Toast.LENGTH_SHORT).show();
         setResult(RESULT_OK);

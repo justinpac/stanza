@@ -26,6 +26,7 @@ implements LoaderManager.LoaderCallbacks<Cursor>
 {
     private static final int EDITOR_REQUEST_CODE = 1001;
     private CursorAdapter cursorAdapter;
+    long id = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +43,10 @@ implements LoaderManager.LoaderCallbacks<Cursor>
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this, EditPoemActivity.class);
-                Uri uri = Uri.parse(NotesProvider.CONTENT_URI + "/" + id);
-                intent.putExtra(NotesProvider.CONTENT_ITEM_TYPE, uri);
+                System.out.println("on item click id is " + id);
+                //Uri uri = Uri.parse(NotesProvider.CONTENT_URI + "/" + id);
+               // System.out.println("what the parcelable extra is " + uri.getLastPathSegment());
+                intent.putExtra(NotesProvider.CONTENT_ITEM_TYPE, id);
                 startActivityForResult(intent, EDITOR_REQUEST_CODE);
             }
         });
