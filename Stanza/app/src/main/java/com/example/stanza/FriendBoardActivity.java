@@ -35,8 +35,7 @@ implements LoaderManager.LoaderCallbacks<Cursor>
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(FriendBoardActivity.this, ViewPoemActivity.class);
-                Uri uri = Uri.parse(NotesProvider.CONTENT_URI + "/" + id);
-                intent.putExtra(NotesProvider.CONTENT_ITEM_TYPE, uri);
+                intent.putExtra(NotesProvider.CONTENT_ITEM_TYPE, id);
                 startActivity(intent);
             }
         });
