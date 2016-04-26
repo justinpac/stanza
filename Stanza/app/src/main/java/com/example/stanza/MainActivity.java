@@ -43,7 +43,7 @@ implements LoaderManager.LoaderCallbacks<Cursor>
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this, EditPoemActivity.class);
-                System.out.println("on item click id is " + id);
+               // System.out.println("on item click id is " + id);
                 //Uri uri = Uri.parse(NotesProvider.CONTENT_URI + "/" + id);
                // System.out.println("what the parcelable extra is " + uri.getLastPathSegment());
                 intent.putExtra(NotesProvider.CONTENT_ITEM_TYPE, id);

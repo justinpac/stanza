@@ -47,17 +47,10 @@ public class NotesProvider extends ContentProvider{
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 
-        System.out.println("pre selection adjust is " + selection);
-        if (uriMatcher.match(uri) == NOTES) {
-            System.out.println("in else statement");
-            selection = null;
-        }
-        else{
-            System.out.println("in else statement");
-            selection = DBOpenHelper.POEM_ID + "=" + uri.getLastPathSegment();
-        }
+       // System.out.println("pre selection adjust is " + selection);
 
-        System.out.println("post selection adjust is " + selection);
+
+       // System.out.println("post selection adjust is " + selection);
 
 
         String limit = uri.getQueryParameter("limit");
@@ -108,6 +101,7 @@ public class NotesProvider extends ContentProvider{
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         //selection = "_id=" + uri.getLastPathSegment();
+        System.out.println("update selection is " + selection);
         return database.update(DBOpenHelper.TABLE_POEMS,
                 values, selection, selectionArgs);
     }
