@@ -1,52 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
     abi="x86"
-    api-level="21"
+    api-level="23"
     density="560dpi"
     format="7"
-    timestamp="1461610095704830000"
-    verifier="COMPATIBLE" >
+    timestamp="285171607355569"
+    verifier="METHOD_DELETED" >
 
     <task
         name="javac"
-        duration="233" />
+        duration="1333" />
     <task
         name="instant-run-dex"
-        duration="581" />
+        duration="0" />
     <task
         name="instant-run-transform"
-        duration="24" />
+        duration="55" />
     <task
         name="verifier"
-        duration="3" />
+        duration="6" />
 
     <artifact
-        location="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/reload-dex/debug/classes.dex"
-        type="RELOAD_DEX" />
+        location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
+        type="DEX" />
 
-    <build timestamp="1461608722035175000" >
+    <build timestamp="284564020473096" >
         <artifact
-            location="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/outputs/apk/app-debug.apk"
+            location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
     </build>
-    <build timestamp="1461609884628574000" >
+    <build
+        timestamp="285171607355569"
+        verifier="METHOD_DELETED" >
         <artifact
-            location="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_5/classes.dex"
+            location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
             type="DEX" />
-    </build>
-    <build
-        timestamp="1461609952556789000"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/builds/debug/1461609952556789000/classes.dex"
-            type="RELOAD_DEX" />
-    </build>
-    <build
-        timestamp="1461610095704830000"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/reload-dex/debug/classes.dex"
-            type="RELOAD_DEX" />
     </build>
 
 </instant-run>
