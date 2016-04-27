@@ -10,13 +10,19 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.stanza.DBOpenHelper;
 
+import java.io.InputStream;
+import java.io.OutputStream;
 
-public class EditPoemActivity extends AppCompatActivity {
+
+public class EditPoemActivity extends AppCompatActivity
+implements CommInterface{
 
     private String action;
     private EditText editorTitle;
@@ -25,6 +31,9 @@ public class EditPoemActivity extends AppCompatActivity {
     private String oldText;
     private String oldTitle;
 
+ //   private Button publish;
+    private CommThread ct;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +41,10 @@ public class EditPoemActivity extends AppCompatActivity {
 
         editorTitle = (EditText) findViewById(R.id.editText2);
         editor = (EditText) findViewById(R.id.editText);
+
+       // publish = (Button) findViewById(R.id.publish_poem_button);
+        ct = new CommThread(this, EditPoemActivity.this);
+        ct.start();
 
         Intent intent = getIntent();
         long id = intent.getLongExtra(NotesProvider.CONTENT_ITEM_TYPE,-1);
@@ -54,6 +67,8 @@ public class EditPoemActivity extends AppCompatActivity {
             editorTitle.setText(oldTitle);
             editor.requestFocus();
         }
+
+
     }
 
 
@@ -75,6 +90,11 @@ public class EditPoemActivity extends AppCompatActivity {
                 break;
             case R.id.action_delete:
                 deleteNote();
+                break;
+            case R.id.action_publish_poem_to_server:
+                String title = editorTitle.getText().toString().trim() +"\001";
+                String text = editor.getText().toString().trim() + "\001";
+                pushPoem(title,text);
                 break;
         }
 
@@ -128,6 +148,9 @@ public class EditPoemActivity extends AppCompatActivity {
         System.out.println("notefilter " + noteFilter);
         getContentResolver().update(NotesProvider.CONTENT_URI, values, noteFilter, null);
         //Toast.makeText(this, getString(R.string.note_updated), Toast.LENGTH_SHORT).show();
+
+
+
         setResult(RESULT_OK);
     }
 
@@ -145,5 +168,22 @@ public class EditPoemActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         finishEditing();
+    }
+
+
+    @Override
+    public void pushPoem(String poemTitle, String poemText) {
+
+        Poem poem = new Poem(poemTitle, poemText);
+    }
+
+    @Override
+    public void pullPoem(String poemTitle, String poemText) {
+
+    }
+
+    @Override
+    public void poemSaved(String output) {
+        Toast.makeText(getApplicationContext(), output, Toast.LENGTH_SHORT).show();
     }
 }
