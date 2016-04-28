@@ -16,4 +16,12 @@
     <string name="friend_board">Friend Board</string>
     <string name="open_friend_board">Friend Board</string>
     <string name="view_friends_poem">View Friend\'s Poem</string>
+
+    <string-array name="rhyme_examples">
+        <item>Rhyme 1</item>
+        <item>Rhyme 2</item>
+        <item>Rhyme 3</item>
+        <item>Rhyme 4</item>
+        <item>Rhyme 5</item>
+    </string-array>
 </resources>
