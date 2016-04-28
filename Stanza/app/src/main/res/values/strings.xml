@@ -17,4 +17,5 @@
     <string name="open_friend_board">Friend Board</string>
     <string name="view_friends_poem">View Friend\'s Poem</string>
     <string name="limit_number_of_poems">10</string>
+    <string name="share_poem">Share poem</string>
 </resources>
