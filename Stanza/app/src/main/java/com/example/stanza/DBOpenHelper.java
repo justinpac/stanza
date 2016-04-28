@@ -8,10 +8,10 @@ public class DBOpenHelper extends SQLiteOpenHelper{
 
     //Constants for db name and version
     private static final String DATABASE_NAME = "poems.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
 
     //Constants for identifying table and columns
-    public static final String TABLE_POEMS = "notes";
+    public static final String TABLE_POEMS = "poemsLocal";
     public static final String POEM_ID = "_id";
     public static final String POEM_TEXT = "poemText";
     public static final String POEM_CREATED = "poemCreated";

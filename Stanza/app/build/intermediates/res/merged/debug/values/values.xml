@@ -224,6 +224,7 @@
     <string name="delete_all_notes">Delete all poems</string>
     <string name="friend_board">Friend Board</string>
     <string name="hello_world">Hello world!</string>
+    <string name="limit_number_of_poems">10</string>
     <string name="new_note">New Poem</string>
     <string name="note_deleted">Poem deleted</string>
     <string name="note_updated">Note updated</string>

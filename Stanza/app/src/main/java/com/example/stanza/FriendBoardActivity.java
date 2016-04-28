@@ -35,8 +35,7 @@ implements LoaderManager.LoaderCallbacks<Cursor>
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(FriendBoardActivity.this, ViewPoemActivity.class);
-                Uri uri = Uri.parse(NotesProvider.CONTENT_URI + "/" + id);
-                intent.putExtra(NotesProvider.CONTENT_ITEM_TYPE, uri);
+                intent.putExtra(NotesProvider.CONTENT_ITEM_TYPE, id);
                 startActivity(intent);
             }
         });
@@ -52,12 +51,13 @@ implements LoaderManager.LoaderCallbacks<Cursor>
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 
-        return new CursorLoader(this, NotesProvider.CONTENT_URI,
+        return new CursorLoader(this, NotesProvider.CONTENT_URI2,
                 null, null, null, null);
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+
         cursorAdapter.swapCursor(data);
     }
 
