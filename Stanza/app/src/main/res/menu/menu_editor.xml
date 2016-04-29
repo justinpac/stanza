@@ -7,4 +7,10 @@
         android:icon="@drawable/ic_action_delete"
         android:orderInCategory="100"
         app:showAsAction="always" />
+
+    <item android:id="@+id/action_publish_poem_to_server"
+        android:title="@string/share_poem"
+        android:icon="@drawable/ic_action_add"
+        android:orderInCategory="101"
+        app:showAsAction="always" />
 </menu>

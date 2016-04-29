@@ -175,6 +175,7 @@ implements CommInterface{
     public void pushPoem(String poemTitle, String poemText) {
 
         Poem poem = new Poem(poemTitle, poemText);
+        ct.addPoem(poem);
     }
 
     @Override
