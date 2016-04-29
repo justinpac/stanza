@@ -61,6 +61,7 @@ implements Runnable{
             outputStream = socket.getOutputStream();
         }catch (IOException e){
             e.printStackTrace();
+            editPoemActivity.serverNotConnected();
         }
 
         while (!done){

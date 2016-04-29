@@ -10,4 +10,5 @@ public interface CommInterface {
     void pushPoem(String poemTitle, String poemText);
     void pullPoem(String poemTitle, String poemText);
     void poemSaved(String output);
+    void serverNotConnected();
 }
