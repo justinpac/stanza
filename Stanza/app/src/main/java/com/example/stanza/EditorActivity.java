@@ -71,6 +71,7 @@ public class EditorActivity extends ActionBarActivity {
         return true; //always handled menu selection
     }
 
+
     private void deleteNote() {
         getContentResolver().delete(NotesProvider.CONTENT_URI,noteFilter,null);
         Toast.makeText(this, R.string.note_deleted,Toast.LENGTH_SHORT).show();

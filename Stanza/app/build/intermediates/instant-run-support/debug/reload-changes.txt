@@ -1,0 +1,12 @@
+CHANGED,C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\stanza\R$menu$override.class
+CHANGED,C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\stanza\R$mipmap$override.class
+CHANGED,C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\stanza\R$string$override.class
+CHANGED,C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\stanza\R$styleable$override.class
+CHANGED,C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\stanza\R$drawable$override.class
+CHANGED,C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\stanza\R$style$override.class
+CHANGED,C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\android\support\design\R$drawable$override.class
+CHANGED,C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\stanza\R$id$override.class
+CHANGED,C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\stanza\R$layout$override.class
+CHANGED,C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\android\support\v7\appcompat\R$drawable$override.class
+CHANGED,C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\example\stanza\R$integer$override.class
+CHANGED,C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\instantRun\debug\folders\4000\5\enhanced\com\android\tools\fd\runtime\AppPatchesLoaderImpl.class
