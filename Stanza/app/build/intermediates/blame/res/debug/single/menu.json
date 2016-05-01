@@ -1,10 +1,10 @@
 [
     {
-        "merged": "C:\\Users\\Justin\\MCA\\AndroidStudioProjects\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
-        "source": "C:\\Users\\Justin\\MCA\\AndroidStudioProjects\\Stanza\\app\\src\\main\\res\\menu\\menu_main.xml"
+        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_editor.xml",
+        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\src\\main\\res\\menu\\menu_editor.xml"
     },
     {
-        "merged": "C:\\Users\\Justin\\MCA\\AndroidStudioProjects\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_editor.xml",
-        "source": "C:\\Users\\Justin\\MCA\\AndroidStudioProjects\\Stanza\\app\\src\\main\\res\\menu\\menu_editor.xml"
+        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
+        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\src\\main\\res\\menu\\menu_main.xml"
     }
 ]
