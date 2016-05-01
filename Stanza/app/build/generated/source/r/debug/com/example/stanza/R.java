@@ -1646,16 +1646,17 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f0c0022;
         public static final int action_bar_title=0x7f0c0021;
         public static final int action_context_bar=0x7f0c0042;
-        public static final int action_create_sample=0x7f0c0065;
+        public static final int action_create_sample=0x7f0c0066;
         public static final int action_delete=0x7f0c0064;
-        public static final int action_delete_all=0x7f0c0066;
+        public static final int action_delete_all=0x7f0c0067;
         public static final int action_divider=0x7f0c005b;
         public static final int action_menu_divider=0x7f0c0002;
         public static final int action_menu_presenter=0x7f0c0003;
         public static final int action_mode_bar=0x7f0c003e;
         public static final int action_mode_bar_stub=0x7f0c003d;
         public static final int action_mode_close_button=0x7f0c0023;
-        public static final int action_open_friend_board=0x7f0c0067;
+        public static final int action_open_friend_board=0x7f0c0068;
+        public static final int action_publish_poem_to_server=0x7f0c0065;
         public static final int activity_chooser_view_content=0x7f0c0024;
         public static final int alertTitle=0x7f0c0030;
         public static final int always=0x7f0c001c;
@@ -1798,7 +1799,8 @@ containing a value of this type.
         public static final int menu_main=0x7f0d0001;
     }
     public static final class mipmap {
-        public static final int ic_launcher=0x7f030000;
+        public static final int ic_document=0x7f030000;
+        public static final int ic_launcher=0x7f030001;
     }
     public static final class string {
         public static final int abc_action_bar_home_description=0x7f060000;
@@ -1835,9 +1837,11 @@ containing a value of this type.
         public static final int note_updated=0x7f060020;
         public static final int open_friend_board=0x7f060021;
         public static final int poetry_editor=0x7f060022;
+        public static final int share_poem=0x7f060023;
         public static final int status_bar_notification_info_overflow=0x7f060013;
-        public static final int title_activity_editor=0x7f060023;
-        public static final int view_friends_poem=0x7f060024;
+        public static final int title_activity_editor=0x7f060024;
+        public static final int unnamed_poem=0x7f060025;
+        public static final int view_friends_poem=0x7f060026;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f090086;
