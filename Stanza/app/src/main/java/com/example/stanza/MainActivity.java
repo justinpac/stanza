@@ -289,8 +289,7 @@ implements LoaderManager.LoaderCallbacks<Cursor>
                 "Bird or beast upon the sculptured bust above his chamber door, \n" +
                 "            With such name as “Nevermore.” ", "Nevermore excerpt");
         insertNote("Nature's first green is gold,\n" +
-                "Her hardest hue to hold.\n" +
-                "Her early leaf's a flower; \n" +
+                "Her hardest hue to hold.\nHer early leaf's a flower;\n" +
                 "But only so an hour.\n" +
                 "Then leaf subsides to leaf,\n" +
                 "So Eden sank to grief,\n" +

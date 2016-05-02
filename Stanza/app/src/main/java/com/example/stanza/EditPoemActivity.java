@@ -187,4 +187,9 @@ implements CommInterface{
     public void poemSaved(String output) {
         Toast.makeText(getApplicationContext(), output, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void serverNotConnected() {
+        Toast.makeText(getApplicationContext(), "Action failed. Server is not connected.", Toast.LENGTH_SHORT).show();
+    }
 }

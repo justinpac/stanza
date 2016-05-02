@@ -26,7 +26,7 @@ public class NotesCursorAdapter extends CursorAdapter{
         String noteTitle = cursor.getString(
                 cursor.getColumnIndex(DBOpenHelper.POEM_TITLE));
 
-        if (noteTitle == null) {noteTitle = "unnamed poem";}
+        if (noteTitle == null) {noteTitle = context.getString(R.string.unnamed_poem);}
 
         int pos = noteTitle.indexOf(10);
         if (pos != -1) {
