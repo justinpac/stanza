@@ -2,67 +2,67 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Justin\MCA\AndroidStudioProjects\Stanza\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\jars\libs\internal_impl-23.2.1.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="607a3d0b8013b4ccbfeb0b7cb293351994e021fb">
-        <dex dex="C:\Users\Justin\MCA\AndroidStudioProjects\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.2.1_66bc9841b5d748816dab47bea61619b35296890b\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\Justin\MCA\AndroidStudioProjects\Stanza\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="0f896501766dd535ac0c3d6cae38bc70be891f82">
-        <dex dex="C:\Users\Justin\MCA\AndroidStudioProjects\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_f6f0464041e2b559256c972e5464191da7136bd6\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\Justin\MCA\AndroidStudioProjects\Stanza\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.2.1\jars\classes.jar"
+        jar="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.1/jars/classes.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="673d77a5bbddd766037f088e775df525c46407f0">
-        <dex dex="C:\Users\Justin\MCA\AndroidStudioProjects\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.2.1_65a55fa0391726d14fb4925b8d6a3f523ca40ca2\classes.dex" />
+        <dex dex="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.2.1_368734c455193d779204f15a77e222d22b32d768/classes.dex" />
     </item>
     <item
-        jar="C:\Users\Justin\MCA\AndroidStudioProjects\Stanza\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="3faa84483f7e6e26d6eefca3daa0cd8c8b270987">
-        <dex dex="C:\Users\Justin\MCA\AndroidStudioProjects\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_c02a4ee1397ecbf9c8a30fae2c0413b29ddb3ca6\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\Justinl\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.2.1\support-annotations-23.2.1.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="ccb693bc0774fcb637246f7360de25b4af7df318">
-        <dex dex="C:\Users\Justin\MCA\AndroidStudioProjects\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.2.1_bcf392f0715767e5f18b29e12c27db64147cdaf2\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\Justin\MCA\AndroidStudioProjects\Stanza\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.1\jars\classes.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="e4d0cbb0b999604b349062f0214a0a228a7fd151">
-        <dex dex="C:\Users\Justin\MCA\AndroidStudioProjects\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.2.1_edc1fb75bc8a57ca491c5925591e682691db4ea7\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\Justin\MCA\AndroidStudioProjects\Stanza\app\build\intermediates\exploded-aar\com.github.markushi\circlebutton\1.1\jars\classes.jar"
+        jar="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/exploded-aar/com.github.markushi/circlebutton/1.1/jars/classes.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="ebe3b1f14fa79ba3cd1588acda4e6517ee9fe611">
-        <dex dex="C:\Users\Justin\MCA\AndroidStudioProjects\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.github.markushi-circlebutton-1.1_ce657a20911e8900609ec4948ec196de9431816d\classes.dex" />
+        <dex dex="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.github.markushi-circlebutton-1.1_cd1733d0d7a491d5c6e528220f7c047082eb4ec9/classes.dex" />
     </item>
     <item
-        jar="C:\Users\Justin\MCA\AndroidStudioProjects\Stanza\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\jars\classes.jar"
+        jar="/Users/Kilbo/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.2.1/support-annotations-23.2.1.jar"
         jumboMode="true"
         revision="23.0.2"
-        sha1="3be474b1b21b31cf2fa93fe6bd641ae108d96452">
-        <dex dex="C:\Users\Justin\MCA\AndroidStudioProjects\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.2.1_3c55c9c765aba050ac0b58bc78b3844ad4c1fdce\classes.dex" />
+        sha1="ccb693bc0774fcb637246f7360de25b4af7df318">
+        <dex dex="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.2.1_5127af5a6e73f3a864717bd981488fed96e6a5f7/classes.dex" />
     </item>
     <item
-        jar="C:\Users\Justin\MCA\AndroidStudioProjects\Stanza\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.1\jars\classes.jar"
+        jar="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e4d0cbb0b999604b349062f0214a0a228a7fd151">
+        <dex dex="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.2.1_223626a593850cbdd3e1f943e289f9e737b17fc4/classes.dex" />
+    </item>
+    <item
+        jar="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="0699be701c4e6325d42d0e5c1938b10234a3b48a">
+        <dex dex="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_47a4c40cba07b4120f8d564ce41c3ad75d0d5ec5/classes.dex" />
+    </item>
+    <item
+        jar="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/jars/libs/internal_impl-23.2.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="607a3d0b8013b4ccbfeb0b7cb293351994e021fb">
+        <dex dex="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.2.1_57ea139d338a6c96801038d58e3422e5921476ed/classes.dex" />
+    </item>
+    <item
+        jar="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.1/jars/classes.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="3469cb457f10f74c28cbc05f069b6c894f6cbdd0">
-        <dex dex="C:\Users\Justin\MCA\AndroidStudioProjects\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.2.1_21045a7e0a64d94c5ca9a8b0de7120edb9738253\classes.dex" />
+        <dex dex="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-23.2.1_a7ae035739594559af22bf41c1aea77e664d031c/classes.dex" />
+    </item>
+    <item
+        jar="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3be474b1b21b31cf2fa93fe6bd641ae108d96452">
+        <dex dex="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.2.1_f124a1632edd5eb384ff141aef8e94fd5af5e091/classes.dex" />
+    </item>
+    <item
+        jar="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="6b7dcd43f3128bb8fa541f471a24338f52305bb4">
+        <dex dex="/Users/Kilbo/Documents/coding/mcaProj/poem/Stanza/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_77e181f62e5bd26ce37596b5607023e78efc500b/classes.dex" />
     </item>
 
 </items>

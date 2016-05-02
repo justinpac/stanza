@@ -12,4 +12,9 @@
         android:orderInCategory="101"
         android:title="@string/delete_all_notes"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_open_friend_board"
+        android:orderInCategory="102"
+        android:title="@string/open_friend_board"
+        app:showAsAction="never" />
 </menu>

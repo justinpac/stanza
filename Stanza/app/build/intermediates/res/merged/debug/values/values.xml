@@ -16,7 +16,7 @@
     <color name="abc_search_url_text_normal">#7fa87f</color>
     <color name="abc_search_url_text_pressed">@android:color/black</color>
     <color name="abc_search_url_text_selected">@android:color/black</color>
-    <color name="accent">#C5CAE9</color>
+    <color name="accent">#A5D6A7</color>
     <color name="accent_material_dark">@color/material_deep_teal_200</color>
     <color name="accent_material_light">@color/material_deep_teal_500</color>
     <color name="background_floating_material_dark">@color/material_grey_800</color>
@@ -54,8 +54,8 @@
     <color name="material_grey_800">#ff424242</color>
     <color name="material_grey_850">#ff303030</color>
     <color name="material_grey_900">#ff212121</color>
-    <color name="primary">#3F51B5</color>
-    <color name="primary_dark">#1A237E</color>
+    <color name="primary">#8BC34A</color>
+    <color name="primary_dark">#33691E</color>
     <color name="primary_dark_material_dark">@android:color/black</color>
     <color name="primary_dark_material_light">@color/material_grey_600</color>
     <color name="primary_material_dark">@color/material_grey_900</color>
@@ -217,17 +217,24 @@
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="action_delete">delete</string>
     <string name="action_settings">Settings</string>
-    <string name="all_deleted">All notes deleted</string>
-    <string name="app_name">Plain Ol\' Notes</string>
+    <string name="all_deleted">All poems deleted</string>
+    <string name="app_name">Stanza</string>
     <string name="are_you_sure">Are you sure?</string>
     <string name="create_sample_data">Create sample data</string>
-    <string name="delete_all_notes">Delete all notes</string>
+    <string name="delete_all_notes">Delete all poems</string>
+    <string name="friend_board">Friend Board</string>
     <string name="hello_world">Hello world!</string>
-    <string name="new_note">New Note</string>
-    <string name="note_deleted">Note deleted</string>
+    <string name="limit_number_of_poems">10</string>
+    <string name="new_note">New Poem</string>
+    <string name="note_deleted">Poem deleted</string>
     <string name="note_updated">Note updated</string>
+    <string name="open_friend_board">Friend Board</string>
+    <string name="poetry_editor">Poetry Editor</string>
+    <string name="share_poem">Share poem</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="title_activity_editor">EditorActivity</string>
+    <string name="unnamed_poem">Untitled</string>
+    <string name="view_friends_poem">View Friend\'s Poem</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
