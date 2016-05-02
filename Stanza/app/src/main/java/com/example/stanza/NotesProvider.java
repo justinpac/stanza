@@ -12,7 +12,8 @@ import android.util.Log;
 public class NotesProvider extends ContentProvider{
 
     private static final String AUTHORITY = "com.example.stanza.notesprovider";
-    private static final String BASE_PATH = "notes";
+    //private static final String BASE_PATH = "notes";
+    private static final String BASE_PATH = "poemsLocal";
     public static Uri CONTENT_URI =
             Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH );
     public static Uri CONTENT_URI2 =
@@ -25,7 +26,7 @@ public class NotesProvider extends ContentProvider{
     private static final UriMatcher uriMatcher =
             new UriMatcher(UriMatcher.NO_MATCH);
 
-    public static final String CONTENT_ITEM_TYPE = "Note";
+    public static final String CONTENT_ITEM_TYPE = "Poem";
 
     static {
         uriMatcher.addURI(AUTHORITY, BASE_PATH, NOTES);

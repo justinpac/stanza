@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Stanza</string>
     <string name="create_sample_data">Create sample data</string>
     <string name="delete_all_notes">Delete all poems</string>
     <string name="are_you_sure">Are you sure?</string>

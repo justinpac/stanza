@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="38538ae969489ca4b68da1cb4053334dc9b09ee9">
+        <dex dex="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_55122628a5f304d55f0aac2a03eaf41e2a5981f5\classes.dex" />
+    </item>
+
+</items>

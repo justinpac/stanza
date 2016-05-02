@@ -32,7 +32,7 @@
         android:id="@+id/fab"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
-        app:backgroundTint="@color/red"
+        app:backgroundTint="@color/fab_color"
         app:fabSize="normal"
         android:src="@drawable/ic_action_add"
         android:layout_height="wrap_content"
