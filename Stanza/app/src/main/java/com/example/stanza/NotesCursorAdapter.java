@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
-public class NotesCursorAdapter extends CursorAdapter{
+public class NotesCursorAdapter extends CursorAdapter {
     public NotesCursorAdapter(Context context, Cursor c, int flags) {
         super(context, c, flags);
     }

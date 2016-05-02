@@ -4,4 +4,5 @@
     <color name="primary_dark">#33691E</color>
     <color name="accent">#A5D6A7</color>
     <color name="list_item_text">#333</color>
+    <color name="red">#F4511E</color>
 </resources>
