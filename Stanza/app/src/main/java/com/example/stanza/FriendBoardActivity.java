@@ -15,6 +15,7 @@ import android.widget.ListView;
 /**
  * Created by Brianna on 4/22/2016.
  */
+//dummy changed 
 public class FriendBoardActivity extends AppCompatActivity
 implements LoaderManager.LoaderCallbacks<Cursor>
 {
