@@ -122,9 +122,9 @@ implements Runnable{
             String title = poem.title;
             System.out.println("Store to database: " + title);
             ContentValues values = new ContentValues();
-            values.put(FriendDPOpenHelper.FRIEND_TEXT, text);
-            values.put(FriendDPOpenHelper.FRIEND_TITLE, title);
-            friendBoardFragment.getContext().getContentResolver().insert(NotesProvider2.CONTENT_URI, values);
+            values.put(DBOpenHelper.POEM_TEXT, text);
+            values.put(DBOpenHelper.POEM_TITLE, title);
+            friendBoardFragment.getContext().getContentResolver().insert(NotesProvider.CONTENT_URI, values);
         }
     }
 
@@ -174,6 +174,7 @@ implements Runnable{
             }
             System.out.println("CommThread terminating");
         }
+
         else if(task_id == 2){ //do stuff for friendboard
             System.out.println("about to save poems");
             while (!done2) {

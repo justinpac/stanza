@@ -32,10 +32,6 @@
             android:name="com.example.stanza.NotesProvider"
             android:authorities="com.example.stanza.notesprovider"
             android:exported="false" />
-        <provider
-            android:name="com.example.stanza.NotesProvider2"
-            android:authorities="com.example.stanza.notesprovider2"
-            android:exported="false" />
 
         <activity
             android:name="com.example.stanza.EditPoemActivity"

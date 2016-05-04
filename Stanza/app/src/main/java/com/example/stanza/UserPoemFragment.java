@@ -96,8 +96,9 @@ public class UserPoemFragment extends Fragment implements LoaderManager.LoaderCa
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        String selection = DBOpenHelper.CREATOR + " LIKE 'self'";
         return new CursorLoader(getActivity(), NotesProvider.CONTENT_URI,
-                null, null, null, null);
+                null, selection, null, null);
     }
 
     @Override
@@ -147,6 +148,7 @@ public class UserPoemFragment extends Fragment implements LoaderManager.LoaderCa
         ContentValues values = new ContentValues();
         values.put(DBOpenHelper.POEM_TEXT,noteText);
         values.put(DBOpenHelper.POEM_TITLE, noteTitle);
+        values.put(DBOpenHelper.CREATOR, "self");
         getActivity().getContentResolver().insert(NotesProvider.CONTENT_URI, values);
     }
 

@@ -4,26 +4,42 @@
     api-level="23"
     density="560dpi"
     format="7"
-    timestamp="185163582505002" >
+    timestamp="188490603481020"
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="225" />
     <task
         name="instant-run-dex"
-        duration="0" />
+        duration="752" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="25" />
     <task
         name="verifier"
-        duration="0" />
+        duration="4" />
 
-    <build timestamp="184984595798638" >
+    <artifact
+        location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\reload-dex\debug\classes.dex"
+        type="RELOAD_DEX" />
+
+    <build timestamp="188198660100746" >
         <artifact
             location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
     </build>
-    <build timestamp="185163582505002" />
+    <build timestamp="188423680256524" >
+        <artifact
+            location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
+            type="DEX" />
+    </build>
+    <build
+        timestamp="188490603481020"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\reload-dex\debug\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
 
 </instant-run>

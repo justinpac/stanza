@@ -29,7 +29,7 @@ public class ViewPoemActivity extends AppCompatActivity{
         noteFilter = DBOpenHelper.POEM_ID + "=" + id;
 
 
-        Cursor cursor = getContentResolver().query(NotesProvider2.CONTENT_URI, DBOpenHelper.ALL_COLUMNS
+        Cursor cursor = getContentResolver().query(NotesProvider.CONTENT_URI, DBOpenHelper.ALL_COLUMNS
                 , noteFilter, null, null);
         cursor.moveToFirst();
         poemText = cursor.getString(cursor.getColumnIndex(DBOpenHelper.POEM_TEXT));

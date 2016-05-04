@@ -22,15 +22,15 @@ public class FriendBoardFragment extends Fragment
 implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface
 {
 
-    private NotesCursorAdapter2 cursorAdapter;
+    private NotesCursorAdapter cursorAdapter;
     public CommThread ct;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        ct = new CommThread(this,FriendBoardFragment.this);
-        ct.start();
+       // ct = new CommThread(this,FriendBoardFragment.this);
+       // ct.start();
         System.out.println("on create method");
     }
 
@@ -41,7 +41,7 @@ implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface
         System.out.println("creating friends");
         View view = inflater.inflate(R.layout.fragment_friend, container, false);
 
-        cursorAdapter = new NotesCursorAdapter2(getActivity(), null, 0);
+        cursorAdapter = new NotesCursorAdapter(getActivity(), null, 0);
 
         ListView list = (ListView) view.findViewById(R.id.listFriends);
         list.setAdapter(cursorAdapter);
@@ -52,7 +52,7 @@ implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface
                 Intent intent = new Intent(getActivity(), ViewPoemActivity.class);
               //  intent.putExtra(NotesProvider2.CONTENT_ITEM_TYPE, id);
 
-                Uri uri = Uri.parse(NotesProvider2.CONTENT_URI + "/" + id);
+                Uri uri = Uri.parse(NotesProvider.CONTENT_URI + "/" + id);
                 intent.putExtra(NotesProvider.CONTENT_ITEM_TYPE, uri);
                 startActivity(intent);
             }
@@ -73,7 +73,7 @@ implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 
-        return new CursorLoader(getActivity(), NotesProvider2.CONTENT_URI,
+        return new CursorLoader(getActivity(), NotesProvider.CONTENT_URI,
                 null, null, null, null);
     }
 

@@ -169,7 +169,8 @@ implements CommInterface{
     private void insertNote(String poemText, String poemTitle) {
         ContentValues values = new ContentValues();
         values.put(DBOpenHelper.POEM_TEXT, poemText);
-        values.put(DBOpenHelper.POEM_TITLE,poemTitle);
+        values.put(DBOpenHelper.POEM_TITLE, poemTitle);
+        values.put(DBOpenHelper.CREATOR, "self");
         getContentResolver().insert(NotesProvider.CONTENT_URI, values);
         setResult(RESULT_OK);
     }
