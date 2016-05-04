@@ -26,12 +26,10 @@ implements Runnable{
     boolean done2 = false;
     CommInterface commInterface;
     EditPoemActivity editPoemActivity;
-    MainActivity mainActivity;
     FriendBoardFragment friendBoardFragment;
     InputStream inputStream;
     OutputStream outputStream;
 
-    int numPoems = 0;
     int port = 28414;
     int task_id = 0;
 
