@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="x86"
+    abi="armeabi-v7a,armeabi"
     api-level="23"
     density="560dpi"
     format="7"
-    timestamp="96448335208786" >
+    timestamp="316061790336004" >
 
     <task
         name="javac"
@@ -23,7 +23,7 @@
         location="C:\Users\Justin\MCA\poemProj\Stanza\app\build\outputs\apk\app-debug.apk"
         type="MAIN" />
 
-    <build timestamp="96448335208786" >
+    <build timestamp="316061790336004" >
         <artifact
             location="C:\Users\Justin\MCA\poemProj\Stanza\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
