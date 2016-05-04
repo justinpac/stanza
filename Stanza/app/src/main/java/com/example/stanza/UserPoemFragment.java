@@ -97,8 +97,9 @@ public class UserPoemFragment extends Fragment implements LoaderManager.LoaderCa
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         String selection = DBOpenHelper.CREATOR + " LIKE 'self'";
+        String sortOrder = "self";
         return new CursorLoader(getActivity(), NotesProvider.CONTENT_URI,
-                null, selection, null, null);
+                null, selection, null, sortOrder);
     }
 
     @Override

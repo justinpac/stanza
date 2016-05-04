@@ -51,8 +51,6 @@ implements CommInterface{
        // publish = (Button) findViewById(R.id.publish_poem_button);
 
 
-        ct = new CommThread(this, EditPoemActivity.this);
-        ct.start();
 
 
         /* This section was changed to intent.getLongExtra(..), but it created a bug where the
@@ -69,8 +67,9 @@ implements CommInterface{
             String idStr = path.substring(path.lastIndexOf('/') + 1);
             noteFilter = DBOpenHelper.POEM_ID + "=" + idStr;
 
+            String orderBy = "self";
             Cursor cursor = getContentResolver().query(uri, DBOpenHelper.ALL_COLUMNS
-                    , noteFilter, null, null);
+                    , noteFilter, null, orderBy);
             cursor.moveToFirst();
             oldText = cursor.getString(cursor.getColumnIndex(DBOpenHelper.POEM_TEXT));
             oldTitle = cursor.getString(cursor.getColumnIndex(DBOpenHelper.POEM_TITLE));
@@ -187,7 +186,10 @@ implements CommInterface{
     public void pushPoem(String poemTitle, String poemText) {
 
         Poem poem = new Poem(poemTitle, poemText);
+        ct = new CommThread(this, EditPoemActivity.this);
+        ct.start();
         ct.addPoem(poem);
+        ct.interrupt();
     }
 
     @Override

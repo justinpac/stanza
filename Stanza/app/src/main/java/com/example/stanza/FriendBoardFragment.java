@@ -29,8 +29,9 @@ implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-       // ct = new CommThread(this,FriendBoardFragment.this);
-       // ct.start();
+        ct = new CommThread(this,FriendBoardFragment.this);
+        ct.start();
+        ct.interrupt();
         System.out.println("on create method");
     }
 
@@ -73,8 +74,10 @@ implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 
+        String selection = DBOpenHelper.CREATOR + " LIKE 'friend'";
+        String orderBy = "friends";
         return new CursorLoader(getActivity(), NotesProvider.CONTENT_URI,
-                null, null, null, null);
+                null, selection, null, orderBy);
     }
 
     @Override

@@ -48,29 +48,14 @@ public class NotesProvider extends ContentProvider{
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 
-       // System.out.println("pre selection adjust is " + selection);
 
-
-       // System.out.println("post selection adjust is " + selection);
-
-
-     //   String limit = uri.getQueryParameter("limit");
-
-      //      if(limit.equals("10")) {
-        //        limit = "LIMIT " + limit;
-
-            //    return database.query(DBOpenHelper.TABLE_POEMS, DBOpenHelper.ALL_COLUMNS,
-               //         selection, null, null, null,
-                //        DBOpenHelper.POEM_CREATED + " DESC " + limit);
-         //   }
-           // else{
-                return database.query(DBOpenHelper.TABLE_POEMS, DBOpenHelper.ALL_COLUMNS,
-                        selection, null, null, null,
-                        DBOpenHelper.POEM_CREATED + " DESC");
-
-          //  }
-
-
+        if (sortOrder.equals("self")) {
+            return database.query(DBOpenHelper.TABLE_POEMS, DBOpenHelper.ALL_COLUMNS,
+                    selection, null, null, null, DBOpenHelper.POEM_CREATED + " DESC");
+        } else {
+            return database.query(DBOpenHelper.TABLE_POEMS, DBOpenHelper.ALL_COLUMNS,
+                    selection, null, null, null, DBOpenHelper.POEM_CREATED + " ASC");
+        }
     }
 
 

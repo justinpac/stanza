@@ -124,12 +124,14 @@ implements Runnable{
             ContentValues values = new ContentValues();
             values.put(DBOpenHelper.POEM_TEXT, text);
             values.put(DBOpenHelper.POEM_TITLE, title);
+            values.put(DBOpenHelper.CREATOR, "friend");
+
             friendBoardFragment.getContext().getContentResolver().insert(NotesProvider.CONTENT_URI, values);
         }
     }
 
     public void run() {
-        String host = "rns202-13.cs.stolaf.edu";
+        String host = "rns203-8.cs.stolaf.edu";
         System.out.println("task id is " + task_id);
 
         try {
