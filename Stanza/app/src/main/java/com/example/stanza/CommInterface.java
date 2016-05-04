@@ -8,7 +8,7 @@ package com.example.stanza;
 public interface CommInterface {
 
     void pushPoem(String poemTitle, String poemText);
-    void pullPoem(String poemTitle, String poemText);
+    void pullPoem();
     void poemSaved(String output);
-    void serverNotConnected();
+    void serverDisconnected();
 }

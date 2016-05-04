@@ -8,9 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
     ViewPager viewPager;
     Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
 
                 viewPager.setCurrentItem(tab.getPosition());
+
             }
 
             @Override
@@ -61,4 +64,14 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
     }
+
+    private void deletePoems() {
+        getContentResolver().delete(NotesProvider2.CONTENT_URI,
+                null, null);
+
+        finish();
+    }
+
+
+
 }

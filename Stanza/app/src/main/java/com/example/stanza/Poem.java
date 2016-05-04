@@ -21,7 +21,7 @@ public class Poem {
     }
 
     public Poem(InputStream is){
-        byte[] b = new byte[4096];
+        byte[] b = new byte[8192];
         try{
             is.read(b);
         }catch(IOException e){
@@ -31,7 +31,9 @@ public class Poem {
         String temp = new String(b);
         StringTokenizer st = new StringTokenizer(temp, fieldTerminator, false);
 
+       // System.out.println("IN CONSTRUCTOR\n" + temp);
         title = st.nextToken();
+     //   System.out.println("in constructor title is " + title);
         text = st.nextToken();
     }
 
@@ -52,6 +54,7 @@ public class Poem {
 
     public byte[] getBytes(){
         String temp = title + fieldTerminator + text + fieldTerminator;
-        return temp.getBytes();
+        byte [] bytes = temp.getBytes();
+        return bytes;
     }
 }

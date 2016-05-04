@@ -49,7 +49,7 @@ public class UserPoemFragment extends Fragment implements LoaderManager.LoaderCa
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), EditPoemActivity.class);
-                System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ID is:" + String.valueOf(id));
+               // System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ID is:" + String.valueOf(id));
                 Uri uri = Uri.parse(NotesProvider.CONTENT_URI + "/" + id);
                 intent.putExtra(NotesProvider.CONTENT_ITEM_TYPE, uri);
                 startActivityForResult(intent, EDITOR_REQUEST_CODE);
