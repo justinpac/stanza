@@ -8,12 +8,12 @@
         "source": "C:\\Users\\Brianna\\AndroidStudioProjects\\project\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable\\abc_text_cursor_material.xml"
     },
     {
-        "merged": "C:\\Users\\Brianna\\AndroidStudioProjects\\project\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background_dark.xml",
-        "source": "C:\\Users\\Brianna\\AndroidStudioProjects\\project\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable\\abc_dialog_material_background_dark.xml"
-    },
-    {
         "merged": "C:\\Users\\Brianna\\AndroidStudioProjects\\project\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_textfield_search_material.xml",
         "source": "C:\\Users\\Brianna\\AndroidStudioProjects\\project\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable\\abc_textfield_search_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Brianna\\AndroidStudioProjects\\project\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background_dark.xml",
+        "source": "C:\\Users\\Brianna\\AndroidStudioProjects\\project\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable\\abc_dialog_material_background_dark.xml"
     },
     {
         "merged": "C:\\Users\\Brianna\\AndroidStudioProjects\\project\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_dark.xml",
