@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import java.util.MissingResourceException;
+import java.util.Vector; 
 
 
 public class Backend {
@@ -30,14 +31,12 @@ public class Backend {
       /* assert:  ServerSocket successfully created */
 
       System.out.println("Waiting for an incoming connection... ");
-      // Socket inSock = servSock.accept();
 
       while(true){
 
-	  Socket inSock = servSock.accept(); 
+	  Socket inSock = servSock.accept();
 	  Thread t = new Thread(new Worker(inSock));
-	  t.start(); 
-	  
+	  t.start();   
       }
     }
     catch(IOException e){
@@ -57,33 +56,70 @@ class Worker implements Runnable{
 
     Worker(Socket s){sock = s;};
 
-    public void run(){
+    public void pullPoems(){
+	Poem ack = null;
+	String title, text; 
+
+	System.out.println("pulling poems");
+	    
+	try{
+	    ResultSet rs = pullFromDatabase();
+		  
+	    while(rs.next()){
+		title = rs.getString(2);
+		text = rs.getString(3); 
+		//	System.out.println("title " + title);
+		
+		Poem p = new Poem(title, text);
+		p.send(outStream);
+		ack = new Poem(inStream);
+		System.out.println(ack.title + " " + p.title); 
+	    
+	    }
+	    rs.close();
+		 
+	}
+	catch(SQLException e){
+	    System.out.println("SQL Exception");
+	    System.out.println(e.getMessage());
+	}      
+	
+    }
+
+    
+
+    public void pushPoems(String title, String text){
+
+	System.out.println("save to database"); 
+       	storeToDatabase(title, text);
+       	ack = new Poem(p.title, "Saved to server"); 
+       	ack.send(outStream);
+    }
+
+    public void run(){  
 
 	try{
 	    inStream = sock.getInputStream();
 	    outStream = sock.getOutputStream(); 
 	    System.out.println("Successfully received the following: "); 
 
-	 do{
-	     //receive poem 
-	  p = new Poem(inStream);
+	    p = new Poem(inStream);
+	  
+	    String title = p.title; 
+	    String text = p.text;
 
-	  //store poem in database 
-	  System.out.println(p.toString());
-	  storeToDatabase(p); 
+	    if(title.equals("pull_poems"))
+		pullPoems();
+	    else
+		pushPoems(title, text); 
+		
+	    sock.close();
 
-	  //send acknowledgement that poem was saved 
-	  ack = new Poem(p.title, "Saved to server"); 
-	  ack.send(outStream);
-	 
-    
-	 }while(! p.text.equals(""));
-	 sock.close();
-	 return;
-
-	}catch(IOException e){
-	    nack = new Poem("", "Poem not saved."); 
+	}
+	catch(IOException e){
+	    nack = new Poem(p.title, "Poem not saved."); 
 	    nack.send(outStream);
+	    
 	    System.err.println("Receiver failed.");
 	    System.err.println(e.getMessage());
 	    System.exit(1);
@@ -92,8 +128,10 @@ class Worker implements Runnable{
 
     }
 
-    public void storeToDatabase(Poem p){
-		ResourceBundle bundle;
+   
+
+     public ResultSet pullFromDatabase(){
+	ResourceBundle bundle;
 	Connection con;
 	Statement st;
 	ResultSet rs;
@@ -101,8 +139,44 @@ class Worker implements Runnable{
 	String user = "mca_s16_poem";
 	String password = "Javaphone";
 	int count = 0;
-	String title = p.title;
-	String text = p.text; 
+	
+	try{
+	    Class.forName("org.postgresql.Driver"); 
+	    con = DriverManager.getConnection(url, user, password);
+	    System.out.println("JDBC Connection Successful");   
+	    st = con.createStatement();
+	    st.executeUpdate("set search_path to poem");
+
+	    rs = st.executeQuery("SELECT * FROM poems ORDER BY poemCreated DESC LIMIT 10;");
+	    return rs; 
+	    
+	}
+	catch(NullPointerException e){System.out.println(e.getMessage()); }
+	catch(MissingResourceException e){System.out.println(e.getMessage());}
+	catch (ClassNotFoundException e){System.out.println("Class not found"); e.getMessage();}
+	catch (SQLException e){
+	    System.out.println("SQL Exception");
+	    System.out.println(e.getMessage());}
+
+	return null; 
+    }
+
+
+
+
+    
+
+
+    public void storeToDatabase(String title, String text){
+	ResourceBundle bundle;
+	Connection con;
+	Statement st;
+	ResultSet rs;
+	String url = "jdbc:postgresql://shelob.cs.stolaf.edu:5432/mca_s16";
+	String user = "mca_s16_poem";
+	String password = "Javaphone";
+	int count = 0;
+
 	
 	try{
 
@@ -128,18 +202,27 @@ class Worker implements Runnable{
 	    // System.out.println(text);
 
 	    text = text.replace("'","''");
-	    title = title.replace("'","''"); 
+	    text = text.replace(";", ",");
+	    title = title.replace("'","''");
+
+	    System.out.println("POEM TITLE IS\n" + title); 
+	    System.out.println("POEM TEXT IS\n" + text); 
+
 	    
 	    st.executeUpdate("INSERT INTO poems (poemtitle, poemtext) VALUES('" +
 	        title + "', '" + text + "');");
-	    System.out.println("Inserted into database"); 
+	    System.out.println("Inserted into database");
+
+	    st.close(); 
 			   
 	    
 	}
 	catch(NullPointerException e){System.out.println(e.getMessage()); }
 	catch(MissingResourceException e){System.out.println(e.getMessage());}
 	catch (ClassNotFoundException e){System.out.println("Class not found"); e.getMessage();}
-	catch (SQLException e){System.out.println("SQL Exception"); System.out.println(e.getMessage());}
+	catch (SQLException e){
+	    System.out.println("SQL Exception");
+	    System.out.println(e.getMessage());}
     }
 
 }

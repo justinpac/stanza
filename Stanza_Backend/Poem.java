@@ -11,6 +11,7 @@ public class Poem {
     static String fieldTerminator = "\001";
     String title;
     String text;
+    int maxBytes = 8192; 
 
     public Poem(String t1, String t2){
         title = t1;
@@ -18,7 +19,7 @@ public class Poem {
     }
 
     public Poem(InputStream is){
-        byte[] b = new byte[4096];
+        byte[] b = new byte[8192];
         try{
             is.read(b);
         }catch(IOException e){
@@ -26,17 +27,38 @@ public class Poem {
         }
 
         String temp = new String(b);
-        StringTokenizer st = new StringTokenizer(temp, fieldTerminator, false);
 
-        title = st.nextToken();
-        text = st.nextToken();
+	
+	StringTokenizer st = new StringTokenizer(temp, fieldTerminator, false);
+
+
+	title = st.nextToken(); 
+	text = st.nextToken();
+
     }
 
 
     public void send(OutputStream os){
+	
+	int bytesWritten = 0; 
         byte[] b = getBytes();
+	int numBytes = b.length();
+	int end; 
+	
         try{
-            os.write(b);
+	    while(bytesWritten < numBytes){
+		if(bytesWritten + maxBytes < numBytes){
+		    end = bytesWritten + maxBytes -1; 
+		}
+		else{
+		    end = numBytes -1; 
+		}
+		
+		os.write(b, bytesWritten, end);
+		bytesWritten += (end - bytesWritten + 1); 
+	    }
+	    
+	    //   os.write(b);
         }catch (IOException e){
             e.printStackTrace();
         }
