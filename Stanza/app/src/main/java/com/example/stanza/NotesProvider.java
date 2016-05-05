@@ -54,7 +54,7 @@ public class NotesProvider extends ContentProvider{
                     selection, null, null, null, DBOpenHelper.POEM_CREATED + " DESC");
         } else {
             return database.query(DBOpenHelper.TABLE_POEMS, DBOpenHelper.ALL_COLUMNS,
-                    selection, null, null, null, DBOpenHelper.POEM_CREATED + " ASC");
+                    selection, null, null, null, DBOpenHelper.POEM_CREATED + " ASC LIMIT 10");
         }
     }
 
