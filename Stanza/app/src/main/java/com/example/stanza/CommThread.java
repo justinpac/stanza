@@ -26,12 +26,10 @@ implements Runnable{
     boolean done2 = false;
     CommInterface commInterface;
     EditPoemActivity editPoemActivity;
-    MainActivity mainActivity;
     FriendBoardFragment friendBoardFragment;
     InputStream inputStream;
     OutputStream outputStream;
 
-    int numPoems = 0;
     int port = 28414;
     int task_id = 0;
 
@@ -124,14 +122,16 @@ implements Runnable{
             String title = poem.title;
             System.out.println("Store to database: " + title);
             ContentValues values = new ContentValues();
-            values.put(FriendDPOpenHelper.FRIEND_TEXT, text);
-            values.put(FriendDPOpenHelper.FRIEND_TITLE, title);
-            friendBoardFragment.getContext().getContentResolver().insert(NotesProvider2.CONTENT_URI, values);
+            values.put(DBOpenHelper.POEM_TEXT, text);
+            values.put(DBOpenHelper.POEM_TITLE, title);
+            values.put(DBOpenHelper.CREATOR, "friend");
+
+            friendBoardFragment.getContext().getContentResolver().insert(NotesProvider.CONTENT_URI, values);
         }
     }
 
     public void run() {
-        String host = "rns202-13.cs.stolaf.edu";
+        String host = "rns203-8.cs.stolaf.edu";
         System.out.println("task id is " + task_id);
 
         try {
@@ -176,6 +176,7 @@ implements Runnable{
             }
             System.out.println("CommThread terminating");
         }
+
         else if(task_id == 2){ //do stuff for friendboard
             System.out.println("about to save poems");
             while (!done2) {

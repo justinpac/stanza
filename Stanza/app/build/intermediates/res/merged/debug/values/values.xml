@@ -282,7 +282,7 @@
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="action_delete">delete</string>
     <string name="action_settings">Settings</string>
-    <string name="all_deleted">All notes deleted</string>
+    <string name="all_deleted">All poems deleted</string>
     <string name="app_name">Stanza</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="are_you_sure">Are you sure?</string>
@@ -293,9 +293,9 @@
     <string name="friend_board">Friend Board</string>
     <string name="hello_world">Hello world!</string>
     <string name="limit_number_of_poems">10</string>
-    <string name="new_note">New Note</string>
+    <string name="new_note">New Poem</string>
     <string name="note_deleted">Poem deleted</string>
-    <string name="note_updated">Note updated</string>
+    <string name="note_updated">Poem updated</string>
     <string name="open_friend_board">Friend Board</string>
     <string name="poetry_editor">Poetry Editor</string>
     <string name="share_poem">Share poem</string>
