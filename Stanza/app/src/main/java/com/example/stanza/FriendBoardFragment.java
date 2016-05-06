@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.widget.Toast;
 
 /**
  * Created by Brianna on 4/22/2016.
@@ -59,6 +60,7 @@ implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         swipeRefreshLayout = (SwipeRefreshLayout) getActivity().findViewById(R.id.friendSwipeLayout);
+        swipeRefreshLayout.setColorSchemeResources(R.color.primary,R.color.fab_color);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -108,19 +110,13 @@ implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface
     }
 
     @Override
-    public void pushPoem(String poemTitle, String poemText) {
-    }
-
-    @Override
-    public void pullPoem() {
-    }
-
-    @Override
     public void poemSaved(String output) {
     }
 
     @Override
     public void serverDisconnected() {
+        Toast.makeText(getActivity(), "Server not connected. Cannot retrieve poems from server.", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override

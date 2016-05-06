@@ -140,74 +140,79 @@ implements Runnable{
             inputStream = socket.getInputStream();
             outputStream = socket.getOutputStream();
             System.out.println("Set up socket");
+
+            System.out.println("sockets set up");
+
+
+            if (task_id == 1) {//do stuff for editor activity
+                while (!done) {
+                    System.out.println("process poem");
+                    while (!poemQ.isEmpty())
+                        processOnePoem();
+                    try {
+                        synchronized (this) {
+                            while (poemQ.isEmpty() && !done)
+                                wait();
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                System.out.println("CommThread terminating");
+            } else if (task_id == 2) { //do stuff for friendboard
+                System.out.println("about to save poems");
+                String filter = DBOpenHelper.CREATOR + "='friend'";
+                friendBoardFragment.getActivity().getContentResolver().delete(NotesProvider.CONTENT_URI, filter, null);
+                while (!done2) {
+                    processOnePoem2();
+                    try {
+                        synchronized (this) {
+                            while (!poemQ2.isEmpty()) {
+                                Poem poem = null;
+                                poem = poemQ2.remove();
+                                storeToLocalDatabase(poem);
+                            }
+                            done2 = true;
+                            friendBoardFragment.getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    commInterface.onPullFinished();
+                                }
+                            });
+                            while (poemQ2.isEmpty() && !done2)
+                                wait();
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
         } catch (ConnectException e) {
             e.printStackTrace();
-            if(task_id == 1) {
+            if (task_id == 1) {
                 editPoemActivity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         commInterface.serverDisconnected();
                     }
                 });
+            } else if (task_id == 2) {
+                friendBoardFragment.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        commInterface.serverDisconnected();
+                        SwipeRefreshLayout swipeRefreshLayout =
+                                (SwipeRefreshLayout) friendBoardFragment.getActivity().findViewById(R.id.friendSwipeLayout);
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                });
             }
-                else{
-                }
         } catch (IOException e) {
             e.printStackTrace();
         } catch (RuntimeException e) {
             e.printStackTrace();
         }
-
-        System.out.println("sockets set up");
-
-
-        if (task_id == 1) {//do stuff for editor activity
-            while (!done) {
-                System.out.println("process poem");
-                while (!poemQ.isEmpty())
-                    processOnePoem();
-                try {
-                    synchronized (this) {
-                        while (poemQ.isEmpty() && !done)
-                            wait();
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            System.out.println("CommThread terminating");
-        }
-
-        else if(task_id == 2){ //do stuff for friendboard
-            System.out.println("about to save poems");
-            String filter = DBOpenHelper.CREATOR + "='friend'";
-            friendBoardFragment.getActivity().getContentResolver().delete(NotesProvider.CONTENT_URI, filter, null);
-            while (!done2) {
-                processOnePoem2();
-                try {
-                    synchronized (this) {
-                        while(!poemQ2.isEmpty()) {
-                            Poem poem = null;
-                            poem = poemQ2.remove();
-                            storeToLocalDatabase(poem);
-                        }
-                        done2=true;
-                        friendBoardFragment.getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                commInterface.onPullFinished();
-                            }
-                        });
-                        while(poemQ2.isEmpty() && !done2)
-                            System.out.println("waiting");
-                            wait();
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
 
     }
 
