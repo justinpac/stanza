@@ -9,6 +9,7 @@ public interface CommInterface {
 
     void pushPoem(String poemTitle, String poemText);
     void pullPoem();
+    void onPullFinished();
     void poemSaved(String output);
     void serverDisconnected();
 }

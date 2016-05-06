@@ -16,7 +16,7 @@ public class DBOpenHelper extends SQLiteOpenHelper{
     public static final String POEM_TEXT = "poemText";
     public static final String POEM_CREATED = "poemCreated";
     public static final String POEM_TITLE = "poemTitle";
-    public static final String CREATOR = "creator";
+    public static final String CREATOR = "creator"; //'self' = created by user, 'friend' = created by friend
 
     public static final String[] ALL_COLUMNS =
             {POEM_ID, POEM_TITLE, POEM_TEXT, CREATOR, POEM_CREATED};

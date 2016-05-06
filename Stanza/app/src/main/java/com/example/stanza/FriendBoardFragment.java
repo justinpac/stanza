@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,17 +25,7 @@ implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface
 {
 
     private NotesCursorAdapter cursorAdapter;
-    public CommThread ct;
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        ct = new CommThread(this,FriendBoardFragment.this);
-        ct.start();
-        ct.interrupt();
-        System.out.println("on create method");
-    }
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Nullable
     @Override
@@ -59,17 +51,33 @@ implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface
             }
         });
 
-
         getLoaderManager().initLoader(0, null, this);
 
         return view;
     }
 
-
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        swipeRefreshLayout = (SwipeRefreshLayout) getActivity().findViewById(R.id.friendSwipeLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                pullPoems();
+                //new Handler().post(new CommThread(this,FriendBoardFragment.this));
+            }
+        });
+        super.onActivityCreated(savedInstanceState);
+    }
 
     private void restartLoader() {
         getLoaderManager().restartLoader(0, null, this);
     }
+
+    public void pullPoems(){
+        CommThread ct = new CommThread(this,FriendBoardFragment.this);
+        ct.start();
+    }
+
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
@@ -105,7 +113,6 @@ implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface
 
     @Override
     public void pullPoem() {
-        System.out.println("pull poem method");
     }
 
     @Override
@@ -114,5 +121,11 @@ implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface
 
     @Override
     public void serverDisconnected() {
+    }
+
+    @Override
+    public void onPullFinished() {
+        swipeRefreshLayout.setRefreshing(false);
+        restartLoader();
     }
 }

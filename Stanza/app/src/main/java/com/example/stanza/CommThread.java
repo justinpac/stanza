@@ -2,6 +2,7 @@ package com.example.stanza;
 
 import android.content.ContentValues;
 import android.os.NetworkOnMainThreadException;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -179,6 +180,8 @@ implements Runnable{
 
         else if(task_id == 2){ //do stuff for friendboard
             System.out.println("about to save poems");
+            String filter = DBOpenHelper.CREATOR + "='friend'";
+            friendBoardFragment.getActivity().getContentResolver().delete(NotesProvider.CONTENT_URI, filter, null);
             while (!done2) {
                 processOnePoem2();
                 try {
@@ -188,8 +191,15 @@ implements Runnable{
                             poem = poemQ2.remove();
                             storeToLocalDatabase(poem);
                         }
-                        done2 = true;
-                        while(poemQ2.isEmpty() && !done)
+                        done2=true;
+                        friendBoardFragment.getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                commInterface.onPullFinished();
+                            }
+                        });
+                        while(poemQ2.isEmpty() && !done2)
+                            System.out.println("waiting");
                             wait();
                     }
                 } catch (InterruptedException e) {
