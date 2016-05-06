@@ -209,5 +209,8 @@ implements CommInterface{
 
     }
 
+    @Override
+    public void onPullFinished() {
 
+    }
 }
