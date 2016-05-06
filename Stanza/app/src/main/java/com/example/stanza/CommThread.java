@@ -19,8 +19,6 @@ import java.util.Queue;
  */
 public class CommThread extends Thread
 implements Runnable{
-
-    Queue<Poem> poemQ = new LinkedList<Poem>();
     Queue<Poem> poemQ2 = new LinkedList<Poem>();
 
     boolean done = false;
@@ -32,6 +30,8 @@ implements Runnable{
     OutputStream outputStream;
 
     int port = 28414;
+
+    Queue<Poem> poemQ = new LinkedList<Poem>();
     int task_id = 0;
 
 
