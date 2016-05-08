@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import android.widget.ListView;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.widget.Toast;
 
 /**
  * Created by Brianna on 4/22/2016.
@@ -22,17 +25,8 @@ public class FriendBoardFragment extends Fragment
 implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface
 {
 
-    private NotesCursorAdapter2 cursorAdapter;
-    public CommThread ct;
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        ct = new CommThread(this,FriendBoardFragment.this);
-        ct.start();
-        System.out.println("on create method");
-    }
+    private NotesCursorAdapter cursorAdapter;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Nullable
     @Override
@@ -41,7 +35,7 @@ implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface
         System.out.println("creating friends");
         View view = inflater.inflate(R.layout.fragment_friend, container, false);
 
-        cursorAdapter = new NotesCursorAdapter2(getActivity(), null, 0);
+        cursorAdapter = new NotesCursorAdapter(getActivity(), null, 0);
 
         ListView list = (ListView) view.findViewById(R.id.listFriends);
         list.setAdapter(cursorAdapter);
@@ -52,29 +46,48 @@ implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface
                 Intent intent = new Intent(getActivity(), ViewPoemActivity.class);
               //  intent.putExtra(NotesProvider2.CONTENT_ITEM_TYPE, id);
 
-                Uri uri = Uri.parse(NotesProvider2.CONTENT_URI + "/" + id);
+                Uri uri = Uri.parse(NotesProvider.CONTENT_URI + "/" + id);
                 intent.putExtra(NotesProvider.CONTENT_ITEM_TYPE, uri);
                 startActivity(intent);
             }
         });
-
 
         getLoaderManager().initLoader(0, null, this);
 
         return view;
     }
 
-
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        swipeRefreshLayout = (SwipeRefreshLayout) getActivity().findViewById(R.id.friendSwipeLayout);
+        swipeRefreshLayout.setColorSchemeResources(R.color.primary,R.color.fab_color);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                pullPoems();
+                //new Handler().post(new CommThread(this,FriendBoardFragment.this));
+            }
+        });
+        super.onActivityCreated(savedInstanceState);
+    }
 
     private void restartLoader() {
         getLoaderManager().restartLoader(0, null, this);
     }
 
+    public void pullPoems(){
+        CommThread ct = new CommThread(this,FriendBoardFragment.this);
+        ct.start();
+    }
+
+
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 
-        return new CursorLoader(getActivity(), NotesProvider2.CONTENT_URI,
-                null, null, null, null);
+        String selection = DBOpenHelper.CREATOR + " LIKE 'friend'";
+        String orderBy = "friends";
+        return new CursorLoader(getActivity(), NotesProvider.CONTENT_URI,
+                null, selection, null, orderBy);
     }
 
     @Override
@@ -97,19 +110,18 @@ implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface
     }
 
     @Override
-    public void pushPoem(String poemTitle, String poemText) {
-    }
-
-    @Override
-    public void pullPoem() {
-        System.out.println("pull poem method");
-    }
-
-    @Override
     public void poemSaved(String output) {
     }
 
     @Override
     public void serverDisconnected() {
+        Toast.makeText(getActivity(), "Server not connected. Cannot retrieve poems from server.", Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onPullFinished() {
+        swipeRefreshLayout.setRefreshing(false);
+        restartLoader();
     }
 }

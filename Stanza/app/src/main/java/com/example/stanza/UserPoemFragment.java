@@ -49,7 +49,6 @@ public class UserPoemFragment extends Fragment implements LoaderManager.LoaderCa
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), EditPoemActivity.class);
-               // System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ID is:" + String.valueOf(id));
                 Uri uri = Uri.parse(NotesProvider.CONTENT_URI + "/" + id);
                 intent.putExtra(NotesProvider.CONTENT_ITEM_TYPE, uri);
                 startActivityForResult(intent, EDITOR_REQUEST_CODE);
@@ -96,8 +95,10 @@ public class UserPoemFragment extends Fragment implements LoaderManager.LoaderCa
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        String selection = DBOpenHelper.CREATOR + " LIKE 'self'";
+        String sortOrder = "self";
         return new CursorLoader(getActivity(), NotesProvider.CONTENT_URI,
-                null, null, null, null);
+                null, selection, null, sortOrder);
     }
 
     @Override
@@ -147,6 +148,7 @@ public class UserPoemFragment extends Fragment implements LoaderManager.LoaderCa
         ContentValues values = new ContentValues();
         values.put(DBOpenHelper.POEM_TEXT,noteText);
         values.put(DBOpenHelper.POEM_TITLE, noteTitle);
+        values.put(DBOpenHelper.CREATOR, "self");
         getActivity().getContentResolver().insert(NotesProvider.CONTENT_URI, values);
     }
 

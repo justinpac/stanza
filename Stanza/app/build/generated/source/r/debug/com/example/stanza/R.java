@@ -2343,7 +2343,6 @@ containing a value of this type.
         public static final int design_menu_item_text=0x7f0c0077;
         public static final int design_navigation_view=0x7f0c0076;
         public static final int disableHome=0x7f0c000e;
-        public static final int dummyfrag_bg=0x7f0c007a;
         public static final int editText=0x7f0c0069;
         public static final int editText2=0x7f0c006a;
         public static final int edit_query=0x7f0c005c;
@@ -2359,6 +2358,7 @@ containing a value of this type.
         public static final int fill_horizontal=0x7f0c002f;
         public static final int fill_vertical=0x7f0c0022;
         public static final int fixed=0x7f0c0038;
+        public static final int friendSwipeLayout=0x7f0c007a;
         public static final int friend_poem_text=0x7f0c0070;
         public static final int friend_poem_title=0x7f0c006f;
         public static final int home=0x7f0c0004;
@@ -2492,22 +2492,21 @@ containing a value of this type.
         public static final int design_navigation_item_subheader=0x7f040025;
         public static final int design_navigation_menu=0x7f040026;
         public static final int design_navigation_menu_item=0x7f040027;
-        public static final int dummy_fragment=0x7f040028;
-        public static final int fragment_friend=0x7f040029;
-        public static final int note_list_item=0x7f04002a;
-        public static final int notification_media_action=0x7f04002b;
-        public static final int notification_media_cancel_action=0x7f04002c;
-        public static final int notification_template_big_media=0x7f04002d;
-        public static final int notification_template_big_media_narrow=0x7f04002e;
-        public static final int notification_template_lines=0x7f04002f;
-        public static final int notification_template_media=0x7f040030;
-        public static final int notification_template_part_chronometer=0x7f040031;
-        public static final int notification_template_part_time=0x7f040032;
-        public static final int select_dialog_item_material=0x7f040033;
-        public static final int select_dialog_multichoice_material=0x7f040034;
-        public static final int select_dialog_singlechoice_material=0x7f040035;
-        public static final int support_simple_spinner_dropdown_item=0x7f040036;
-        public static final int user_poem_fragment=0x7f040037;
+        public static final int fragment_friend=0x7f040028;
+        public static final int note_list_item=0x7f040029;
+        public static final int notification_media_action=0x7f04002a;
+        public static final int notification_media_cancel_action=0x7f04002b;
+        public static final int notification_template_big_media=0x7f04002c;
+        public static final int notification_template_big_media_narrow=0x7f04002d;
+        public static final int notification_template_lines=0x7f04002e;
+        public static final int notification_template_media=0x7f04002f;
+        public static final int notification_template_part_chronometer=0x7f040030;
+        public static final int notification_template_part_time=0x7f040031;
+        public static final int select_dialog_item_material=0x7f040032;
+        public static final int select_dialog_multichoice_material=0x7f040033;
+        public static final int select_dialog_singlechoice_material=0x7f040034;
+        public static final int support_simple_spinner_dropdown_item=0x7f040035;
+        public static final int user_poem_fragment=0x7f040036;
     }
     public static final class menu {
         public static final int menu_editor=0x7f0d0000;

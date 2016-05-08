@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Justin\MCA\poemProj\Stanza\app\src\main\AndroidManifest.xml:2:1-58:12
+ADDED from C:\Users\Justin\MCA\poemProj\Stanza\app\src\main\AndroidManifest.xml:2:1-49:12
 	package
 		ADDED from C:\Users\Justin\MCA\poemProj\Stanza\app\src\main\AndroidManifest.xml:3:5-33
 		INJECTED from C:\Users\Justin\MCA\poemProj\Stanza\app\src\main\AndroidManifest.xml
@@ -22,7 +22,7 @@ ADDED from C:\Users\Justin\MCA\poemProj\Stanza\app\src\main\AndroidManifest.xml:
 	android:name
 		ADDED from C:\Users\Justin\MCA\poemProj\Stanza\app\src\main\AndroidManifest.xml:6:22-76
 application
-ADDED from C:\Users\Justin\MCA\poemProj\Stanza\app\src\main\AndroidManifest.xml:8:5-56:19
+ADDED from C:\Users\Justin\MCA\poemProj\Stanza\app\src\main\AndroidManifest.xml:8:5-47:19
 MERGED from [com.android.support:appcompat-v7:23.3.0] C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-vector-drawable:23.3.0] C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\AndroidManifest.xml:7:5-20
 MERGED from [com.android.support:support-v4:23.3.0] C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\AndroidManifest.xml:22:5-20
@@ -90,13 +90,13 @@ ADDED from C:\Users\Justin\MCA\poemProj\Stanza\app\src\main\AndroidManifest.xml:
 	android:name
 		ADDED from C:\Users\Justin\MCA\poemProj\Stanza\app\src\main\AndroidManifest.xml:34:17-63
 activity#com.example.stanza.ViewPoemActivity
-ADDED from C:\Users\Justin\MCA\poemProj\Stanza\app\src\main\AndroidManifest.xml:47:9-54:20
+ADDED from C:\Users\Justin\MCA\poemProj\Stanza\app\src\main\AndroidManifest.xml:38:9-45:20
 	android:label
-		ADDED from C:\Users\Justin\MCA\poemProj\Stanza\app\src\main\AndroidManifest.xml:49:13-54
+		ADDED from C:\Users\Justin\MCA\poemProj\Stanza\app\src\main\AndroidManifest.xml:40:13-54
 	android:parentActivityName
-		ADDED from C:\Users\Justin\MCA\poemProj\Stanza\app\src\main\AndroidManifest.xml:50:13-55
+		ADDED from C:\Users\Justin\MCA\poemProj\Stanza\app\src\main\AndroidManifest.xml:41:13-55
 	android:name
-		ADDED from C:\Users\Justin\MCA\poemProj\Stanza\app\src\main\AndroidManifest.xml:48:13-63
+		ADDED from C:\Users\Justin\MCA\poemProj\Stanza\app\src\main\AndroidManifest.xml:39:13-63
 uses-sdk
 INJECTED from C:\Users\Justin\MCA\poemProj\Stanza\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.3.0] C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\AndroidManifest.xml:21:5-23:78

@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void deletePoems() {
-        getContentResolver().delete(NotesProvider2.CONTENT_URI,
+        getContentResolver().delete(NotesProvider.CONTENT_URI,
                 null, null);
 
         finish();
