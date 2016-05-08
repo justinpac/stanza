@@ -50,6 +50,8 @@ class Worker implements Runnable{
     OutputStream outStream = null;
     InputStream inStream = null;
     Poem p = null;
+    Poem test = null;
+    Poem read_in = null; 
    
     Poem ack = null; 
     Poem  nack = null;  
@@ -71,6 +73,10 @@ class Worker implements Runnable{
 		//	System.out.println("title " + title);
 		
 		Poem p = new Poem(title, text);
+		int poemLength = p.getBytes().length; 
+		Poem logistics = new Poem("poem_length", String.valueOf(poemLength)); 
+		logistics.send(outStream); 
+		ack = new Poem(inStream); 
 		p.send(outStream);
 		ack = new Poem(inStream);
 		System.out.println(ack.title + " " + p.title); 
@@ -92,28 +98,48 @@ class Worker implements Runnable{
 
 	System.out.println("save to database"); 
        	storeToDatabase(title, text);
-       	ack = new Poem(p.title, "Saved to server"); 
+	
+       	ack = new Poem(title, "Saved to server"); 
        	ack.send(outStream);
     }
 
-    public void run(){  
+    public void run(){
+	int poemLength = 0; 
 
 	try{
 	    inStream = sock.getInputStream();
 	    outStream = sock.getOutputStream(); 
-	    System.out.println("Successfully received the following: "); 
+	    System.out.println("Successfully received the following: ");
+	    System.out.println("in run again"); 
 
 	    p = new Poem(inStream);
+	    try{
+		poemLength = Integer.parseInt(p.text); 
+	    }
+	    catch(NumberFormatException e){System.out.println(e.getMessage()); }
 	  
 	    String title = p.title; 
 	    String text = p.text;
+	    System.out.println(title);
+	    System.out.println(text); 
 
 	    if(title.equals("pull_poems"))
 		pullPoems();
-	    else
-		pushPoems(title, text); 
+	    else{
+		System.out.println("in push poem");
+		System.out.println("p title " + p.title);
+		//	Poem test = new Poem(inStream);
+		p.send(outStream); 
+		Poem read_in = new Poem(inStream, poemLength); 
+		//	ack.send(outStream);
+		//	System.out.println("poem length is " + poemLength); 
+
+		//	System.out.println("READ IN TEXT");
+		//	System.out.println(read_in.text); 
+		pushPoems(read_in.title, read_in.text); 
+	    }
 		
-	    sock.close();
+	    //  sock.close();
 
 	}
 	catch(IOException e){
@@ -125,6 +151,7 @@ class Worker implements Runnable{
 	    System.exit(1);
 	    return; 
 	}
+
 
     }
 
@@ -198,15 +225,18 @@ class Worker implements Runnable{
 
 	    st.executeUpdate("set search_path to poem");
 
-	    // System.out.println(title);
-	    // System.out.println(text);
+	   
 
 	    text = text.replace("'","''");
 	    text = text.replace(";", ",");
+	    text = text.replace("\0", ""); 
+	    //  text = text.replaceAll("\\p{C}", "?"); 
 	    title = title.replace("'","''");
-
-	    System.out.println("POEM TITLE IS\n" + title); 
-	    System.out.println("POEM TEXT IS\n" + text); 
+	    
+	    // String test = text;
+	    //  test = test.substring(0, 1450);
+	    //   System.out.println(text); 
+	   
 
 	    
 	    st.executeUpdate("INSERT INTO poems (poemtitle, poemtext) VALUES('" +
