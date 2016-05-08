@@ -1,35 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="armeabi-v7a,armeabi"
+    abi="x86"
     api-level="23"
     density="560dpi"
     format="7"
-    timestamp="495168086566623"
-    verifier="COMPATIBLE" >
+    timestamp="284286405584569" >
 
     <task
         name="javac"
-        duration="259" />
+        duration="0" />
     <task
         name="instant-run-dex"
-        duration="383" />
+        duration="0" />
     <task
         name="instant-run-transform"
-        duration="29" />
+        duration="0" />
     <task
         name="verifier"
-        duration="2" />
+        duration="0" />
 
-    <artifact
-        location="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\reload-dex\debug\classes.dex"
-        type="RELOAD_DEX" />
-
-    <build
-        timestamp="495168086566623"
-        verifier="COMPATIBLE" >
+    <build timestamp="274685299686614" >
         <artifact
-            location="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\reload-dex\debug\classes.dex"
-            type="RELOAD_DEX" />
+            location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\outputs\apk\app-debug.apk"
+            type="MAIN" />
     </build>
+    <build
+        timestamp="275194796451408"
+        verifier="R_CLASS_CHANGE" >
+        <artifact
+            location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_2\classes.dex"
+            type="DEX" />
+        <artifact
+            location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_0\classes.dex"
+            type="DEX" />
+    </build>
+    <build
+        timestamp="275276436283750"
+        verifier="R_CLASS_CHANGE" >
+        <artifact
+            location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\res\resources-debug.ap_"
+            type="RESOURCES" />
+    </build>
+    <build timestamp="275774916150630" >
+        <artifact
+            location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
+            type="DEX" />
+    </build>
+    <build timestamp="284286405584569" />
 
 </instant-run>

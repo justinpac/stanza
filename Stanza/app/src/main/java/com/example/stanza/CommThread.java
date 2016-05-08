@@ -19,6 +19,8 @@ import java.util.Queue;
  */
 public class CommThread extends Thread
 implements Runnable{
+    String host = "rns202-13.cs.stolaf.edu";
+
     Queue<Poem> poemQ2 = new LinkedList<Poem>();
 
     boolean done = false;
@@ -63,7 +65,12 @@ implements Runnable{
         Poem poem = poemQ.remove();
         Poem receive = null;
         try {
+            System.out.println(poem.getBytes().length);
+            Poem logistics = new Poem("poem_length", String.valueOf(poem.getBytes().length));
+            logistics.send(outputStream);
+            receive = new Poem(inputStream);
             poem.send(outputStream);
+
             receive = new Poem(inputStream);
             final String output = receive.text + ": " + receive.title;
             System.out.println("add poem");
@@ -91,6 +98,7 @@ implements Runnable{
     void processOnePoem2(){
         System.out.println("process poem from backend method");
         Poem receive = null;
+        Poem logistics = null;
         Poem ack = new Poem("received_poem", "");
 
         try {
@@ -99,8 +107,11 @@ implements Runnable{
                 System.out.println("sent: " + request.title);
 
                 for (int i = 0; i < 10; i++) {
-                    System.out.println("gettnig new poem");
-                    receive = new Poem(inputStream);
+                    System.out.println("getting new poem");
+                    logistics = new Poem(inputStream);
+                    ack.send(outputStream);
+                    int poemLength = Integer.parseInt((logistics.text));
+                    receive = new Poem(inputStream, poemLength);
                     poemQ2.add(receive);
                     ack.send(outputStream);
                     System.out.println("receive poem number " + (i+1) + ": " + receive.title);
@@ -132,7 +143,6 @@ implements Runnable{
     }
 
     public void run() {
-        String host = "rns203-8.cs.stolaf.edu";
         System.out.println("task id is " + task_id);
 
         try {
