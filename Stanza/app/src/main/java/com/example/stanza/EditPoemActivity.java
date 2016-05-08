@@ -181,8 +181,6 @@ implements CommInterface{
         finishEditing();
     }
 
-
-    @Override
     public void pushPoem(String poemTitle, String poemText) {
 
         Poem poem = new Poem(poemTitle, poemText);
@@ -192,10 +190,6 @@ implements CommInterface{
         ct.interrupt();
     }
 
-    @Override
-    public void pullPoem() {
-
-    }
 
     @Override
     public void poemSaved(String output) {
@@ -205,8 +199,6 @@ implements CommInterface{
     @Override
     public void serverDisconnected() {
         Toast.makeText(getApplication(), "Server not connected. Cannot save poems to server.", Toast.LENGTH_SHORT).show();
-
-
     }
 
     @Override
