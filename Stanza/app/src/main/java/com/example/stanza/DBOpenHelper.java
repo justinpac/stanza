@@ -8,7 +8,7 @@ public class DBOpenHelper extends SQLiteOpenHelper{
 
     //Constants for db name and version
     private static final String DATABASE_NAME = "poems.db";
-    private static final int DATABASE_VERSION = 12;
+    private static final int DATABASE_VERSION = 14;
 
     //Constants for identifying table and columns
     public static final String TABLE_POEMS = "poemsLocal";
