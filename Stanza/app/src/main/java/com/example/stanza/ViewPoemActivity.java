@@ -19,22 +19,29 @@ public class ViewPoemActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewer);
         Intent intent = getIntent();
-       // Uri uri = intent.getParcelableExtra(NotesProvider.CONTENT_ITEM_TYPE);
-        long id = intent.getLongExtra(NotesProvider.CONTENT_ITEM_TYPE, -1);
+        Uri uri = intent.getParcelableExtra(NotesProvider.CONTENT_ITEM_TYPE);
+       // long id = intent.getLongExtra(NotesProvider.CONTENT_ITEM_TYPE, -1);
 
 
         title = (TextView) findViewById(R.id.friend_poem_title);
         text = (TextView) findViewById(R.id.friend_poem_text);
 
-        noteFilter = DBOpenHelper.POEM_ID + "=" + id;
 
+        String path = uri.toString();
+        String idStr = path.substring(path.lastIndexOf('/') + 1);
+        noteFilter = DBOpenHelper.POEM_ID + "=" + idStr;
 
-        Cursor cursor = getContentResolver().query(NotesProvider.CONTENT_URI2, DBOpenHelper.ALL_COLUMNS
-                , noteFilter, null, null);
-        cursor.moveToFirst();
-        poemText = cursor.getString(cursor.getColumnIndex(DBOpenHelper.POEM_TEXT));
-        poemTitle = cursor.getString(cursor.getColumnIndex(DBOpenHelper.POEM_TITLE));
+        String sortOrder = "friend";
 
+        Cursor cursor = getContentResolver().query(uri, DBOpenHelper.ALL_COLUMNS
+                , noteFilter, null, sortOrder);
+        try {
+            cursor.moveToFirst();
+            poemText = cursor.getString(cursor.getColumnIndex(DBOpenHelper.POEM_TEXT));
+            poemTitle = cursor.getString(cursor.getColumnIndex(DBOpenHelper.POEM_TITLE));
+        }catch(RuntimeException e){
+            e.printStackTrace();
+        }
         title.setText(poemTitle);
         title.requestFocus();
         text.setText(poemText);

@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.stanza.DBOpenHelper;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -48,8 +49,8 @@ implements CommInterface{
         editor = (EditText) findViewById(R.id.editText);
 
        // publish = (Button) findViewById(R.id.publish_poem_button);
-/*        ct = new CommThread(this, EditPoemActivity.this);
-        ct.start();*/
+
+
 
 
         /* This section was changed to intent.getLongExtra(..), but it created a bug where the
@@ -66,8 +67,9 @@ implements CommInterface{
             String idStr = path.substring(path.lastIndexOf('/') + 1);
             noteFilter = DBOpenHelper.POEM_ID + "=" + idStr;
 
+            String orderBy = "self";
             Cursor cursor = getContentResolver().query(uri, DBOpenHelper.ALL_COLUMNS
-                    , noteFilter, null, null);
+                    , noteFilter, null, orderBy);
             cursor.moveToFirst();
             oldText = cursor.getString(cursor.getColumnIndex(DBOpenHelper.POEM_TEXT));
             oldTitle = cursor.getString(cursor.getColumnIndex(DBOpenHelper.POEM_TITLE));
@@ -100,8 +102,8 @@ implements CommInterface{
                 deleteNote();
                 break;
             case R.id.action_publish_poem_to_server:
-                String title = editorTitle.getText().toString().trim() +"\001";
-                String text = editor.getText().toString().trim() + "\001";
+                String title = editorTitle.getText().toString().trim() + '\001';
+                String text = editor.getText().toString().trim() + '\001';
                 pushPoem(title,text);
                 break;
         }
@@ -166,7 +168,8 @@ implements CommInterface{
     private void insertNote(String poemText, String poemTitle) {
         ContentValues values = new ContentValues();
         values.put(DBOpenHelper.POEM_TEXT, poemText);
-        values.put(DBOpenHelper.POEM_TITLE,poemTitle);
+        values.put(DBOpenHelper.POEM_TITLE, poemTitle);
+        values.put(DBOpenHelper.CREATOR, "self");
         getContentResolver().insert(NotesProvider.CONTENT_URI, values);
         setResult(RESULT_OK);
     }
@@ -178,18 +181,15 @@ implements CommInterface{
         finishEditing();
     }
 
-
-    @Override
     public void pushPoem(String poemTitle, String poemText) {
 
         Poem poem = new Poem(poemTitle, poemText);
+        ct = new CommThread(this, EditPoemActivity.this);
+        ct.start();
         ct.addPoem(poem);
+        ct.interrupt();
     }
 
-    @Override
-    public void pullPoem(String poemTitle, String poemText) {
-
-    }
 
     @Override
     public void poemSaved(String output) {
@@ -197,7 +197,12 @@ implements CommInterface{
     }
 
     @Override
-    public void serverNotConnected() {
-        Toast.makeText(getApplicationContext(), "Action failed. Server is not connected.", Toast.LENGTH_SHORT).show();
+    public void serverDisconnected() {
+        Toast.makeText(getApplication(), "Server not connected. Cannot save poems to server.", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPullFinished() {
+
     }
 }
