@@ -1,35 +1,59 @@
 package com.example.stanza;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.util.JsonReader;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.stanza.DBOpenHelper;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Objects;
+import java.util.Scanner;
 
 
 public class EditPoemActivity extends AppCompatActivity
-implements CommInterface{
+implements CommInterface {
 
     private String action;
     private EditText editorTitle;
     private EditText editor;
+    private TextView rhymeList;
     private String noteFilter;
     private String oldText;
     private String oldTitle;
+    String[] spinnerList;
+    public String apiWord;
+    URL url;
 
  //   private Button publish;
     private CommThread ct;
@@ -42,13 +66,116 @@ implements CommInterface{
         editorTitle = (EditText) findViewById(R.id.editText2);
         editor = (EditText) findViewById(R.id.editText);
 
+
+
+        class rhymeTask extends AsyncTask<String, Void, String> {
+            String rhymeList;
+            @Override
+            protected String doInBackground(String... params) {
+                try {
+                    String request = "http://api.wordnik.com:80/v4/word.json/" + "house"
+                            + "/relatedWords?useCanonical=false&limitPerRelationshipType=10&api_key="
+                            + "34b85c60a34e51f8ffa4a6f3bfe056794ea70f73f26e33123";
+
+                    url = new URL(request);
+                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                    InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                           rhymeList =  new Scanner(in, "UTF-8").useDelimiter("\\A").next();
+                    Log.d("myTag", rhymeList.getClass().getName());
+                    in.close();
+                    return rhymeList;
+
+
+
+                }catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return rhymeList;
+            }
+            @Override
+            protected void onPostExecute(String result) {
+                parseJson(rhymeList);
+                for (int i = 0; i < spinnerList.length; i++){
+                    Log.d("spinnerList", spinnerList[i]);
+                }
+
+                /*ArrayAdapter<String> newSpinnerAdapter = new ArrayAdapter<String>
+                        (, android.R.layout.simple_spinner_item, spinnerList);*/
+
+            }
+
+            protected String[] parseJson(String strJson) {
+                String[] returnArray = new String[1];
+                returnArray[0] = "No rhymes";
+                try {
+                    JSONArray newJsonArray = new JSONArray(strJson);
+                    for (int i=0; i<newJsonArray.length(); i++) {
+                        JSONObject wordData = newJsonArray.getJSONObject(i);
+                        if (Objects.equals(wordData.getString("relationshipType"), "rhyme")) {
+                            JSONArray interiorArr = wordData.getJSONArray("words");
+                            returnArray = new String[interiorArr.length()];
+                            for (int j=0; j<interiorArr.length(); j++) {
+                                String testStr = interiorArr.getString(j);
+                                returnArray[j] = testStr;
+                            }
+                        }
+                    }
+                    Log.d("JSONTag", newJsonArray.getClass().getName());
+                } catch (JSONException e) {e.printStackTrace();}
+                spinnerList = returnArray;
+                return returnArray;
+            }
+
+        }
+
+
+        Spinner rhymeSpinner = (Spinner) findViewById(R.id.rhymeSpinner);
+        spinnerList = new String[] { "apple", "banana", "cucumber" };
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>
+                (this, android.R.layout.simple_spinner_item, spinnerList);
+        spinnerAdapter
+                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        rhymeSpinner.setAdapter(spinnerAdapter);
+
+        final boolean[] firstSpinnerCall = {true};
+        rhymeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (firstSpinnerCall[0]) {
+                    firstSpinnerCall[0] = false;
+                } else {
+                    String selectedText = (String) parent.getItemAtPosition(position);
+                    replaceText(selectedText);
+                    //Log.v("item", (String) parent.getItemAtPosition(position));
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        editor.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                new rhymeTask().execute(); //TESTING API CALL
+
+                return false;
+            }
+        });
+
+
+
        // publish = (Button) findViewById(R.id.publish_poem_button);
         ct = new CommThread(this, EditPoemActivity.this);
         ct.start();
 
         Intent intent = getIntent();
         long id = intent.getLongExtra(NotesProvider.CONTENT_ITEM_TYPE,-1);
-               
+
+
 
         if (id == -1) {
             action = Intent.ACTION_INSERT;
@@ -154,6 +281,26 @@ implements CommInterface{
         setResult(RESULT_OK);
     }
 
+
+    /*public void myClickHandler(View view) {
+        String stringUrl1 = getString(R.string.url_chunk_1);
+        String stringUrl2 = getString(R.string.url_chunk_1);
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            //fetch data
+        } else {
+            //display error
+        }
+    }*/
+
+    private void replaceText(String newText) {
+        int start = Math.max(editor.getSelectionStart(), 0);
+        int end = Math.max(editor.getSelectionEnd(), 0);
+        editor.getText().replace(Math.min(start, end), Math.max(start, end),
+                newText, 0, newText.length());
+    }
 
     private void insertNote(String poemText, String poemTitle) {
         ContentValues values = new ContentValues();

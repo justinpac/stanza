@@ -35,7 +35,8 @@
         <activity
             android:name="com.example.stanza.EditPoemActivity"
             android:label="@string/poetry_editor"
-            android:parentActivityName="com.example.stanza.MainActivity" >
+            android:parentActivityName="com.example.stanza.MainActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.stanza.MainActivity" />
