@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
-        "source": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\abc_activity_chooser_view.xml"
-    },
-    {
         "merged": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_friend.xml",
         "source": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\src\\main\\res\\layout\\activity_friend.xml"
+    },
+    {
+        "merged": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\abc_activity_chooser_view.xml"
     },
     {
         "merged": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
@@ -92,12 +92,12 @@
         "source": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\notification_template_big_media_narrow.xml"
     },
     {
-        "merged": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
-        "source": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
-    },
-    {
         "merged": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
         "source": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.2.1\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
     },
     {
         "merged": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",

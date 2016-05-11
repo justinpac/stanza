@@ -54,6 +54,9 @@ implements CommInterface {
     String[] spinnerList;
     public String apiWord;
     URL url;
+    Spinner rhymeSpinner;
+    boolean firstSpinnerCall;
+    String lookupWord;
 
  //   private Button publish;
     private CommThread ct;
@@ -73,7 +76,7 @@ implements CommInterface {
             @Override
             protected String doInBackground(String... params) {
                 try {
-                    String request = "http://api.wordnik.com:80/v4/word.json/" + "house"
+                    String request = "http://api.wordnik.com:80/v4/word.json/" + lookupWord
                             + "/relatedWords?useCanonical=false&limitPerRelationshipType=10&api_key="
                             + "34b85c60a34e51f8ffa4a6f3bfe056794ea70f73f26e33123";
 
@@ -99,8 +102,11 @@ implements CommInterface {
                     Log.d("spinnerList", spinnerList[i]);
                 }
 
-                /*ArrayAdapter<String> newSpinnerAdapter = new ArrayAdapter<String>
-                        (, android.R.layout.simple_spinner_item, spinnerList);*/
+                ArrayAdapter<String> newSpinnerAdapter = new ArrayAdapter<String>
+                        (getApplicationContext(), android.R.layout.simple_spinner_item, spinnerList);
+                newSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                rhymeSpinner.setAdapter(newSpinnerAdapter);
+                firstSpinnerCall = true;
 
             }
 
@@ -111,7 +117,7 @@ implements CommInterface {
                     JSONArray newJsonArray = new JSONArray(strJson);
                     for (int i=0; i<newJsonArray.length(); i++) {
                         JSONObject wordData = newJsonArray.getJSONObject(i);
-                        if (Objects.equals(wordData.getString("relationshipType"), "rhyme")) {
+                        if ("rhyme".equals(wordData.getString("relationshipType"))) {
                             JSONArray interiorArr = wordData.getJSONArray("words");
                             returnArray = new String[interiorArr.length()];
                             for (int j=0; j<interiorArr.length(); j++) {
@@ -129,7 +135,7 @@ implements CommInterface {
         }
 
 
-        Spinner rhymeSpinner = (Spinner) findViewById(R.id.rhymeSpinner);
+        rhymeSpinner = (Spinner) findViewById(R.id.rhymeSpinner);
         spinnerList = new String[] { "apple", "banana", "cucumber" };
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_item, spinnerList);
@@ -138,12 +144,12 @@ implements CommInterface {
 
         rhymeSpinner.setAdapter(spinnerAdapter);
 
-        final boolean[] firstSpinnerCall = {true};
+        firstSpinnerCall = true;
         rhymeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (firstSpinnerCall[0]) {
-                    firstSpinnerCall[0] = false;
+                if (firstSpinnerCall) {
+                    firstSpinnerCall = false;
                 } else {
                     String selectedText = (String) parent.getItemAtPosition(position);
                     replaceText(selectedText);
@@ -160,6 +166,10 @@ implements CommInterface {
         editor.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                int start = Math.max(editor.getSelectionStart(), 0);
+                int end = Math.max(editor.getSelectionEnd(), 0);
+                lookupWord = editor.getText().toString().substring
+                        (Math.min(start, end), Math.max(start, end));
                 new rhymeTask().execute(); //TESTING API CALL
 
                 return false;
