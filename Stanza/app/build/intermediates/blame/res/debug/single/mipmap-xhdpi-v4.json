@@ -1,10 +1,10 @@
 [
     {
-        "merged": "C:\\Users\\Brianna\\AndroidStudioProjects\\myProject\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\ic_document.png",
-        "source": "C:\\Users\\Brianna\\AndroidStudioProjects\\myProject\\Stanza\\app\\src\\main\\res\\mipmap-xhdpi\\ic_document.png"
+        "merged": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\Brianna\\AndroidStudioProjects\\myProject\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\ic_launcher.png",
-        "source": "C:\\Users\\Brianna\\AndroidStudioProjects\\myProject\\Stanza\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+        "merged": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\ic_document.png",
+        "source": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\src\\main\\res\\mipmap-xhdpi\\ic_document.png"
     }
 ]
