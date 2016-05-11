@@ -1,6 +1,7 @@
 package com.example.stanza;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ public class MainActivity extends AppCompatActivity
 {
     ViewPager viewPager;
     Toolbar toolbar;
+    FloatingActionButton fab;
 
 
     @Override
@@ -29,11 +31,22 @@ public class MainActivity extends AppCompatActivity
         TabLayout tabLayout = (TabLayout) findViewById(R.id.mainTabLayout);
         tabLayout.setupWithViewPager(viewPager);
 
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
 
                 viewPager.setCurrentItem(tab.getPosition());
+
+                switch (tab.getPosition()) {
+                    case 0:
+                        fab.show();
+                        break;
+                    case 1:
+                        fab.hide();
+                        break;
+                }
 
             }
 
