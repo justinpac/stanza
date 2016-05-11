@@ -59,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/rhymeSpinner"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/SCROLLER_ID"
         android:layout_centerHorizontal="true" />
 
 
