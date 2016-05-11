@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.stanza.DBOpenHelper;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -30,6 +32,7 @@ implements CommInterface{
     private String noteFilter;
     private String oldText;
     private String oldTitle;
+    private Toolbar toolbar;
 
  //   private Button publish;
     private CommThread ct;
@@ -39,27 +42,34 @@ implements CommInterface{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
 
+/*        getSupportActionBar().show();
+        getSupportActionBar().setDisplayShowHomeEnabled(true);*/
+
         editorTitle = (EditText) findViewById(R.id.editText2);
         editor = (EditText) findViewById(R.id.editText);
 
        // publish = (Button) findViewById(R.id.publish_poem_button);
-        ct = new CommThread(this, EditPoemActivity.this);
-        ct.start();
 
+
+
+
+        /* This section was changed to intent.getLongExtra(..), but it created a bug where the
+        * old text and title were not being displayed. These subsequent changes fixed that bug. */
         Intent intent = getIntent();
-        long id = intent.getLongExtra(NotesProvider.CONTENT_ITEM_TYPE,-1);
-               
-
-        if (id == -1) {
+        Uri uri = intent.getParcelableExtra(NotesProvider.CONTENT_ITEM_TYPE);
+        if (uri == null) {
             action = Intent.ACTION_INSERT;
             setTitle(getString(R.string.new_note));
         } else {
             action = Intent.ACTION_EDIT;
-            //System.out.println("last path segment " + uri.getLastPathSegment());
-            noteFilter = DBOpenHelper.POEM_ID + "=" + id; //uri.getLastPathSegment();
+            System.out.println("URI IS " + uri.toString());
+            String path = uri.toString();
+            String idStr = path.substring(path.lastIndexOf('/') + 1);
+            noteFilter = DBOpenHelper.POEM_ID + "=" + idStr;
 
-            Cursor cursor = getContentResolver().query(NotesProvider.CONTENT_URI,
-                    DBOpenHelper.ALL_COLUMNS, noteFilter, null, null);
+            String orderBy = "self";
+            Cursor cursor = getContentResolver().query(uri, DBOpenHelper.ALL_COLUMNS
+                    , noteFilter, null, orderBy);
             cursor.moveToFirst();
             oldText = cursor.getString(cursor.getColumnIndex(DBOpenHelper.POEM_TEXT));
             oldTitle = cursor.getString(cursor.getColumnIndex(DBOpenHelper.POEM_TITLE));
@@ -92,8 +102,8 @@ implements CommInterface{
                 deleteNote();
                 break;
             case R.id.action_publish_poem_to_server:
-                String title = editorTitle.getText().toString().trim() +"\001";
-                String text = editor.getText().toString().trim() + "\001";
+                String title = editorTitle.getText().toString().trim() + '\001';
+                String text = editor.getText().toString().trim() + '\001';
                 pushPoem(title,text);
                 break;
         }
@@ -145,7 +155,7 @@ implements CommInterface{
         ContentValues values = new ContentValues();
         values.put(DBOpenHelper.POEM_TEXT, poemText);
         values.put(DBOpenHelper.POEM_TITLE,poemTitle);
-        System.out.println("notefilter " + noteFilter);
+        //System.out.println("notefilter " + noteFilter);
         getContentResolver().update(NotesProvider.CONTENT_URI, values, noteFilter, null);
         //Toast.makeText(this, getString(R.string.note_updated), Toast.LENGTH_SHORT).show();
 
@@ -158,7 +168,8 @@ implements CommInterface{
     private void insertNote(String poemText, String poemTitle) {
         ContentValues values = new ContentValues();
         values.put(DBOpenHelper.POEM_TEXT, poemText);
-        values.put(DBOpenHelper.POEM_TITLE,poemTitle);
+        values.put(DBOpenHelper.POEM_TITLE, poemTitle);
+        values.put(DBOpenHelper.CREATOR, "self");
         getContentResolver().insert(NotesProvider.CONTENT_URI, values);
         setResult(RESULT_OK);
     }
@@ -170,18 +181,15 @@ implements CommInterface{
         finishEditing();
     }
 
-
-    @Override
     public void pushPoem(String poemTitle, String poemText) {
 
         Poem poem = new Poem(poemTitle, poemText);
+        ct = new CommThread(this, EditPoemActivity.this);
+        ct.start();
         ct.addPoem(poem);
+        ct.interrupt();
     }
 
-    @Override
-    public void pullPoem(String poemTitle, String poemText) {
-
-    }
 
     @Override
     public void poemSaved(String output) {
@@ -189,7 +197,12 @@ implements CommInterface{
     }
 
     @Override
-    public void serverNotConnected() {
-        Toast.makeText(getApplicationContext(), "Action failed. Server is not connected.", Toast.LENGTH_SHORT).show();
+    public void serverDisconnected() {
+        Toast.makeText(getApplication(), "Server not connected. Cannot save poems to server.", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPullFinished() {
+
     }
 }

@@ -8,7 +8,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="new_note">New Poem</string>
-    <string name="note_updated">Note updated</string>
+    <string name="note_updated">Poem updated</string>
     <string name="action_delete">delete</string>
     <string name="note_deleted">Poem deleted</string>
     <string name="app_name">Stanza</string>

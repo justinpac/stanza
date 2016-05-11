@@ -8,7 +8,7 @@ public class DBOpenHelper extends SQLiteOpenHelper{
 
     //Constants for db name and version
     private static final String DATABASE_NAME = "poems.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 14;
 
     //Constants for identifying table and columns
     public static final String TABLE_POEMS = "poemsLocal";
@@ -16,9 +16,10 @@ public class DBOpenHelper extends SQLiteOpenHelper{
     public static final String POEM_TEXT = "poemText";
     public static final String POEM_CREATED = "poemCreated";
     public static final String POEM_TITLE = "poemTitle";
+    public static final String CREATOR = "creator"; //'self' = created by user, 'friend' = created by friend
 
     public static final String[] ALL_COLUMNS =
-            {POEM_ID, POEM_TITLE, POEM_TEXT, POEM_CREATED};
+            {POEM_ID, POEM_TITLE, POEM_TEXT, CREATOR, POEM_CREATED};
 
     //SQL to create table
     private static final String TABLE_CREATE =
@@ -26,6 +27,7 @@ public class DBOpenHelper extends SQLiteOpenHelper{
                     POEM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     POEM_TITLE + " TEXT, " +
                     POEM_TEXT + " TEXT, " +
+                    CREATOR + " TEXT, " +
                     POEM_CREATED + " TEXT default CURRENT_TIMESTAMP" +
                     ")";
 

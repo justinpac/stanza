@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -9,19 +10,33 @@
     tools:context=".EditPoemActivity">
 
 
-    <AutoCompleteTextView
-        android:layout_width="wrap_content"
+
+
+    <ScrollView
+        android:id="@+id/SCROLLER_ID"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:gravity="top"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:background="@null"
+        android:scrollbars="vertical"
         android:layout_below="@+id/editText2"
-        android:hint="Type Poem Here" />
+        android:fillViewport="true">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText"
+            android:gravity="top"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:background="@null"
+            android:layout_below="@+id/editText2"
+            android:hint="Type Poem Here" />
+
+
+    </ScrollView>
+
 
     <EditText
         android:gravity="left"
@@ -31,8 +46,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/editText"
-        android:layout_alignEnd="@+id/editText"
+        android:layout_alignRight="@+id/SCROLLER_ID"
+        android:layout_alignEnd="@+id/SCROLLER_ID"
         android:background="@null"
         android:hint="Poem Title"
         android:textSize="30sp"
