@@ -13,7 +13,8 @@ import android.widget.Toast;
 /**
  * Created by Brianna on 5/11/2016.
  */
-public class SignupActivity extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity
+implements AccountCommInterface{
 
     private static final String TAG = "SignupActivity";
 
@@ -26,6 +27,8 @@ public class SignupActivity extends AppCompatActivity {
     int minNameLength = 3;
     int minPasswordLength = 5;
     int maxPasswordLength = 13;
+
+    AccountCommThread act;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -51,11 +54,14 @@ public class SignupActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        act = new AccountCommThread(this, SignupActivity.this);
+        act.start();
     }
 
     public void signup(){
         if(!validate()){
-            onSignupFailed();
+            invalidAccount();;
             return;
         }
 
@@ -72,7 +78,10 @@ public class SignupActivity extends AppCompatActivity {
         String password = passwordText.getText().toString();
 
         //TODO: implement signup logic here
+        act.thisAccount(name, email, password);
+        //it will call either onSignupSuccess() or onSignupFailed()
 
+        //currently we're just going to automatically call onSignupSuccess() here
         new android.os.Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -83,14 +92,9 @@ public class SignupActivity extends AppCompatActivity {
         }, 3000);
     }
 
-    public void onSignupSuccess(){
-        signupButton.setEnabled(true);
-        setResult(RESULT_OK, null);
-        finish();
-    }
 
-    public void onSignupFailed(){
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+    public void invalidAccount(){
+        Toast.makeText(getBaseContext(), "Invalid account information", Toast.LENGTH_LONG).show();
 
         signupButton.setEnabled(true);
     }
@@ -124,5 +128,35 @@ public class SignupActivity extends AppCompatActivity {
         }
 
         return valid;
+    }
+
+
+    @Override
+    public void onServerDisconnected() {
+        Toast.makeText(getBaseContext(), "Server disconnected. Cannot create account.", Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    public void onLoginSuccess() {
+
+    }
+
+    @Override
+    public void onLoginFailed(String error_message) {
+
+    }
+
+    public void onSignupSuccess(){
+        signupButton.setEnabled(true);
+        setResult(RESULT_OK, null);
+        finish();
+    }
+
+    @Override
+    public void onSignupFailed(String error_message) {
+        signupButton.setEnabled(true);
+        Toast.makeText(getBaseContext(), error_message, Toast.LENGTH_LONG).show();
+
     }
 }
