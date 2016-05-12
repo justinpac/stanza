@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void login(){
         if(!validate()){
-            onLoginFailed();
+            invalidLoginAttempt();
             return;
         }
 
@@ -101,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
-    public void onLoginFailed(){
+    public void invalidLoginAttempt(){
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
         loginButton.setEnabled(true);
     }

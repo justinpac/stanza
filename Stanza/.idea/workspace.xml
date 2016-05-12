@@ -10,12 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7251d85b-649c-407f-897b-fdf96124aac5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/stanza.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/stanza/LoginActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/stanza/SignupActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_signup.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/actvity_login.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/stanza/Account.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/stanza/AccountCommInterface.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/stanza/AccountCommThread.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/stanza/LoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/stanza/LoginActivity.java" />
     </list>
     <ignored path="Stanza.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,96 +45,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/LoginActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+              <caret line="103" column="35" selection-start-line="103" selection-start-column="35" selection-end-line="103" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1176#1317#0" expanded="true" />
                 <element signature="e#1316#1317#0" expanded="true" />
-                <element signature="e#1359#1630#0" expanded="true" />
-                <element signature="e#1629#1630#0" expanded="true" />
-                <element signature="e#2255#2425#0" expanded="true" />
-                <element signature="e#2424#2425#0" expanded="true" />
-                <element signature="e#2787#2788#0" expanded="true" />
-                <element signature="e#2823#2824#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SignupActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SignupActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/SignupActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.63583815">
-              <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1213#1355#0" expanded="true" />
-                <element signature="e#1354#1355#0" expanded="true" />
-                <element signature="e#1396#1538#0" expanded="true" />
-                <element signature="e#1537#1538#0" expanded="true" />
-                <element signature="e#2219#2426#0" expanded="true" />
-                <element signature="e#2425#2426#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.354838">
-              <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_signup.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_signup.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.9230769">
-              <caret line="73" column="32" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
-              <folding>
-                <element signature="e#1163#1177#0" expanded="true" />
-                <element signature="e#1687#1702#0" expanded="true" />
-                <element signature="e#2211#2229#0" expanded="true" />
-                <element signature="e#2594#2618#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EditPoemActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/EditPoemActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="200" column="30" selection-start-line="200" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
+              <caret line="122" column="40" selection-start-line="122" selection-start-column="40" selection-end-line="122" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -141,18 +71,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="actvity_login.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/actvity_login.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
+      <file leaf-file-name="AccountCommInterface.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/AccountCommInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.96923">
-              <caret line="59" column="38" selection-start-line="59" selection-start-column="38" selection-end-line="59" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Account.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/Account.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="54" column="103" selection-start-line="54" selection-start-column="103" selection-end-line="54" selection-end-column="103" />
               <folding>
-                <element signature="e#1236#1251#0" expanded="true" />
-                <element signature="e#1825#1843#0" expanded="true" />
-                <element signature="e#2242#2257#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccountCommThread.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/AccountCommThread.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="3.0703883">
+              <caret line="117" column="67" selection-start-line="117" selection-start-column="67" selection-end-line="117" selection-end-column="67" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1265#1266#0" expanded="true" />
+                <element signature="e#1311#1312#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -163,10 +112,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="Class" />
         <option value="layoutResourceFile_vertical" />
         <option value="layoutResourceFile" />
+        <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -1816,19 +1765,23 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/stanza/DBOpenHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_editor.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/stanza/LoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/stanza/SignupActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_signup.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/actvity_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/stanza/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/stanza/Account.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/stanza/AccountCommInterface.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/stanza/AccountCommThread.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/stanza/LoginActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="width" value="1058" />
-    <option name="height" value="1038" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -1856,7 +1809,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -1864,10 +1816,6 @@
               <option name="myItemId" value="Stanza" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle Scripts" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidBuildScriptsGroupNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1877,46 +1825,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stanza" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stanza" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="drawable" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -1951,23 +1859,8 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Stanza" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="manifests" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidManifestsGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2098,6 +1991,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2478,11 +2373,17 @@
       <option name="project" value="LOCAL" />
       <updated>1463025516803</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="client side of user sign in part 1">
+      <created>1463025631875</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1463025631875</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1058" height="1038" extended-state="0" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -2491,8 +2392,7 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43240094" sideWeight="0.5021436" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32352942" sideWeight="0.49785638" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.64300203" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30805135" sideWeight="0.49785638" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6452742" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3826406" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -2500,7 +2400,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36916837" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19506967" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281412" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
@@ -2514,8 +2414,41 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.64300203" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43240094" sideWeight="0.5021436" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30805135" sideWeight="0.49785638" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281412" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30342385" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.64300203" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6452742" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3826406" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19506967" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -2545,44 +2478,18 @@
     <MESSAGE value="Merge branch 'master' of stogit.cs.stolaf.edu:mca-s16/poem&#10;&#10;Conflicts:&#10;&#9;Stanza/.gradle/2.10/taskArtifacts/cache.properties.lock&#10;&#9;Stanza/.gradle/2.10/taskArtifacts/fileHashes.bin&#10;&#9;Stanza/.gradle/2.10/taskArtifacts/fileSnapshots.bin&#10;&#9;Stanza/.gradle/2.10/taskArtifacts/outputFileStates.bin&#10;&#9;Stanza/.gradle/2.10/taskArtifacts/taskArtifacts.bin&#10;&#9;Stanza/.idea/libraries/animated_vector_drawable_23_2_1.xml&#10;&#9;Stanza/.idea/libraries/appcompat_v7_23_2_1.xml&#10;&#9;Stanza/.idea/libraries/support_annotations_23_2_1.xml&#10;&#9;Stanza/.idea/libraries/support_v4_23_2_1.xml&#10;&#9;Stanza/.idea/libraries/support_vector_drawable_23_2_1.xml&#10;&#9;Stanza/.idea/workspace.xml&#10;&#9;Stanza/app/app.iml&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-af.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-am.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ar.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-az-rAZ.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-bg.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-bn-rBD.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ca.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-cs.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-da.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-de.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-el.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-en-rAU.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-en-rGB.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-en-rIN.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-es-rUS.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-es.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-et-rEE.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-eu-rES.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-fa.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-fi.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-fr-rCA.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-fr.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-gl-rES.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-gu-rIN.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-h320dp-v13.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-h720dp-v13.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-hdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-hi.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-hr.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-hu.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-hy-rAM.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-in.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-is-rIS.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-it.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-iw.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ja.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ka-rGE.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-kk-rKZ.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-km-rKH.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-kn-rIN.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ko.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ky-rKG.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-land.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-large-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ldltr-v21.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-lo-rLA.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-lt.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-lv.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-mk-rMK.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ml-rIN.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-mn-rMN.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-mr-rIN.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ms-rMY.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-my-rMM.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-nb.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ne-rNP.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-night-v8.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-nl.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-pa-rIN.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-pl.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-port.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-pt-rBR.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-pt-rPT.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-pt.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ro.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ru.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-si-rLK.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-sk.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-sl.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-sq-rAL.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-sr.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-sv.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-sw.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-sw600dp-v13.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ta-rIN.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-te-rIN.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-th.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-tl.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-tr.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-uk.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ur-rPK.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-uz-rUZ.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-v11.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-v12.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-v13.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-v14.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-v17.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-v18.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-v21.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-v22.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-v23.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-vi.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-w360dp-v13.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-w480dp-v13.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-w500dp-v13.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-w600dp-v13.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-w720dp-v13.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-w820dp-v13.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-xlarge-land-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-xlarge-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-zh-rCN.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-zh-rHK.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-zh-rTW.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-zu.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/anim.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/color-v11.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/color-v23.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/color.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-hdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-ldrtl-hdpi-v17.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-ldrtl-mdpi-v17.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-ldrtl-xhdpi-v17.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-ldrtl-xxhdpi-v17.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-ldrtl-xxxhdpi-v17.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-mdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-v21.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-v23.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-xhdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-xxhdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-xxxhdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/layout.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/menu.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/mipmap-hdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/mipmap-mdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/mipmap-xhdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/mipmap-xxhdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/mipmap-xxxhdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$color.class&#10;&#9;Stanza/app/build/intermediates/classes/debug/com/example/stanza/R$attr.class&#10;&#9;Stanza/app/build/intermediates/classes/debug/com/example/stanza/R$bool.class&#10;&#9;Stanza/app/build/intermediates/classes/debug/com/example/stanza/R$color.class&#10;&#9;Stanza/app/build/intermediates/classes/debug/com/example/stanza/R$dimen.class&#10;&#9;Stanza/app/build/intermediates/classes/debug/com/example/stanza/R$drawable.class&#10;&#9;Stanza/app/build/intermediates/incremental-verifier/debug/android/support/v7/appcompat/R$color.class&#10;&#9;Stanza/app/build/intermediates/incremental-verifier/debug/com/example/stanza/R$attr.class&#10;&#9;Stanza/app/build/intermediates/incremental-verifier/debug/com/example/stanza/R$bool.class&#10;&#9;Stanza/app/build/intermediates/incremental-verifier/debug/com/example/stanza/R$color.class&#10;&#9;Stanza/app/build/intermediates/incremental-verifier/debug/com/example/stanza/R$dimen.class&#10;&#9;Stanza/app/build/intermediates/incremental-verifier/debug/com/example/stanza/R$drawable.class&#10;&#9;Stanza/app/build/intermediates/incremental/mergeDebugAndroidTestAssets/merger.xml&#10;&#9;Stanza/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml&#10;&#9;Stanza/app/build/intermediates/incremental/mergeDebugAssets/merger.xml&#10;&#9;Stanza/app/build/intermediates/incremental/mergeDebugResources/merger.xml&#10;&#9;Stanza/app/build/intermediates/instant-run-support/debug/coldswap.marker&#10;&#9;Stanza/app/build/intermediates/res/merged/debug/layout/activity_editor.xml&#10;&#9;Stanza/app/build/intermediates/res/resources-debug-androidTest.ap_&#10;&#9;Stanza/app/build/intermediates/res/resources-debug.ap_&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$attr.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$color.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$dimen.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$drawable.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$integer.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$layout.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$style.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$styleable.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/at/markushi/circlebutton/R$attr.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/at/markushi/circlebutton/R$styleable.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/stanza/R$anim.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/stanza/R$attr.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/stanza/R$bool.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/stanza/R$color.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/stanza/R$dimen.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/stanza/R$drawable.class&#10;&#9;Stanza/app/build/outputs/logs/manifest-merger-debug-report.txt&#10;&#9;Stanza/app/src/main/res/layout/activity_editor.xml&#10;&#9;Stanza/build.gradle&#10;&#9;Stanza/local.properties&#10;" />
     <MESSAGE value="merged from master&#10;" />
     <MESSAGE value="client side of user sign in" />
-    <option name="LAST_COMMIT_MESSAGE" value="client side of user sign in" />
+    <MESSAGE value="client side of user sign in part 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="client side of user sign in part 1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/EditPoemActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/NotesProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="5" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/CommInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/Poem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2590,17 +2497,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="54" column="48" selection-start-line="54" selection-start-column="48" selection-end-line="54" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2175#2176#0" expanded="false" />
-            <element signature="e#2246#2247#0" expanded="false" />
-            <element signature="e#2422#2423#0" expanded="false" />
-            <element signature="e#2496#2497#0" expanded="false" />
-            <element signature="e#6199#6200#0" expanded="false" />
-            <element signature="e#6301#6302#0" expanded="false" />
-            <element signature="e#6855#6856#0" expanded="false" />
-            <element signature="e#6937#6938#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2618,7 +2514,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2626,7 +2521,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2634,17 +2528,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="54" column="48" selection-start-line="54" selection-start-column="48" selection-end-line="54" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2175#2176#0" expanded="false" />
-            <element signature="e#2246#2247#0" expanded="false" />
-            <element signature="e#2422#2423#0" expanded="false" />
-            <element signature="e#2496#2497#0" expanded="false" />
-            <element signature="e#6199#6200#0" expanded="false" />
-            <element signature="e#6301#6302#0" expanded="false" />
-            <element signature="e#6855#6856#0" expanded="false" />
-            <element signature="e#6937#6938#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2662,7 +2545,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2670,7 +2552,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2693,17 +2574,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2175#2176#0" expanded="false" />
-            <element signature="e#2246#2247#0" expanded="false" />
-            <element signature="e#2422#2423#0" expanded="false" />
-            <element signature="e#2496#2497#0" expanded="false" />
-            <element signature="e#6199#6200#0" expanded="false" />
-            <element signature="e#6301#6302#0" expanded="false" />
-            <element signature="e#6855#6856#0" expanded="false" />
-            <element signature="e#6937#6938#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2726,23 +2596,23 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_editor.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="42" selection-start-line="37" selection-start-column="8" selection-end-line="38" selection-end-column="42" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_viewer.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_viewer.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/DBOpenHelper.java">
@@ -2761,23 +2631,23 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_editor.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="42" selection-start-line="37" selection-start-column="8" selection-end-line="38" selection-end-column="42" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_viewer.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_viewer.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/MainActivity.java">
@@ -2815,7 +2685,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2827,102 +2696,54 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/note_list_item.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/user_poem_fragment.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/UserPoemFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="33" column="95" selection-start-line="33" selection-start-column="95" selection-end-line="33" selection-end-column="95" />
-          <folding>
-            <element signature="e#3166#3167#0" expanded="false" />
-            <element signature="e#3229#3230#0" expanded="false" />
-            <element signature="e#3740#3741#0" expanded="false" />
-            <element signature="e#3786#3787#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_friend.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/CommInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/FriendBoardFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/Poem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/CommThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2175#2176#0" expanded="false" />
-            <element signature="e#2246#2247#0" expanded="false" />
-            <element signature="e#2422#2423#0" expanded="false" />
-            <element signature="e#2496#2497#0" expanded="false" />
-            <element signature="e#6199#6200#0" expanded="false" />
-            <element signature="e#6301#6302#0" expanded="false" />
-            <element signature="e#6855#6856#0" expanded="false" />
-            <element signature="e#6937#6938#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_viewer.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_viewer.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../Stanza_Backend/Backend.java">
@@ -2936,25 +2757,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="27" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1385#1386#0" expanded="false" />
-            <element signature="e#1454#1455#0" expanded="false" />
-            <element signature="e#1515#1516#0" expanded="false" />
-            <element signature="e#1555#1556#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_editor.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="4.046154">
           <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/settings.gradle">
@@ -2992,39 +2806,30 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_signup.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="73" column="32" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
       <provider editor-type-id="android-designer">
         <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.9230769">
-          <caret line="73" column="32" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
-          <folding>
-            <element signature="e#1163#1177#0" expanded="true" />
-            <element signature="e#1687#1702#0" expanded="true" />
-            <element signature="e#2211#2229#0" expanded="true" />
-            <element signature="e#2594#2618#0" expanded="true" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/actvity_login.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="38" selection-start-line="59" selection-start-column="38" selection-end-line="59" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
       <provider editor-type-id="android-designer">
         <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.96923">
-          <caret line="59" column="38" selection-start-line="59" selection-start-column="38" selection-end-line="59" selection-end-column="38" />
-          <folding>
-            <element signature="e#1236#1251#0" expanded="true" />
-            <element signature="e#1825#1843#0" expanded="true" />
-            <element signature="e#2242#2257#0" expanded="true" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.354838">
+        <state vertical-scroll-proportion="0.0">
           <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
           <folding />
         </state>
@@ -3038,35 +2843,86 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/LoginActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/Poem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1316#1317#0" expanded="true" />
-            <element signature="e#1359#1630#0" expanded="true" />
-            <element signature="e#1629#1630#0" expanded="true" />
-            <element signature="e#2255#2425#0" expanded="true" />
-            <element signature="e#2424#2425#0" expanded="true" />
-            <element signature="e#2787#2788#0" expanded="true" />
-            <element signature="e#2823#2824#0" expanded="true" />
-          </folding>
+          <caret line="68" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/CommInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/FriendBoardFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/SignupActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63583815">
-          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="122" column="40" selection-start-line="122" selection-start-column="40" selection-end-line="122" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1213#1355#0" expanded="true" />
-            <element signature="e#1354#1355#0" expanded="true" />
-            <element signature="e#1396#1538#0" expanded="true" />
-            <element signature="e#1537#1538#0" expanded="true" />
-            <element signature="e#2219#2426#0" expanded="true" />
-            <element signature="e#2425#2426#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/CommThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.944445">
+          <caret line="195" column="44" selection-start-line="195" selection-start-column="44" selection-end-line="195" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="103" column="35" selection-start-line="103" selection-start-column="35" selection-end-line="103" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1176#1317#0" expanded="true" />
+            <element signature="e#1316#1317#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="54" column="103" selection-start-line="54" selection-start-column="103" selection-end-line="54" selection-end-column="103" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/AccountCommInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/AccountCommThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.0703883">
+          <caret line="117" column="67" selection-start-line="117" selection-start-column="67" selection-end-line="117" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1265#1266#0" expanded="true" />
+            <element signature="e#1311#1312#0" expanded="true" />
           </folding>
         </state>
       </provider>
