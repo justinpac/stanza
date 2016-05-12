@@ -31,6 +31,9 @@ implements Runnable{
     String task_id;
     String error_message;
 
+    boolean done = false;
+    boolean action = false;
+
     AccountCommThread(AccountCommInterface aci, SignupActivity sa){
         accountCommInterface = aci;
         signupActivity = sa;
@@ -44,8 +47,9 @@ implements Runnable{
     }
 
 
-    public void getAccount(String u, String e, String p){
+    public void thisAccount(String u, String e, String p){
         account = new Account(u, e, p);
+        action = true;
     }
 
     public boolean verifyAccount(){
@@ -109,49 +113,58 @@ implements Runnable{
 
             System.out.println("sockets set up");
 
-            if(task_id.equals(createAccount)){
-                valid = accountExists();
-                if(valid){
-                    signupActivity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            accountCommInterface.onSignupSuccess();
-                        }
-                    });
+            while(!done) {
 
-                }
-                else{
-                    //account already exists --username already used or email already used
-                    signupActivity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            accountCommInterface.onSignupFailed(error_message);
-                        }
-                    });
+                while (action) {
 
-                }
-            }
-            else if(task_id.equals(accessAccount)){
-                valid = verifyAccount();
-                if(valid){
-                    loginActivity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            accountCommInterface.onLoginSuccess();
-                        }
-                    });
+                    if (task_id.equals(createAccount)) {
+                        valid = accountExists();
+                        if (valid) {
+                            signupActivity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    accountCommInterface.onSignupSuccess();
+                                }
+                            });
+                            done = true;
 
-                }
-                else{
-                    //account does not exist
-                    loginActivity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            accountCommInterface.onLoginFailed(error_message);
-                        }
-                    });
+                        } else {
+                            //account already exists --username already used or email already used
+                            signupActivity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    accountCommInterface.onSignupFailed(error_message);
+                                }
+                            });
+                            done = true;
 
+                        }
+                    } else if (task_id.equals(accessAccount)) {
+                        valid = verifyAccount();
+                        if (valid) {
+                            loginActivity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    accountCommInterface.onLoginSuccess();
+                                }
+                            });
+                            done = true;
+
+                        } else {
+                            //account does not exist
+                            loginActivity.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    accountCommInterface.onLoginFailed(error_message);
+                                }
+                            });
+                            done = true;
+
+                        }
+                    }
                 }
+
+                action = false;
             }
         } catch (ConnectException e) {
             e.printStackTrace();

@@ -14,7 +14,8 @@ import android.widget.Toast;
 /**
  * Created by Brianna on 5/11/2016.
  */
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity
+implements AccountCommInterface{
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
 
@@ -25,6 +26,8 @@ public class LoginActivity extends AppCompatActivity {
 
     int minPasswordLength = 5;
     int maxPasswordLength = 13;
+
+    AccountCommThread act;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -50,6 +53,9 @@ public class LoginActivity extends AppCompatActivity {
                 startActivityForResult(intent, REQUEST_SIGNUP);
             }
         });
+
+        act = new AccountCommThread(this, LoginActivity.this);
+        act.start();
     }
 
 
@@ -71,7 +77,10 @@ public class LoginActivity extends AppCompatActivity {
         String password = passwordText.getText().toString();
 
         //TODO; Implement authentication here
+        act.thisAccount(null, email, password);
+        //will either call onLoginSuccess() or onLoginFailed();
 
+        //currently we're still just calling onLoginSuccess() here
         new android.os.Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -94,11 +103,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         moveTaskToBack(true);
-    }
-
-    public void onLoginSuccess(){
-        loginButton.setEnabled(true);
-        finish();
     }
 
     public void invalidLoginAttempt(){
@@ -128,4 +132,34 @@ public class LoginActivity extends AppCompatActivity {
 
         return valid;
     }
+
+
+
+    @Override
+    public void onServerDisconnected() {
+        Toast.makeText(getBaseContext(), "Server disconnected. Cannot login.", Toast.LENGTH_LONG).show();
+    }
+
+    public void onLoginSuccess(){
+        loginButton.setEnabled(true);
+        finish();
+    }
+
+    @Override
+    public void onLoginFailed(String error_message) {
+        Toast.makeText(getBaseContext(), error_message, Toast.LENGTH_LONG).show();
+        loginButton.setEnabled(true);
+    }
+
+    @Override
+    public void onSignupSuccess() {
+
+    }
+
+    @Override
+    public void onSignupFailed(String error_message) {
+
+    }
+
+
 }
