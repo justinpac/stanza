@@ -84,7 +84,6 @@ implements AccountCommInterface{
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
 
-        //TODO; Implement authentication here
         act.thisAccount(null, email, password);
         //will either call onLoginSuccess() or onLoginFailed();
 
@@ -104,7 +103,6 @@ implements AccountCommInterface{
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if(requestCode==REQUEST_SIGNUP){
             if(resultCode==RESULT_OK){
-                //TODO: Implement successful signup logic here
                 this.finish();
             }
         }

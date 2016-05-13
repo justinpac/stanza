@@ -87,7 +87,6 @@ implements AccountCommInterface{
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
 
-        //TODO: implement signup logic here
         System.out.println("add account to queue");
         act.thisAccount(name, email, password);
         //it will call either onSignupSuccess() or onSignupFailed()

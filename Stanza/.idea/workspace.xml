@@ -9,15 +9,8 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7251d85b-649c-407f-897b-fdf96124aac5" name="Default" comment="minor changes to  signup">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/cache.properties.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.10/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_8/classes.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_8/classes.dex" />
+    <list default="true" id="7251d85b-649c-407f-897b-fdf96124aac5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/restart-dex/debug/build-info.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/restart-dex/debug/build-info.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/stanza/AccountCommThread.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/stanza/AccountCommThread.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/stanza/LoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/stanza/LoginActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/stanza/SignupActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/stanza/SignupActivity.java" />
     </list>
@@ -51,8 +44,8 @@
       <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/LoginActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9459459">
-              <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.7837838">
+              <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1418#1689#0" expanded="true" />
@@ -66,7 +59,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/SignupActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+              <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1309#1451#0" expanded="true" />
@@ -1816,8 +1809,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/actvity_login.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_editor.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/stanza/CommThread.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/stanza/SignupActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/stanza/AccountCommThread.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/stanza/SignupActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/stanza/LoginActivity.java" />
       </list>
     </option>
@@ -2479,7 +2472,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463177095617</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="can login to app if account exists in database">
+      <created>1463180297755</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1463180297755</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2583,7 +2582,8 @@
     <MESSAGE value="added login logic to LoginActivity" />
     <MESSAGE value="added signup logic to Signup Activity" />
     <MESSAGE value="can add an account to accounts database only if username/email not already used&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="can add an account to accounts database only if username/email not already used&#10;" />
+    <MESSAGE value="can login to app if account exists in database" />
+    <option name="LAST_COMMIT_MESSAGE" value="can login to app if account exists in database" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -3004,7 +3004,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/SignupActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1309#1451#0" expanded="true" />
@@ -3015,8 +3015,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/LoginActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9459459">
-          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.7837838">
+          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1418#1689#0" expanded="true" />
