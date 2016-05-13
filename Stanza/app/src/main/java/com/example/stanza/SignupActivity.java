@@ -59,29 +59,38 @@ implements AccountCommInterface{
         act.start();
     }
 
+    @Override
+    public void onRestart(){
+        super.onRestart();
+        act = new AccountCommThread(this, SignupActivity.this);
+        act.start();
+    }
+
     public void signup(){
         if(!validate()){
             invalidAccount();;
             return;
         }
 
+        System.out.println("valid fields");
         signupButton.setEnabled(false);
 
         final ProgressDialog progressDialog = new ProgressDialog(SignupActivity.this,
                 R.style.AppTheme);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Creating Account...");
-        progressDialog.show();
+      //  progressDialog.show();
 
         String name = nameText.getText().toString();
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
 
         //TODO: implement signup logic here
+        System.out.println("add account to queue");
         act.thisAccount(name, email, password);
         //it will call either onSignupSuccess() or onSignupFailed()
 
-        //currently we're just going to automatically call onSignupSuccess() here
+       /* //currently we're just going to automatically call onSignupSuccess() here
         new android.os.Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -90,6 +99,7 @@ implements AccountCommInterface{
                 progressDialog.dismiss();
             }
         }, 3000);
+*/
     }
 
 
@@ -155,8 +165,10 @@ implements AccountCommInterface{
 
     @Override
     public void onSignupFailed(String error_message) {
+
         signupButton.setEnabled(true);
         Toast.makeText(getBaseContext(), error_message, Toast.LENGTH_LONG).show();
+        onRestart();
 
     }
 }

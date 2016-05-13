@@ -35,7 +35,9 @@
             android:hint="Type Poem Here" />
 
 
+
     </ScrollView>
+
 
 
     <EditText
@@ -53,6 +55,7 @@
         android:textSize="30sp"
         android:layout_marginBottom="10dp"
         android:focusableInTouchMode="true" />
+
 
     <Spinner
         android:background="@color/spinner_bkg"

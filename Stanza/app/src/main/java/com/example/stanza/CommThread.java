@@ -154,6 +154,9 @@ implements Runnable{
             System.out.println("sockets set up");
 
 
+            String POEMS = "POEMS";
+            byte[] b = POEMS.getBytes();
+            outputStream.write(b);
             if (task_id == 1) {//do stuff for editor activity
                 while (!done) {
                     System.out.println("process poem");

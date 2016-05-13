@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ConnectException;
 import java.net.Socket;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Created by Brianna on 5/12/2016.
@@ -22,7 +24,6 @@ implements Runnable{
     String host = "rns202-13.cs.stolaf.edu";
     InputStream inputStream = null;
     OutputStream outputStream = null;
-    Account account;
 
     AccountCommInterface accountCommInterface;
     SignupActivity signupActivity;
@@ -33,6 +34,9 @@ implements Runnable{
 
     boolean done = false;
     boolean action = false;
+
+    Queue<Account> accountQueue = new LinkedList<Account>();
+
 
     AccountCommThread(AccountCommInterface aci, SignupActivity sa){
         accountCommInterface = aci;
@@ -47,12 +51,16 @@ implements Runnable{
     }
 
 
-    public void thisAccount(String u, String e, String p){
-        account = new Account(u, e, p);
-        action = true;
+    public synchronized void thisAccount(String u, String e, String p){
+        Account account = new Account(u, e, p);
+        accountQueue.add(account);
+        done = false;
+        this.notify();
+
+        System.out.println("account in system");
     }
 
-    public boolean verifyAccount(){
+    public boolean verifyAccount(Account account){
         Account code = new Account(verifyAccount, null, null);
         Account verification = null;
         Account ack = null;
@@ -76,22 +84,27 @@ implements Runnable{
         return false;
     }
 
-    public boolean accountExists(){
+    public boolean accountExists(Account account){
         Account code = new Account(createAccount, null, null);
         Account verification = null;
         Account ack = null;
+        System.out.println("in account exists");
         try{
             code.send(outputStream);
+            System.out.println("sent create account code");
             ack = new Account(inputStream);
             account.send(outputStream);
             verification = new Account(inputStream);
 
             if(verification.username.equals("ACCOUNT_IS_VALID")){
+                System.out.println("Account is valid");
                 error_message = null;
                 return true;
             }
             else{
-                error_message = verification.email;
+                System.out.println("Account not valid");
+                error_message = verification.username;
+                System.out.println(error_message);
             }
 
         }catch(RuntimeException e){
@@ -104,6 +117,7 @@ implements Runnable{
 
     public void run() {
         boolean valid;
+        System.out.println("in run");
 
         try {
             Socket socket = new Socket(host, port);
@@ -114,11 +128,18 @@ implements Runnable{
             System.out.println("sockets set up");
 
             while(!done) {
+              //  System.out.println("hi");
 
-                while (action) {
 
+                while (!accountQueue.isEmpty()) {
+                    String ACCOUNTS = "ACCOUNTS";
+                    byte[] b = ACCOUNTS.getBytes();
+                    outputStream.write(b);
+                    Account account = accountQueue.remove();
+                    System.out.println("action is true");
                     if (task_id.equals(createAccount)) {
-                        valid = accountExists();
+                        System.out.println("create account");
+                        valid = accountExists(account);
                         if (valid) {
                             signupActivity.runOnUiThread(new Runnable() {
                                 @Override
@@ -140,7 +161,7 @@ implements Runnable{
 
                         }
                     } else if (task_id.equals(accessAccount)) {
-                        valid = verifyAccount();
+                        valid = verifyAccount(account);
                         if (valid) {
                             loginActivity.runOnUiThread(new Runnable() {
                                 @Override
@@ -164,7 +185,15 @@ implements Runnable{
                     }
                 }
 
-                action = false;
+                try {
+                    synchronized (this) {
+                        while (accountQueue.isEmpty() && !done)
+                            wait();
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
             }
         } catch (ConnectException e) {
             e.printStackTrace();

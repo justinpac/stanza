@@ -4,29 +4,34 @@
     api-level="23"
     density="560dpi"
     format="7"
-    timestamp="4667830542324" >
+    timestamp="95787708596090" >
 
     <task
         name="javac"
-        duration="12938" />
+        duration="368" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="1245" />
+        duration="36" />
     <task
         name="verifier"
-        duration="791" />
+        duration="4" />
 
     <artifact
-        location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\outputs\apk\app-debug.apk"
-        type="MAIN" />
+        location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
+        type="DEX" />
 
-    <build timestamp="4667830542324" >
+    <build timestamp="91477384020814" >
         <artifact
             location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
+    </build>
+    <build timestamp="95787708596090" >
+        <artifact
+            location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
+            type="DEX" />
     </build>
 
 </instant-run>
