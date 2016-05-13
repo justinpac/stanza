@@ -74,7 +74,7 @@ implements Runnable{
                 return true;
             }
             else{
-                error_message = verification.email;
+                error_message = verification.username;
             }
         }
         catch (RuntimeException e){

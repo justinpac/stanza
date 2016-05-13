@@ -58,6 +58,13 @@ implements AccountCommInterface{
         act.start();
     }
 
+    @Override
+    public void onRestart(){
+        super.onRestart();
+        act = new AccountCommThread(this, LoginActivity.this);
+        act.start();
+    }
+
 
     public void login(){
         if(!validate()){
@@ -67,11 +74,12 @@ implements AccountCommInterface{
 
         loginButton.setEnabled(false);
 
-        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
+    /*    final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
                 R.style.AppTheme);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
+        */
 
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
@@ -81,13 +89,15 @@ implements AccountCommInterface{
         //will either call onLoginSuccess() or onLoginFailed();
 
         //currently we're still just calling onLoginSuccess() here
-        new android.os.Handler().postDelayed(new Runnable() {
+     /*   new android.os.Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 onLoginSuccess();
                 progressDialog.dismiss();
             }
         },3000);
+
+        */
     }
 
     @Override
@@ -149,6 +159,7 @@ implements AccountCommInterface{
     public void onLoginFailed(String error_message) {
         Toast.makeText(getBaseContext(), error_message, Toast.LENGTH_LONG).show();
         loginButton.setEnabled(true);
+        onRestart();
     }
 
     @Override

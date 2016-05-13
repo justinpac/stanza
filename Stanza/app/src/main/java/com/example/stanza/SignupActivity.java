@@ -29,6 +29,7 @@ implements AccountCommInterface{
     int maxPasswordLength = 13;
 
     AccountCommThread act;
+   // ProgressDialog progressDialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -75,11 +76,12 @@ implements AccountCommInterface{
         System.out.println("valid fields");
         signupButton.setEnabled(false);
 
-        final ProgressDialog progressDialog = new ProgressDialog(SignupActivity.this,
+      /*  progressDialog = new ProgressDialog(SignupActivity.this,
                 R.style.AppTheme);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Creating Account...");
-      //  progressDialog.show();
+        progressDialog.show();
+        */
 
         String name = nameText.getText().toString();
         String email = emailText.getText().toString();
@@ -90,16 +92,16 @@ implements AccountCommInterface{
         act.thisAccount(name, email, password);
         //it will call either onSignupSuccess() or onSignupFailed()
 
-       /* //currently we're just going to automatically call onSignupSuccess() here
-        new android.os.Handler().postDelayed(new Runnable() {
+        //currently we're just going to automatically call onSignupSuccess() here
+     /*   new android.os.Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 onSignupSuccess();
                 //onSignupFailed();
                 progressDialog.dismiss();
             }
-        }, 3000);
-*/
+        }, 3000);*/
+
     }
 
 
@@ -158,6 +160,8 @@ implements AccountCommInterface{
     }
 
     public void onSignupSuccess(){
+       // progressDialog.dismiss();
+      //  Toast.makeText(getBaseContext(), "Account created.", Toast.LENGTH_SHORT).show();
         signupButton.setEnabled(true);
         setResult(RESULT_OK, null);
         finish();
@@ -165,7 +169,7 @@ implements AccountCommInterface{
 
     @Override
     public void onSignupFailed(String error_message) {
-
+       // progressDialog.dismiss();
         signupButton.setEnabled(true);
         Toast.makeText(getBaseContext(), error_message, Toast.LENGTH_LONG).show();
         onRestart();
