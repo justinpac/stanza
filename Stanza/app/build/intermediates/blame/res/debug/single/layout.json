@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
-        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_layout_tab_text.xml"
-    },
-    {
         "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
         "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
+        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_layout_tab_text.xml"
     },
     {
         "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
