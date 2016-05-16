@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
-        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
-    },
-    {
         "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
         "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_layout_tab_text.xml"
+    },
+    {
+        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
     },
     {
         "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
@@ -14,6 +14,10 @@
     {
         "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_cancel_action.xml",
         "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\actvity_login.xml",
+        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\src\\main\\res\\layout\\actvity_login.xml"
     },
     {
         "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
@@ -204,16 +208,20 @@
         "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.3.0\\res\\layout\\design_menu_item_action_area.xml"
     },
     {
+        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_signup.xml",
+        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\src\\main\\res\\layout\\activity_signup.xml"
+    },
+    {
         "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
         "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_list_menu_item_checkbox.xml"
     },
     {
-        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media.xml",
-        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_template_big_media.xml"
-    },
-    {
         "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
         "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media.xml",
+        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_template_big_media.xml"
     },
     {
         "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines.xml",
