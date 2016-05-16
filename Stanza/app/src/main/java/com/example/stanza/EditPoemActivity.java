@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Spannable;
 import android.util.JsonReader;
 import android.util.Log;
 import android.support.v7.widget.Toolbar;
@@ -40,6 +41,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class EditPoemActivity extends AppCompatActivity
@@ -55,91 +58,32 @@ implements CommInterface{
     private Toolbar toolbar;
     String[] spinnerList;
     public String apiWord;
-    URL url;
+    URL url;                        //api url
     Spinner rhymeSpinner;
     boolean firstSpinnerCall;
-    String lookupWord;
+    String lookupWord;              //Word sent to api for lookup
+    //String currentWord;             //Currently selected word
+    Timer timerTest = new Timer();
+
 
  //   private Button publish;
     private CommThread ct;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
 
-
         editorTitle = (EditText) findViewById(R.id.editText2);
         editor = (EditText) findViewById(R.id.editText);
 
 
 
-        class rhymeTask extends AsyncTask<String, Void, String> {
-            String rhymeList;
-            @Override
-            protected String doInBackground(String... params) {
-                try {
-                    String request = "http://api.wordnik.com:80/v4/word.json/" + lookupWord
-                            + "/relatedWords?useCanonical=false&limitPerRelationshipType=10&api_key="
-                            + "34b85c60a34e51f8ffa4a6f3bfe056794ea70f73f26e33123";
-
-                    url = new URL(request);
-                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                    InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                           rhymeList =  new Scanner(in, "UTF-8").useDelimiter("\\A").next();
-                    Log.d("myTag", rhymeList.getClass().getName());
-                    in.close();
-                    return rhymeList;
-
-
-
-                }catch (Exception e) {
-                    e.printStackTrace();
-                }
-                return rhymeList;
-            }
-            @Override
-            protected void onPostExecute(String result) {
-                parseJson(rhymeList);
-                for (int i = 0; i < spinnerList.length; i++){
-                    Log.d("spinnerList", spinnerList[i]);
-                }
-
-                ArrayAdapter<String> newSpinnerAdapter = new ArrayAdapter<String>
-                        (getApplicationContext(), android.R.layout.simple_spinner_item, spinnerList);
-                newSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                rhymeSpinner.setAdapter(newSpinnerAdapter);
-                firstSpinnerCall = true;
-
-            }
-
-            protected String[] parseJson(String strJson) {
-                String[] returnArray = new String[1];
-                returnArray[0] = "No rhymes";
-                try {
-                    JSONArray newJsonArray = new JSONArray(strJson);
-                    for (int i=0; i<newJsonArray.length(); i++) {
-                        JSONObject wordData = newJsonArray.getJSONObject(i);
-                        if ("rhyme".equals(wordData.getString("relationshipType"))) {
-                            JSONArray interiorArr = wordData.getJSONArray("words");
-                            returnArray = new String[interiorArr.length()];
-                            for (int j=0; j<interiorArr.length(); j++) {
-                                String testStr = interiorArr.getString(j);
-                                returnArray[j] = testStr;
-                            }
-                        }
-                    }
-                    Log.d("JSONTag", newJsonArray.getClass().getName());
-                } catch (JSONException e) {e.printStackTrace();}
-                spinnerList = returnArray;
-                return returnArray;
-            }
-
-        }
 
 
         rhymeSpinner = (Spinner) findViewById(R.id.rhymeSpinner);
-        spinnerList = new String[] { "apple", "banana", "cucumber" };
+        spinnerList = new String[] { "rhymes" };
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_item, spinnerList);
         spinnerAdapter
@@ -166,18 +110,30 @@ implements CommInterface{
             }
         });
 
-        editor.setOnLongClickListener(new View.OnLongClickListener() {
+        /*editor.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                int start = Math.max(editor.getSelectionStart(), 0);
-                int end = Math.max(editor.getSelectionEnd(), 0);
-                lookupWord = editor.getText().toString().substring
-                        (Math.min(start, end), Math.max(start, end));
-                new rhymeTask().execute(); //TESTING API CALL
+
+                int startSelection = editor.getSelectionStart();
+                int selectLength = 0;
+
+                for (String currentWord : editor.getText().toString().split(" ")) {
+                    selectLength = selectLength + currentWord.length() + 1;
+                    if (selectLength > startSelection) {
+                        Log.d("currentWord", currentWord);
+                        if (currentWord != lookupWord) {
+                            lookupWord = currentWord;
+                            new rhymeTask().execute(); //Make api call!
+                        }
+                        break;
+                    }
+
+                }
+
 
                 return false;
             }
-        });
+        });*/
 
 
 
@@ -213,7 +169,127 @@ implements CommInterface{
 
 
     }
+    //AsyncTask to make api calls
 
+    //AsnycTask to make call to Wordnik api
+    class rhymeTask extends AsyncTask<String, Void, String> {
+        String rhymeList;
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String request = "http://api.wordnik.com:80/v4/word.json/" + lookupWord
+                        + "/relatedWords?useCanonical=false&limitPerRelationshipType=10&api_key="
+                        + "34b85c60a34e51f8ffa4a6f3bfe056794ea70f73f26e33123";
+
+                url = new URL(request);
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                rhymeList =  new Scanner(in, "UTF-8").useDelimiter("\\A").next();
+                Log.d("myTag", rhymeList.getClass().getName());
+                in.close();
+                return rhymeList;
+
+
+
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+            return rhymeList;
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            parseJson(rhymeList);
+            for (int i = 0; i < spinnerList.length; i++){
+                Log.d("spinnerList", spinnerList[i]);
+            }
+
+            ArrayAdapter<String> newSpinnerAdapter = new ArrayAdapter<String>
+                    (getApplicationContext(), android.R.layout.simple_spinner_item, spinnerList);
+            newSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            rhymeSpinner.setAdapter(newSpinnerAdapter);
+            firstSpinnerCall = true;
+
+        }
+
+        protected String[] parseJson(String strJson) {
+            String[] returnArray = new String[1];
+            returnArray[0] = "No rhymes";
+            try {
+                JSONArray newJsonArray = new JSONArray(strJson);
+                for (int i=0; i<newJsonArray.length(); i++) {
+                    JSONObject wordData = newJsonArray.getJSONObject(i);
+                    if ("rhyme".equals(wordData.getString("relationshipType"))) {
+                        JSONArray interiorArr = wordData.getJSONArray("words");
+                        returnArray = new String[interiorArr.length()];
+                        for (int j=0; j<interiorArr.length(); j++) {
+                            String testStr = interiorArr.getString(j);
+                            returnArray[j] = testStr;
+                        }
+                    }
+                }
+                Log.d("JSONTag", newJsonArray.getClass().getName());
+            } catch (JSONException e) {e.printStackTrace();}
+
+            //set spinnerList up for suggestions
+            int returnLen = returnArray.length + 1;
+            String[] tempArray = new String[returnLen];
+            tempArray[0] = "rhymes:";  //add title item to spinner
+            for (int i = 0; i < returnArray.length; i++) {
+                tempArray[i+1] = returnArray[i];
+            }
+            for (int i = 0; i < tempArray.length; i++) {
+                tempArray[i] = tempArray[i].toLowerCase();
+            }
+            spinnerList = tempArray;
+            return returnArray;
+        }
+
+    }
+
+    //=======Timer handling for api calls!
+    @Override
+    public void onResume() {
+        super.onResume();
+        timerTest.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                int startSelection = editor.getSelectionStart();
+                int selectLength = 0;
+                String[] testforBlank = editor.getText().toString().split(" ");
+                if (testforBlank[0] != "") {  //Test whether text field is blank
+                    for (String currentWord : editor.getText().toString().split(" ")) {
+                        if (currentWord != "") {
+                            selectLength = selectLength + currentWord.length() + 1;
+                            if (selectLength > startSelection) {
+                                Log.d("currentWord", currentWord);
+                                if (currentWord != lookupWord) {
+                                    lookupWord = currentWord;
+                                    new rhymeTask().execute(); //Make api call!
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }, 0, 2000);
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        timerTest.cancel();
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        timerTest.cancel();
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        timerTest.cancel();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -358,4 +434,5 @@ implements CommInterface{
     public void onPullFinished() {
 
     }
+
 }
