@@ -10,53 +10,60 @@
     tools:context=".EditPoemActivity">
 
 
+
+
     <ScrollView
         android:id="@+id/SCROLLER_ID"
         android:layout_width="fill_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:scrollbars="vertical"
-        android:fillViewport="true"
-        android:layout_alignParentTop="true"
-        android:isScrollContainer="false"
-        android:layout_above="@+id/rhymeSpinner">
+        android:layout_below="@+id/editText2"
+        android:fillViewport="true">
 
-        <LinearLayout
-
-            android:layout_width="match_parent"
+        <EditText
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp" >
+            android:id="@+id/editText"
+            android:gravity="top"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:background="@null"
+            android:layout_below="@+id/editText2"
+            android:hint="Type Poem Here" />
 
-            <EditText
-                android:gravity="start"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText2"
-                android:background="@null"
-                android:hint="Poem Title"
-                android:textSize="30sp"
-                android:layout_marginBottom="10dp"
-                android:focusableInTouchMode="true" />
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText"
-                android:gravity="top"
-                android:background="@null"
-                android:hint="Type Poem Here" />
-
-        </LinearLayout>
 
     </ScrollView>
+
+
+
+    <EditText
+        android:gravity="left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/SCROLLER_ID"
+        android:layout_alignEnd="@+id/SCROLLER_ID"
+        android:background="@null"
+        android:hint="Poem Title"
+        android:textSize="30sp"
+        android:layout_marginBottom="10dp"
+        android:focusableInTouchMode="true" />
+
 
     <Spinner
         android:background="@color/spinner_bkg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/rhymeSpinner"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_alignParentBottom="true" />
+        android:layout_below="@+id/SCROLLER_ID"
+        android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>
