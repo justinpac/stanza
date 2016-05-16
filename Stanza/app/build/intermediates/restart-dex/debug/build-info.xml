@@ -2,41 +2,31 @@
 <instant-run
     abi="x86"
     api-level="23"
-    density="xxhdpi"
+    density="560dpi"
     format="7"
-    timestamp="39926014019832" >
+    timestamp="281302541025222" >
 
     <task
         name="javac"
-        duration="387" />
+        duration="15957" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="19" />
+        duration="1563" />
     <task
         name="verifier"
-        duration="4" />
+        duration="646" />
 
     <artifact
-        location="C:\Users\theamazingandroman\poem\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
-        type="DEX" />
+        location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\outputs\apk\app-debug.apk"
+        type="MAIN" />
 
-    <build timestamp="4274445133252" >
+    <build timestamp="281302541025222" >
         <artifact
-            location="C:\Users\theamazingandroman\poem\Stanza\app\build\outputs\apk\app-debug.apk"
+            location="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
-    </build>
-    <build timestamp="39606707807808" >
-        <artifact
-            location="C:\Users\theamazingandroman\poem\Stanza\app\build\intermediates\res\resources-debug.ap_"
-            type="RESOURCES" />
-    </build>
-    <build timestamp="39926014019832" >
-        <artifact
-            location="C:\Users\theamazingandroman\poem\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
-            type="DEX" />
     </build>
 
 </instant-run>

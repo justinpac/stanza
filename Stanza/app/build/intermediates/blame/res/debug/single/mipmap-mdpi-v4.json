@@ -1,18 +1,10 @@
 [
     {
-        "merged": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_document.png",
-        "source": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\src\\main\\res\\mipmap-mdpi\\ic_document.png"
-    },
-    {
         "merged": "C:\\Users\\Brianna\\AndroidStudioProjects\\project\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_document.png",
         "source": "C:\\Users\\Brianna\\AndroidStudioProjects\\project\\Stanza\\app\\src\\main\\res\\mipmap-mdpi\\ic_document.png"
     },
     {
         "merged": "C:\\Users\\Brianna\\AndroidStudioProjects\\project\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_launcher.png",
         "source": "C:\\Users\\Brianna\\AndroidStudioProjects\\project\\Stanza\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_launcher.png",
-        "source": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     }
 ]

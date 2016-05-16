@@ -62,9 +62,7 @@ public class Poem {
 		    partial_temp = new String(final_b);
 		    System.out.println("partial is " + partial_temp);
 		    temp = temp + partial_temp;
-		    
-
-		    
+		    		    
 		}
 		else{
 		    bytes_read = is.read(b);
@@ -76,9 +74,6 @@ public class Poem {
 		    temp = temp + partial_temp;
 
 		}
-
-
-
 
 		
 		//	bytes_read = is.read(b); 
