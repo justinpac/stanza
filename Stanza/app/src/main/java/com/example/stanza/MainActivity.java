@@ -1,5 +1,6 @@
 package com.example.stanza;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -9,15 +10,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
     ViewPager viewPager;
     Toolbar toolbar;
     FloatingActionButton fab;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+
 
         toolbar = (Toolbar) findViewById(R.id.mainToolbar);
         setSupportActionBar(toolbar);
@@ -29,21 +36,23 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.mainTabLayout);
         tabLayout.setupWithViewPager(viewPager);
 
-
         fab = (FloatingActionButton) findViewById(R.id.fab);
+
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
 
                 viewPager.setCurrentItem(tab.getPosition());
-                switch(tab.getPosition()){
-                    case 0: //my poems
+
+                switch (tab.getPosition()) {
+                    case 0:
                         fab.show();
                         break;
-                    case 1: // friends board
+                    case 1:
                         fab.hide();
                         break;
                 }
+
             }
 
             @Override
@@ -73,4 +82,14 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
     }
+
+    private void deletePoems() {
+        getContentResolver().delete(NotesProvider.CONTENT_URI,
+                null, null);
+
+        finish();
+    }
+
+
+
 }

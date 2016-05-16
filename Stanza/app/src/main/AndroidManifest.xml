@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Stanza"
@@ -30,7 +31,8 @@
         <activity
             android:name=".EditPoemActivity"
             android:label="@string/poetry_editor"
-            android:parentActivityName="com.example.stanza.MainActivity" >
+            android:windowSoftInputMode="stateVisible|adjustResize"
+            android:isScrollContainer="true" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.stanza.MainActivity" />
@@ -45,6 +47,10 @@
                 android:value=".MainActivity" />
         </activity>
 
+        <activity android:name=".LoginActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".SignupActivity" android:theme="@style/AppTheme.NoActionBar"/>
+
+        <meta-data android:name="userapp.AppId" android:value="YOUR-APP-ID"/>
     </application>
 
 </manifest>

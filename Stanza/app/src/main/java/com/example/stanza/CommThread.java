@@ -1,10 +1,17 @@
 package com.example.stanza;
 
+import android.content.ContentValues;
+import android.os.NetworkOnMainThreadException;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.widget.Toast;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.ConnectException;
 import java.net.Socket;
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 import java.util.Queue;
 
 /**
@@ -12,20 +19,40 @@ import java.util.Queue;
  */
 public class CommThread extends Thread
 implements Runnable{
+    String host = "rns202-17.cs.stolaf.edu";
 
-    Queue<Poem> poemQ = new LinkedList<Poem>();
+    Queue<Poem> poemQ2 = new LinkedList<Poem>();
+
     boolean done = false;
+    boolean done2 = false;
     CommInterface commInterface;
     EditPoemActivity editPoemActivity;
+    FriendBoardFragment friendBoardFragment;
     InputStream inputStream;
     OutputStream outputStream;
+
+    int port = 28414;
+
+    Queue<Poem> poemQ = new LinkedList<Poem>();
+    int task_id = 0;
+
 
     CommThread(CommInterface ci, EditPoemActivity epa){
         commInterface = ci;
         editPoemActivity = epa;
+        task_id = 1;
     }
 
+
+    CommThread(CommInterface ci, FriendBoardFragment fba) {
+        commInterface = ci;
+        friendBoardFragment = fba;
+        task_id = 2;
+    }
+
+
     public synchronized void addPoem(Poem poem){
+        System.out.println("add poem");
         if(poem == null)
             done = true;
         else
@@ -34,49 +61,172 @@ implements Runnable{
     }
 
     void processOnePoem(){
+        System.out.println("process poem");
         Poem poem = poemQ.remove();
         Poem receive = null;
-        poem.send(outputStream);
-        receive = new Poem(inputStream);
+        try {
+            System.out.println(poem.getBytes().length);
+            Poem logistics = new Poem("poem_length", String.valueOf(poem.getBytes().length));
+            logistics.send(outputStream);
+            receive = new Poem(inputStream);
+            poem.send(outputStream);
 
-        final String output = receive.text + ": " + receive.title;
-        editPoemActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                commInterface.poemSaved(output);
-            }
-        });
+            receive = new Poem(inputStream);
+            final String output = receive.text + ": " + receive.title;
+            System.out.println("add poem");
+
+            editPoemActivity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    commInterface.poemSaved(output);
+                }
+            });
+
+        }catch (RuntimeException e){
+            editPoemActivity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    commInterface.serverDisconnected();
+                }
+            });
+        }
 
         System.out.println("CommThread: processing " + poem.title);
 
     }
 
-    public void run(){
-        String host = "rns202-13.cs.stolaf.edu";
-        int port = 28414;
+    void processOnePoem2(){
+        System.out.println("process poem from backend method");
+        Poem receive = null;
+        Poem logistics = null;
+        Poem ack = new Poem("received_poem", "");
 
-        try{
+        try {
+                Poem request = new Poem("pull_poems", "");
+                request.send(outputStream);
+                System.out.println("sent: " + request.title);
+
+                for (int i = 0; i < 10; i++) {
+                    System.out.println("getting new poem");
+                    logistics = new Poem(inputStream);
+                    ack.send(outputStream);
+                    int poemLength = Integer.parseInt((logistics.text));
+                    receive = new Poem(inputStream, poemLength);
+                    poemQ2.add(receive);
+                    ack.send(outputStream);
+                    System.out.println("receive poem number " + (i+1) + ": " + receive.title);
+                }
+        }
+            catch(RuntimeException e){
+                e.printStackTrace();
+            }
+        finally{return;}
+    }
+
+
+
+    public synchronized void storeToLocalDatabase(Poem poem) {
+
+        if(poem==null)
+            done2 = true;
+        else{
+            String text = poem.text;
+            String title = poem.title;
+            System.out.println("Store to database: " + title);
+            ContentValues values = new ContentValues();
+            values.put(DBOpenHelper.POEM_TEXT, text);
+            values.put(DBOpenHelper.POEM_TITLE, title);
+            values.put(DBOpenHelper.CREATOR, "friend");
+
+            friendBoardFragment.getContext().getContentResolver().insert(NotesProvider.CONTENT_URI, values);
+        }
+    }
+
+    public void run() {
+        System.out.println("task id is " + task_id);
+
+        try {
             Socket socket = new Socket(host, port);
             inputStream = socket.getInputStream();
             outputStream = socket.getOutputStream();
-        }catch (IOException e){
+            System.out.println("Set up socket");
+
+            System.out.println("sockets set up");
+
+
+            String POEMS = "POEMS";
+            byte[] b = POEMS.getBytes();
+            outputStream.write(b);
+            if (task_id == 1) {//do stuff for editor activity
+                while (!done) {
+                    System.out.println("process poem");
+                    while (!poemQ.isEmpty())
+                        processOnePoem();
+                    try {
+                        synchronized (this) {
+                            while (poemQ.isEmpty() && !done)
+                                wait();
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                System.out.println("CommThread terminating");
+            } else if (task_id == 2) { //do stuff for friendboard
+                System.out.println("about to save poems");
+                String filter = DBOpenHelper.CREATOR + "='friend'";
+                friendBoardFragment.getActivity().getContentResolver().delete(NotesProvider.CONTENT_URI, filter, null);
+                while (!done2) {
+                    processOnePoem2();
+                    try {
+                        synchronized (this) {
+                            while (!poemQ2.isEmpty()) {
+                                Poem poem = null;
+                                poem = poemQ2.remove();
+                                storeToLocalDatabase(poem);
+                            }
+                            done2 = true;
+                            friendBoardFragment.getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    commInterface.onPullFinished();
+                                }
+                            });
+                            while (poemQ2.isEmpty() && !done2)
+                                wait();
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+        } catch (ConnectException e) {
             e.printStackTrace();
-            editPoemActivity.serverNotConnected();
+            if (task_id == 1) {
+                editPoemActivity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        commInterface.serverDisconnected();
+                    }
+                });
+            } else if (task_id == 2) {
+                friendBoardFragment.getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        commInterface.serverDisconnected();
+                        SwipeRefreshLayout swipeRefreshLayout =
+                                (SwipeRefreshLayout) friendBoardFragment.getActivity().findViewById(R.id.friendSwipeLayout);
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                });
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
         }
 
-        while (!done){
-            while(!poemQ.isEmpty())
-                processOnePoem();
-            try{
-                synchronized (this){
-                    while (poemQ.isEmpty() && !done)
-                        wait();
-                }
-            }catch (InterruptedException e){
-                e.printStackTrace();
-            }
-        }
-        System.out.println("CommThread terminating");
     }
 
 }

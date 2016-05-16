@@ -36,8 +36,9 @@
 
         <activity
             android:name="com.example.stanza.EditPoemActivity"
+            android:isScrollContainer="true"
             android:label="@string/poetry_editor"
-            android:parentActivityName="com.example.stanza.MainActivity" >
+            android:windowSoftInputMode="stateVisible|adjustResize" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.stanza.MainActivity" />
@@ -50,6 +51,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity
+            android:name="com.example.stanza.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.stanza.SignupActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <meta-data
+            android:name="userapp.AppId"
+            android:value="YOUR-APP-ID" />
     </application>
 
 </manifest>

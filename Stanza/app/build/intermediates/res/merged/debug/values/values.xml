@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="exampleList">
+        <item>Rhymes:</item>
+        <item>apple</item>
+        <item>banana</item>
+        <item>cucumber</item>
+        <item>dinosaur</item>
+    </string-array>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
     <attr format="boolean" name="isLightTheme"/>
@@ -45,7 +52,7 @@
     <color name="dim_foreground_disabled_material_light">#80323232</color>
     <color name="dim_foreground_material_dark">#ffbebebe</color>
     <color name="dim_foreground_material_light">#ff323232</color>
-    <color name="fab_color">#795548</color>
+    <color name="fab_color">#009688</color>
     <color name="foreground_material_dark">@android:color/white</color>
     <color name="foreground_material_light">@android:color/black</color>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
@@ -81,6 +88,7 @@
     <color name="secondary_text_default_material_light">#8a000000</color>
     <color name="secondary_text_disabled_material_dark">#36ffffff</color>
     <color name="secondary_text_disabled_material_light">#24000000</color>
+    <color name="spinner_bkg">#C5C5C5</color>
     <color name="switch_thumb_disabled_material_dark">#ff616161</color>
     <color name="switch_thumb_disabled_material_light">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
@@ -282,21 +290,28 @@
     <string name="abc_toolbar_collapse_description">Collapse</string>
     <string name="action_delete">delete</string>
     <string name="action_settings">Settings</string>
-    <string name="all_deleted">All notes deleted</string>
+    <string name="all_deleted">All poems deleted</string>
+    <string name="already_a_member_login">Already a member? Login.</string>
     <string name="app_name">Stanza</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="are_you_sure">Are you sure?</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
+    <string name="create_account">Create Account</string>
     <string name="create_sample_data">Create sample data</string>
     <string name="delete_all_notes">Delete all poems</string>
+    <string name="email">Email</string>
     <string name="friend_board">Friend Board</string>
     <string name="hello_world">Hello world!</string>
     <string name="limit_number_of_poems">10</string>
-    <string name="new_note">New Note</string>
+    <string name="login">Login</string>
+    <string name="name">Name</string>
+    <string name="new_note">New Poem</string>
+    <string name="no_account_yet_create_one">No account yet? Create one</string>
     <string name="note_deleted">Poem deleted</string>
-    <string name="note_updated">Note updated</string>
+    <string name="note_updated">Poem updated</string>
     <string name="open_friend_board">Friend Board</string>
+    <string name="password">Password</string>
     <string name="poetry_editor">Poetry Editor</string>
     <string name="share_poem">Share poem</string>
     <string name="status_bar_notification_info_overflow">999+</string>
