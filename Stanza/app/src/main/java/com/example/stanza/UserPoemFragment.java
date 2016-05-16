@@ -14,6 +14,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,28 +35,47 @@ import at.markushi.ui.CircleButton;
 
 public class UserPoemFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
     private static final int EDITOR_REQUEST_CODE = 1001;
-    private NotesCursorAdapter cursorAdapter;
+    //private NotesCursorAdapter cursorAdapter;
+    private  PoemRecyclerAdapter poemRecyclerAdapter;
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.user_poem_fragment, container, false);
 
-        cursorAdapter = new NotesCursorAdapter(getActivity(), null, 0);
+        //cursorAdapter = new NotesCursorAdapter(getActivity(), null, 0);
 
-        ListView list = (ListView) view.findViewById(android.R.id.list);
-        list.setAdapter(cursorAdapter);
+        RecyclerView userPoemRecycler = (RecyclerView) view.findViewById(R.id.userPoemRecycler);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        userPoemRecycler.setLayoutManager(linearLayoutManager);
 
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+/*        ListView list = (ListView) view.findViewById(android.R.id.list);
+        list.setAdapter(cursorAdapter);*/
+
+        poemRecyclerAdapter = new PoemRecyclerAdapter(getActivity(), null);
+        poemRecyclerAdapter.setOnItemClickListener(new PoemRecyclerAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(String pid) {
                 Intent intent = new Intent(getActivity(), EditPoemActivity.class);
-                System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA ID is:" + String.valueOf(id));
-                Uri uri = Uri.parse(NotesProvider.CONTENT_URI + "/" + id);
+                Uri uri = Uri.parse(NotesProvider.CONTENT_URI + "/" + pid);
                 intent.putExtra(NotesProvider.CONTENT_ITEM_TYPE, uri);
                 startActivityForResult(intent, EDITOR_REQUEST_CODE);
             }
         });
+        userPoemRecycler.setAdapter(poemRecyclerAdapter);
+
+
+/*        userPoemRecycler.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), EditPoemActivity.class);
+                Uri uri = Uri.parse(NotesProvider.CONTENT_URI + "/" + id);
+                intent.putExtra(NotesProvider.CONTENT_ITEM_TYPE, uri);
+                startActivityForResult(intent, EDITOR_REQUEST_CODE);
+            }
+        });*/
 
 
         FloatingActionButton circleButton = (FloatingActionButton) getActivity().findViewById(R.id.fab);
@@ -65,9 +86,14 @@ public class UserPoemFragment extends Fragment implements LoaderManager.LoaderCa
             }
         });
 
-        getLoaderManager().initLoader(0, null, this);
         setHasOptionsMenu(true);
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        getLoaderManager().initLoader(0, null, this);
     }
 
     @Override
@@ -96,18 +122,20 @@ public class UserPoemFragment extends Fragment implements LoaderManager.LoaderCa
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        String selection = DBOpenHelper.CREATOR + " LIKE 'self'";
+        String sortOrder = "self";
         return new CursorLoader(getActivity(), NotesProvider.CONTENT_URI,
-                null, null, null, null);
+                null, selection, null, sortOrder);
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        cursorAdapter.swapCursor(data);
+        poemRecyclerAdapter.swapCursor(data);
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-        cursorAdapter.swapCursor(null);
+        poemRecyclerAdapter.swapCursor(null);
     }
 
     @Override
@@ -147,6 +175,7 @@ public class UserPoemFragment extends Fragment implements LoaderManager.LoaderCa
         ContentValues values = new ContentValues();
         values.put(DBOpenHelper.POEM_TEXT,noteText);
         values.put(DBOpenHelper.POEM_TITLE, noteTitle);
+        values.put(DBOpenHelper.CREATOR, "self");
         getActivity().getContentResolver().insert(NotesProvider.CONTENT_URI, values);
     }
 
