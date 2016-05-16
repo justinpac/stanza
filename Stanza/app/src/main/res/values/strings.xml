@@ -31,14 +31,4 @@
     <string name="url_chunk_2">"/relatedWords?useCanonical=false&limitPerRelationshipType=10&api_key="</string>
     <string name="api_key">"34b85c60a34e51f8ffa4a6f3bfe056794ea70f73f26e33123"</string> -->
 
-
-    <string-array name="exampleList">
-        <item>Rhymes:</item>
-        <item>apple</item>
-        <item>banana</item>
-        <item>cucumber</item>
-        <item>dinosaur</item>
-    </string-array>
-
-
 </resources>
