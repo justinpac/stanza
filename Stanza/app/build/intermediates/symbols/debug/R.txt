@@ -633,8 +633,8 @@ int id design_menu_item_action_area_stub 0x7f0d0081
 int id design_menu_item_text 0x7f0d0080
 int id design_navigation_view 0x7f0d007f
 int id disableHome 0x7f0d000e
-int id editText 0x7f0d006c
-int id editText2 0x7f0d006b
+int id editText 0x7f0d006b
+int id editText2 0x7f0d006a
 int id edit_query 0x7f0d005c
 int id end 0x7f0d0021
 int id end_padder 0x7f0d0093
@@ -687,7 +687,7 @@ int id pin 0x7f0d001c
 int id progress_circular 0x7f0d0006
 int id progress_horizontal 0x7f0d0007
 int id radio 0x7f0d0054
-int id rhymeSpinner 0x7f0d006a
+int id rhymeSpinner 0x7f0d006c
 int id right 0x7f0d0024
 int id screen 0x7f0d0028
 int id scroll 0x7f0d0018

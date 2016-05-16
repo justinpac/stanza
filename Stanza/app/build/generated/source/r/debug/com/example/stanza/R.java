@@ -2351,8 +2351,8 @@ containing a value of this type.
         public static final int design_menu_item_text=0x7f0d0080;
         public static final int design_navigation_view=0x7f0d007f;
         public static final int disableHome=0x7f0d000e;
-        public static final int editText=0x7f0d006c;
-        public static final int editText2=0x7f0d006b;
+        public static final int editText=0x7f0d006b;
+        public static final int editText2=0x7f0d006a;
         public static final int edit_query=0x7f0d005c;
         public static final int end=0x7f0d0021;
         public static final int end_padder=0x7f0d0093;
@@ -2405,7 +2405,7 @@ containing a value of this type.
         public static final int progress_circular=0x7f0d0006;
         public static final int progress_horizontal=0x7f0d0007;
         public static final int radio=0x7f0d0054;
-        public static final int rhymeSpinner=0x7f0d006a;
+        public static final int rhymeSpinner=0x7f0d006c;
         public static final int right=0x7f0d0024;
         public static final int screen=0x7f0d0028;
         public static final int scroll=0x7f0d0018;

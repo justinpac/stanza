@@ -47,7 +47,7 @@
         jar="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         revision="23.0.2"
-        sha1="bc9afe8877bc86bf89dfeb4bd9674fa3c33e1c79">
+        sha1="dc53269d0013c3af40509ef3c4d81dce79379635">
         <dex dex="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_0c1adce7dfab5cdf0ab4c83b962c7089ed63c22e\classes.dex" />
     </item>
     <item
@@ -68,7 +68,7 @@
         jar="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         revision="23.0.2"
-        sha1="5f1672bdccf388469c626aa383ca8867b26e4fad">
+        sha1="04853fb4baad2064c7fc3d4551bb790b9fd22906">
         <dex dex="C:\Users\Brianna\AndroidStudioProjects\project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_7635416dbb9bffdbbc0086579c9fb418b36bd5ab\classes.dex" />
     </item>
     <item
