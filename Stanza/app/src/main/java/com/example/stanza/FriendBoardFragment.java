@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,9 +26,8 @@ import android.widget.Toast;
 public class FriendBoardFragment extends Fragment
 implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface
 {
-
-    private NotesCursorAdapter cursorAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
+    PoemRecyclerAdapter poemRecyclerAdapter;
 
     @Nullable
     @Override
@@ -35,22 +36,23 @@ implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface
         System.out.println("creating friends");
         View view = inflater.inflate(R.layout.fragment_friend, container, false);
 
-        cursorAdapter = new NotesCursorAdapter(getActivity(), null, 0);
+        RecyclerView friendPoemRecycler = (RecyclerView) view.findViewById(R.id.friendPoemRecycler);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        friendPoemRecycler.setLayoutManager(linearLayoutManager);
 
-        ListView list = (ListView) view.findViewById(R.id.listFriends);
-        list.setAdapter(cursorAdapter);
 
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        poemRecyclerAdapter = new PoemRecyclerAdapter(getActivity(), null);
+        poemRecyclerAdapter.setOnItemClickListener(new PoemRecyclerAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(String pid) {
                 Intent intent = new Intent(getActivity(), ViewPoemActivity.class);
-              //  intent.putExtra(NotesProvider2.CONTENT_ITEM_TYPE, id);
 
-                Uri uri = Uri.parse(NotesProvider.CONTENT_URI + "/" + id);
+                Uri uri = Uri.parse(NotesProvider.CONTENT_URI + "/" + pid);
                 intent.putExtra(NotesProvider.CONTENT_ITEM_TYPE, uri);
                 startActivity(intent);
             }
         });
+        friendPoemRecycler.setAdapter(poemRecyclerAdapter);
 
         getLoaderManager().initLoader(0, null, this);
 
@@ -92,13 +94,12 @@ implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-
-        cursorAdapter.swapCursor(data);
+        poemRecyclerAdapter.swapCursor(data);
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-        cursorAdapter.swapCursor(null);
+        poemRecyclerAdapter.swapCursor(null);
     }
 
 

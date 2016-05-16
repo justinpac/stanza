@@ -92,7 +92,7 @@ public class PoemRecyclerAdapter extends RecyclerView.Adapter<PoemRecyclerAdapte
         //Break off the poem body with ellipsis at the third new line if it exists
         int pos  = ordinalIndexOf(body, '\n', 3);
         if (pos != -1) {
-            body = body.substring(0, pos) + " ...";
+            body = body.substring(0, pos) + "\n...";
         }
 
         poemViewHolder.poemTitle.setText(title);

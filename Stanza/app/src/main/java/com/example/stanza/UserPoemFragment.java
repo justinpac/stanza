@@ -44,15 +44,10 @@ public class UserPoemFragment extends Fragment implements LoaderManager.LoaderCa
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.user_poem_fragment, container, false);
 
-        //cursorAdapter = new NotesCursorAdapter(getActivity(), null, 0);
-
         RecyclerView userPoemRecycler = (RecyclerView) view.findViewById(R.id.userPoemRecycler);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         userPoemRecycler.setLayoutManager(linearLayoutManager);
 
-
-/*        ListView list = (ListView) view.findViewById(android.R.id.list);
-        list.setAdapter(cursorAdapter);*/
 
         poemRecyclerAdapter = new PoemRecyclerAdapter(getActivity(), null);
         poemRecyclerAdapter.setOnItemClickListener(new PoemRecyclerAdapter.OnItemClickListener() {
@@ -65,18 +60,6 @@ public class UserPoemFragment extends Fragment implements LoaderManager.LoaderCa
             }
         });
         userPoemRecycler.setAdapter(poemRecyclerAdapter);
-
-
-/*        userPoemRecycler.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(), EditPoemActivity.class);
-                Uri uri = Uri.parse(NotesProvider.CONTENT_URI + "/" + id);
-                intent.putExtra(NotesProvider.CONTENT_ITEM_TYPE, uri);
-                startActivityForResult(intent, EDITOR_REQUEST_CODE);
-            }
-        });*/
-
 
         FloatingActionButton circleButton = (FloatingActionButton) getActivity().findViewById(R.id.fab);
         circleButton.setOnClickListener(new View.OnClickListener() {
