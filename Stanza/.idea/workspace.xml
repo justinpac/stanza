@@ -45,12 +45,14 @@
       <file leaf-file-name="EditPoemActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/EditPoemActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6324921">
-              <caret line="270" column="25" selection-start-line="270" selection-start-column="25" selection-end-line="270" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.9052045">
+              <caret line="264" column="66" selection-start-line="264" selection-start-column="66" selection-end-line="264" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#9049#10138#0" expanded="true" />
-                <element signature="e#10137#10138#0" expanded="true" />
+                <element signature="e#7043#7051#0" expanded="true" />
+                <element signature="e#9112#10201#0" expanded="true" />
+                <element signature="e#10200#10201#0" expanded="true" />
+                <element signature="e#11523#11555#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,7 +74,7 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.963636">
+            <state vertical-scroll-proportion="-9.127273">
               <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding />
             </state>
@@ -85,7 +87,7 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-2.9454546">
               <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding />
             </state>
@@ -2186,7 +2188,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463366225763</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Fixed null pointer exception(probably? Watch out for it!!) for editText when cursor is at beginning of poem text field. Demo-ready, for reals this time!">
+      <created>1463366545509</created>
+      <option name="number" value="00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1463366545509</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2199,10 +2207,10 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43240094" sideWeight="0.5021436" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21655329" sideWeight="0.49785638" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32539684" sideWeight="0.49785638" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.06396589" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10997733" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36507937" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23496659" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3707483" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2253,7 +2261,8 @@
     <MESSAGE value="Merge branch 'master' of stogit.cs.stolaf.edu:mca-s16/poem&#10;&#10;Conflicts:&#10;&#9;Stanza/.gradle/2.10/taskArtifacts/cache.properties.lock&#10;&#9;Stanza/.gradle/2.10/taskArtifacts/fileHashes.bin&#10;&#9;Stanza/.gradle/2.10/taskArtifacts/fileSnapshots.bin&#10;&#9;Stanza/.gradle/2.10/taskArtifacts/outputFileStates.bin&#10;&#9;Stanza/.gradle/2.10/taskArtifacts/taskArtifacts.bin&#10;&#9;Stanza/.idea/libraries/animated_vector_drawable_23_2_1.xml&#10;&#9;Stanza/.idea/libraries/appcompat_v7_23_2_1.xml&#10;&#9;Stanza/.idea/libraries/support_annotations_23_2_1.xml&#10;&#9;Stanza/.idea/libraries/support_v4_23_2_1.xml&#10;&#9;Stanza/.idea/libraries/support_vector_drawable_23_2_1.xml&#10;&#9;Stanza/.idea/workspace.xml&#10;&#9;Stanza/app/app.iml&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-af.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-am.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ar.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-az-rAZ.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-bg.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-bn-rBD.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ca.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-cs.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-da.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-de.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-el.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-en-rAU.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-en-rGB.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-en-rIN.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-es-rUS.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-es.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-et-rEE.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-eu-rES.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-fa.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-fi.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-fr-rCA.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-fr.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-gl-rES.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-gu-rIN.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-h320dp-v13.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-h720dp-v13.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-hdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-hi.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-hr.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-hu.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-hy-rAM.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-in.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-is-rIS.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-it.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-iw.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ja.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ka-rGE.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-kk-rKZ.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-km-rKH.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-kn-rIN.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ko.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ky-rKG.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-land.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-large-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ldltr-v21.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-lo-rLA.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-lt.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-lv.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-mk-rMK.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ml-rIN.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-mn-rMN.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-mr-rIN.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ms-rMY.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-my-rMM.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-nb.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ne-rNP.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-night-v8.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-nl.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-pa-rIN.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-pl.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-port.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-pt-rBR.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-pt-rPT.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-pt.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ro.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ru.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-si-rLK.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-sk.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-sl.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-sq-rAL.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-sr.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-sv.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-sw.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-sw600dp-v13.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ta-rIN.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-te-rIN.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-th.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-tl.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-tr.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-uk.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-ur-rPK.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-uz-rUZ.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-v11.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-v12.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-v13.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-v14.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-v17.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-v18.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-v21.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-v22.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-v23.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-vi.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-w360dp-v13.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-w480dp-v13.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-w500dp-v13.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-w600dp-v13.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-w720dp-v13.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-w820dp-v13.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-xlarge-land-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-xlarge-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-zh-rCN.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-zh-rHK.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-zh-rTW.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values-zu.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/multi/values.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/anim.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/color-v11.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/color-v23.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/color.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-hdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-ldrtl-hdpi-v17.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-ldrtl-mdpi-v17.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-ldrtl-xhdpi-v17.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-ldrtl-xxhdpi-v17.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-ldrtl-xxxhdpi-v17.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-mdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-v21.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-v23.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-xhdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-xxhdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable-xxxhdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/drawable.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/layout.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/menu.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/mipmap-hdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/mipmap-mdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/mipmap-xhdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/mipmap-xxhdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/blame/res/debug/single/mipmap-xxxhdpi-v4.json&#10;&#9;Stanza/app/build/intermediates/classes/debug/android/support/v7/appcompat/R$color.class&#10;&#9;Stanza/app/build/intermediates/classes/debug/com/example/stanza/R$attr.class&#10;&#9;Stanza/app/build/intermediates/classes/debug/com/example/stanza/R$bool.class&#10;&#9;Stanza/app/build/intermediates/classes/debug/com/example/stanza/R$color.class&#10;&#9;Stanza/app/build/intermediates/classes/debug/com/example/stanza/R$dimen.class&#10;&#9;Stanza/app/build/intermediates/classes/debug/com/example/stanza/R$drawable.class&#10;&#9;Stanza/app/build/intermediates/incremental-verifier/debug/android/support/v7/appcompat/R$color.class&#10;&#9;Stanza/app/build/intermediates/incremental-verifier/debug/com/example/stanza/R$attr.class&#10;&#9;Stanza/app/build/intermediates/incremental-verifier/debug/com/example/stanza/R$bool.class&#10;&#9;Stanza/app/build/intermediates/incremental-verifier/debug/com/example/stanza/R$color.class&#10;&#9;Stanza/app/build/intermediates/incremental-verifier/debug/com/example/stanza/R$dimen.class&#10;&#9;Stanza/app/build/intermediates/incremental-verifier/debug/com/example/stanza/R$drawable.class&#10;&#9;Stanza/app/build/intermediates/incremental/mergeDebugAndroidTestAssets/merger.xml&#10;&#9;Stanza/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml&#10;&#9;Stanza/app/build/intermediates/incremental/mergeDebugAssets/merger.xml&#10;&#9;Stanza/app/build/intermediates/incremental/mergeDebugResources/merger.xml&#10;&#9;Stanza/app/build/intermediates/instant-run-support/debug/coldswap.marker&#10;&#9;Stanza/app/build/intermediates/res/merged/debug/layout/activity_editor.xml&#10;&#9;Stanza/app/build/intermediates/res/resources-debug-androidTest.ap_&#10;&#9;Stanza/app/build/intermediates/res/resources-debug.ap_&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$attr.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$color.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$dimen.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$drawable.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$integer.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$layout.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$style.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$styleable.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/at/markushi/circlebutton/R$attr.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/at/markushi/circlebutton/R$styleable.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/stanza/R$anim.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/stanza/R$attr.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/stanza/R$bool.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/stanza/R$color.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/stanza/R$dimen.class&#10;&#9;Stanza/app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/stanza/R$drawable.class&#10;&#9;Stanza/app/build/outputs/logs/manifest-merger-debug-report.txt&#10;&#9;Stanza/app/src/main/res/layout/activity_editor.xml&#10;&#9;Stanza/build.gradle&#10;&#9;Stanza/local.properties&#10;" />
     <MESSAGE value="Merged RhymeBar changes with master branch. Adjusted position of rhyme Spinner to be below poem text." />
     <MESSAGE value="Merged AsyncTimer with master; still making api calls when word hasn't changed. Must fix this." />
-    <option name="LAST_COMMIT_MESSAGE" value="Merged AsyncTimer with master; still making api calls when word hasn't changed. Must fix this." />
+    <MESSAGE value="Fixed null pointer exception(probably? Watch out for it!!) for editText when cursor is at beginning of poem text field. Demo-ready, for reals this time!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed null pointer exception(probably? Watch out for it!!) for editText when cursor is at beginning of poem text field. Demo-ready, for reals this time!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -2307,8 +2316,10 @@
           <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9049#10138#0" expanded="true" />
-            <element signature="e#10137#10138#0" expanded="true" />
+            <element signature="e#7043#7051#0" expanded="true" />
+            <element signature="e#9112#10201#0" expanded="true" />
+            <element signature="e#10200#10201#0" expanded="true" />
+            <element signature="e#11523#11555#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2350,8 +2361,10 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9049#10138#0" expanded="true" />
-            <element signature="e#10137#10138#0" expanded="true" />
+            <element signature="e#7043#7051#0" expanded="true" />
+            <element signature="e#9112#10201#0" expanded="true" />
+            <element signature="e#10200#10201#0" expanded="true" />
+            <element signature="e#11523#11555#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2385,8 +2398,10 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9049#10138#0" expanded="true" />
-            <element signature="e#10137#10138#0" expanded="true" />
+            <element signature="e#7043#7051#0" expanded="true" />
+            <element signature="e#9112#10201#0" expanded="true" />
+            <element signature="e#10200#10201#0" expanded="true" />
+            <element signature="e#11523#11555#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2445,8 +2460,10 @@
           <caret line="186" column="83" selection-start-line="186" selection-start-column="83" selection-end-line="186" selection-end-column="83" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9049#10138#0" expanded="true" />
-            <element signature="e#10137#10138#0" expanded="true" />
+            <element signature="e#7043#7051#0" expanded="true" />
+            <element signature="e#9112#10201#0" expanded="true" />
+            <element signature="e#10200#10201#0" expanded="true" />
+            <element signature="e#11523#11555#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2667,17 +2684,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_viewer.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/Android/sdk/extras/android/m2repository/com/android/support/support-v4/23.3.0/support-v4-23.3.0-sources.jar!/android/support/v4/app/FragmentActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
@@ -2690,20 +2696,33 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.963636">
+        <state vertical-scroll-proportion="-9.127273">
           <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_viewer.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.9454546">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/stanza/EditPoemActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6324921">
-          <caret line="270" column="25" selection-start-line="270" selection-start-column="25" selection-end-line="270" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.9052045">
+          <caret line="264" column="66" selection-start-line="264" selection-start-column="66" selection-end-line="264" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9049#10138#0" expanded="true" />
-            <element signature="e#10137#10138#0" expanded="true" />
+            <element signature="e#7043#7051#0" expanded="true" />
+            <element signature="e#9112#10201#0" expanded="true" />
+            <element signature="e#10200#10201#0" expanded="true" />
+            <element signature="e#11523#11555#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -250,6 +250,7 @@ implements CommInterface{
     @Override
     public void onResume() {
         super.onResume();
+        firstSpinnerCall = true; //Prevent extra spinner call!
         timerTest.schedule(new TimerTask() {
             @Override
             public void run() {
