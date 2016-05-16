@@ -258,16 +258,17 @@ implements CommInterface{
                 String[] testforBlank = editor.getText().toString().split(" ");
                 if (testforBlank[0] != "") {  //Test whether text field is blank
                     for (String currentWord : editor.getText().toString().split(" ")) {
-                        selectLength = selectLength + currentWord.length() + 1;
-                        if (selectLength > startSelection) {
-                            Log.d("currentWord", currentWord);
-                            if (currentWord != lookupWord) {
-                                lookupWord = currentWord;
-                                new rhymeTask().execute(); //Make api call!
+                        if (currentWord != "") {
+                            selectLength = selectLength + currentWord.length() + 1;
+                            if (selectLength > startSelection) {
+                                Log.d("currentWord", currentWord);
+                                if (currentWord != lookupWord) {
+                                    lookupWord = currentWord;
+                                    new rhymeTask().execute(); //Make api call!
+                                }
+                                break;
                             }
-                            break;
                         }
-
                     }
                 }
 

@@ -4,24 +4,21 @@
     api-level="23"
     density="xxhdpi"
     format="7"
-    timestamp="39606707807808" >
+    timestamp="39926014019832" >
 
     <task
         name="javac"
-        duration="553" />
+        duration="387" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="30" />
+        duration="19" />
     <task
         name="verifier"
-        duration="19" />
+        duration="4" />
 
-    <artifact
-        location="C:\Users\theamazingandroman\poem\Stanza\app\build\intermediates\res\resources-debug.ap_"
-        type="RESOURCES" />
     <artifact
         location="C:\Users\theamazingandroman\poem\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
         type="DEX" />
@@ -35,6 +32,8 @@
         <artifact
             location="C:\Users\theamazingandroman\poem\Stanza\app\build\intermediates\res\resources-debug.ap_"
             type="RESOURCES" />
+    </build>
+    <build timestamp="39926014019832" >
         <artifact
             location="C:\Users\theamazingandroman\poem\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
             type="DEX" />
