@@ -156,12 +156,12 @@ class Worker implements Runnable{
 
 	    System.out.println(from_client); 
 	    
-	    
+	    from_client = from_client.trim();
 	    if(from_client.equals(POEMS)){
 		task_code = 1; //pull and push poems
 		System.out.println("in task code poems"); 
 	    }
-	    else{
+	    else if(from_client.equals("ACCOUNTS")){
 		task_code = 2; //create and authenticate accounts
 		System.out.println("in task code accounts"); 
 	    }
