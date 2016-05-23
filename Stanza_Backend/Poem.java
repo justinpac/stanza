@@ -13,10 +13,12 @@ public class Poem {
     static String fieldTerminator = "\001";
     String title;
     String text;
+    String author; 
 
-    public Poem(String t1, String t2){
+    public Poem(String t1, String t2, String a){
         title = t1;
         text = t2;
+	author = a; 
     }
 
     public Poem(InputStream is){
@@ -35,6 +37,7 @@ public class Poem {
         title = st.nextToken();
         //  System.out.println("in constructor title is " + title);
         text = st.nextToken();
+	author = st.nextToken(); 
     }
 
     public Poem(InputStream is, int poemLength){
@@ -99,6 +102,7 @@ public class Poem {
 
         title = st.nextToken();
         text = st.nextToken();
+	author = st.nextToken(); 
 	//	System.out.println("text\n" + text); 
 	//System.out.println("text length is " + text.length());
 	//System.out.println("this poem length " + this.getBytes().length); 
@@ -129,11 +133,11 @@ public class Poem {
     }
 
     public String toString(){
-        return "[title = " + title + ", text = " + text + "]";
+        return "[title = " + title + ", text = " + text + ", author" + author + "]";
     }
 
     public byte[] getBytes(){
-        String temp = title + fieldTerminator + text + fieldTerminator;
+        String temp = title + fieldTerminator + text + fieldTerminator + author + fieldTerminator; ;
         byte [] bytes = temp.getBytes();
         return bytes;
     }
