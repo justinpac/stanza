@@ -61,7 +61,7 @@ implements CommInterface{
     URL url;                        //api url
     Spinner rhymeSpinner;
     boolean firstSpinnerCall;
-    String lookupWord;              //Word sent to api for lookup
+    String lookupWord = "";              //Word sent to api for lookup
     //String currentWord;             //Currently selected word
     Timer timerTest = new Timer();
 
@@ -185,7 +185,6 @@ implements CommInterface{
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                 rhymeList =  new Scanner(in, "UTF-8").useDelimiter("\\A").next();
-                Log.d("myTag", rhymeList.getClass().getName());
                 in.close();
                 return rhymeList;
 
@@ -199,9 +198,9 @@ implements CommInterface{
         @Override
         protected void onPostExecute(String result) {
             parseJson(rhymeList);
-            for (int i = 0; i < spinnerList.length; i++){
+            /*for (int i = 0; i < spinnerList.length; i++){
                 Log.d("spinnerList", spinnerList[i]);
-            }
+            } */
 
             ArrayAdapter<String> newSpinnerAdapter = new ArrayAdapter<String>
                     (getApplicationContext(), android.R.layout.simple_spinner_item, spinnerList);
@@ -215,19 +214,22 @@ implements CommInterface{
             String[] returnArray = new String[1];
             returnArray[0] = "No rhymes";
             try {
-                JSONArray newJsonArray = new JSONArray(strJson);
-                for (int i=0; i<newJsonArray.length(); i++) {
-                    JSONObject wordData = newJsonArray.getJSONObject(i);
-                    if ("rhyme".equals(wordData.getString("relationshipType"))) {
-                        JSONArray interiorArr = wordData.getJSONArray("words");
-                        returnArray = new String[interiorArr.length()];
-                        for (int j=0; j<interiorArr.length(); j++) {
-                            String testStr = interiorArr.getString(j);
-                            returnArray[j] = testStr;
+                if (strJson != null) {
+
+                    JSONArray newJsonArray = new JSONArray(strJson);
+                    for (int i = 0; i < newJsonArray.length(); i++) {
+                        JSONObject wordData = newJsonArray.getJSONObject(i);
+                        if ("rhyme".equals(wordData.getString("relationshipType"))) {
+                            JSONArray interiorArr = wordData.getJSONArray("words");
+                            returnArray = new String[interiorArr.length()];
+                            for (int j = 0; j < interiorArr.length(); j++) {
+                                String testStr = interiorArr.getString(j);
+                                returnArray[j] = testStr;
+                            }
                         }
                     }
+                    Log.d("JSONTag", newJsonArray.getClass().getName());
                 }
-                Log.d("JSONTag", newJsonArray.getClass().getName());
             } catch (JSONException e) {e.printStackTrace();}
 
             //set spinnerList up for suggestions
@@ -256,23 +258,21 @@ implements CommInterface{
             public void run() {
                 int startSelection = editor.getSelectionStart();
                 int selectLength = 0;
-                String[] testforBlank = editor.getText().toString().split(" ");
-                if (testforBlank[0] != "") {  //Test whether text field is blank
-                    for (String currentWord : editor.getText().toString().split(" ")) {
-                        if (currentWord != "") {
-                            selectLength = selectLength + currentWord.length() + 1;
-                            if (selectLength > startSelection) {
-                                Log.d("currentWord", currentWord);
-                                if (currentWord != lookupWord) {
-                                    lookupWord = currentWord;
-                                    new rhymeTask().execute(); //Make api call!
-                                }
-                                break;
+
+                for (String currentWord : editor.getText().toString().split("\\s")) {
+                    if (currentWord != null) {
+                        selectLength = selectLength + currentWord.length() + 1;
+                        if (selectLength > startSelection) {
+                            currentWord = currentWord.replaceAll("[\",.;!?(){}\\<>%]", "");
+                            Log.d("currentWord", currentWord);
+                            if (currentWord.intern() != lookupWord.intern()) {
+                                lookupWord = currentWord;
+                                new rhymeTask().execute(); //Make api call!
                             }
+                            break;
                         }
                     }
                 }
-
             }
         }, 0, 2000);
     }
@@ -389,10 +389,54 @@ implements CommInterface{
     }*/
 
     private void replaceText(String newText) {
-        int start = Math.max(editor.getSelectionStart(), 0);
-        int end = Math.max(editor.getSelectionEnd(), 0);
-        editor.getText().replace(Math.min(start, end), Math.max(start, end),
-                newText, 0, newText.length());
+        String punctuation;
+        String s = editor.getText().toString();
+        int selectionStart = editor.getSelectionStart();
+        String beforeCursor = s.substring(0, selectionStart);
+        String afterCursor = s.substring(selectionStart, s.length());
+
+        String finalString = beforeCursor + "garbage" + afterCursor;
+        int selectionStart1 = selectionStart + 3;
+        beforeCursor = finalString.substring(0, selectionStart1);
+        afterCursor = finalString.substring(selectionStart1, finalString.length());
+
+        String[] beforeWords = beforeCursor.split("\\s");
+        String[] afterWords = afterCursor.split("\\s");
+
+        int arrayLength = beforeWords.length;
+        punctuation = checkPunctuation(beforeWords[arrayLength - 1]);
+        if (punctuation == "")
+            punctuation = checkPunctuation(afterWords[0]);
+        int removeStringLength = beforeWords[arrayLength - 1].length();
+        beforeCursor = beforeCursor.substring(0, selectionStart1 - removeStringLength);
+
+        removeStringLength = afterWords[0].length();
+        afterCursor = afterCursor.substring(removeStringLength, afterCursor.length());
+        finalString = beforeCursor + newText + punctuation + afterCursor;
+
+        editor.setText(finalString);
+        try {
+            editor.setSelection(selectionStart);
+        } catch(Exception e) {
+            editor.setSelection(finalString.length());
+        }
+    }
+
+    private String checkPunctuation(String checkText) {
+        int indexVal;
+        indexVal = checkText.indexOf(".");
+        if (indexVal != -1) return ".";
+
+        indexVal = checkText.indexOf(",");
+        if (indexVal != -1) return ".";
+
+        indexVal = checkText.indexOf("!");
+        if (indexVal != -1) return "!";
+
+        indexVal = checkText.indexOf("?");
+        if (indexVal != -1) return "?";
+
+        return "";
     }
 
     private void insertNote(String poemText, String poemTitle) {

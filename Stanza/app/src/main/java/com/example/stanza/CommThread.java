@@ -31,7 +31,7 @@ implements Runnable{
     InputStream inputStream;
     OutputStream outputStream;
 
-    int port = 28414;
+    int port = 28411;
 
     Queue<Poem> poemQ = new LinkedList<Poem>();
     int task_id = 0;
