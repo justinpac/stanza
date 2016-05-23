@@ -174,4 +174,14 @@ implements AccountCommInterface{
         onRestart();
 
     }
+
+    @Override
+    public void onFriendSuccess(String name) {
+
+    }
+
+    @Override
+    public void onFriendFailure(String error_message) {
+
+    }
 }

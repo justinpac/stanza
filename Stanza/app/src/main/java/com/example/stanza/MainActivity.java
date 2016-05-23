@@ -10,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.Toast;
 
+import java.util.Vector;
+
 public class MainActivity extends AppCompatActivity
 {
     ViewPager viewPager;

@@ -9,4 +9,6 @@ public interface AccountCommInterface {
     void onLoginFailed(String error_message);
     void onSignupSuccess();
     void onSignupFailed(String error_message);
+    void onFriendSuccess(String name);
+    void onFriendFailure(String error_message);
 }

@@ -1,24 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="arm64-v8a,armeabi-v7a,armeabi"
-    api-level="22"
-    density="xhdpi"
+    abi="x86"
+    api-level="23"
+    density="560dpi"
     format="7"
-    timestamp="727915917575273" >
+    timestamp="25119708877649" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="1890" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="176" />
     <task
         name="verifier"
-        duration="0" />
+        duration="14" />
 
-    <build timestamp="727915917575273" />
+    <artifact
+        location="C:\Users\Brianna\AndroidStudioProjects\proj\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
+        type="DEX" />
+
+    <build timestamp="19972111118048" >
+        <artifact
+            location="C:\Users\Brianna\AndroidStudioProjects\proj\Stanza\app\build\outputs\apk\app-debug.apk"
+            type="MAIN" />
+    </build>
+    <build timestamp="23297900618517" >
+        <artifact
+            location="C:\Users\Brianna\AndroidStudioProjects\proj\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_2\classes.dex"
+            type="DEX" />
+        <artifact
+            location="C:\Users\Brianna\AndroidStudioProjects\proj\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_0\classes.dex"
+            type="DEX" />
+    </build>
+    <build timestamp="24185820231335" >
+        <artifact
+            location="C:\Users\Brianna\AndroidStudioProjects\proj\Stanza\app\build\intermediates\res\resources-debug.ap_"
+            type="RESOURCES" />
+    </build>
+    <build timestamp="25119708877649" >
+        <artifact
+            location="C:\Users\Brianna\AndroidStudioProjects\proj\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
+            type="DEX" />
+    </build>
 
 </instant-run>

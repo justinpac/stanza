@@ -19,6 +19,9 @@ implements AccountCommInterface{
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
 
+
+   static String user;
+
     EditText emailText;
     EditText passwordText;
     Button loginButton;
@@ -88,15 +91,15 @@ implements AccountCommInterface{
         //will either call onLoginSuccess() or onLoginFailed();
 
         //currently we're still just calling onLoginSuccess() here
-     /*   new android.os.Handler().postDelayed(new Runnable() {
+      /*  new android.os.Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 onLoginSuccess();
-                progressDialog.dismiss();
+               // progressDialog.dismiss();
             }
-        },3000);
+        },1000);
 
-        */
+*/
     }
 
     @Override
@@ -150,6 +153,7 @@ implements AccountCommInterface{
 
     public void onLoginSuccess(){
         loginButton.setEnabled(true);
+        user = emailText.getText().toString();  ;
         finish();
     }
 
@@ -167,6 +171,16 @@ implements AccountCommInterface{
 
     @Override
     public void onSignupFailed(String error_message) {
+
+    }
+
+    @Override
+    public void onFriendSuccess(String name) {
+
+    }
+
+    @Override
+    public void onFriendFailure(String error_message) {
 
     }
 

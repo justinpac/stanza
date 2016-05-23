@@ -19,15 +19,17 @@ implements Runnable{
     private static final String createAccount = "CREATE_ACCOUNT";
     private static final String accessAccount = "ACCESS_ACCOUNT";
     private static final String verifyAccount = "VERIFY_ACCOUNT";
+    private static final String addFriend = "ADD_FRIEND";
 
     int port = 28414;
-    String host = "rns202-17.cs.stolaf.edu";
+    String host = "rns202-13.cs.stolaf.edu";
     InputStream inputStream = null;
     OutputStream outputStream = null;
 
     AccountCommInterface accountCommInterface;
     SignupActivity signupActivity;
     LoginActivity loginActivity;
+    FriendBoardFragment friendBoardFragment;
 
     String task_id;
     String error_message;
@@ -50,6 +52,13 @@ implements Runnable{
         task_id = accessAccount;
     }
 
+    AccountCommThread(AccountCommInterface aci, FriendBoardFragment fb){
+        accountCommInterface = aci;
+        friendBoardFragment = fb;
+        task_id = addFriend;
+
+    }
+
 
     public synchronized void thisAccount(String u, String e, String p){
         Account account = new Account(u, e, p);
@@ -70,6 +79,30 @@ implements Runnable{
             account.send(outputStream);
             verification = new Account(inputStream) ;
             if(verification.username.equals("ACCOUNT_IS_VALID")){
+                error_message = null;
+                return true;
+            }
+            else{
+                error_message = verification.username;
+            }
+        }
+        catch (RuntimeException e){
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public boolean addFriend(Account account){
+        Account code = new Account(addFriend, null, null);
+        Account verification = null;
+        Account ack = null;
+        try{
+            code.send(outputStream);
+            ack = new Account(inputStream);
+            account.send(outputStream);
+            verification = new Account(inputStream) ;
+            if(verification.username.equals("FRIEND_ACCEPTED")){
                 error_message = null;
                 return true;
             }
@@ -181,6 +214,30 @@ implements Runnable{
                             });
                             done = true;
 
+                        }
+                    }
+                    else if(task_id.equals(addFriend)){
+                        valid = addFriend(account);
+                        if(valid){
+                            final String name = account.username;
+                            //friend exists; add friend to friend list
+                            friendBoardFragment.getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    accountCommInterface.onFriendSuccess(name);
+                                }
+                            });
+                            done = true;
+                        }
+                        else{
+                            //friend doesn't exist; error message
+                            friendBoardFragment.getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    accountCommInterface.onFriendFailure(error_message);
+                                }
+                            });
+                            done = true;
                         }
                     }
                 }
