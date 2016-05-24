@@ -10,7 +10,7 @@ import android.net.Uri;
 public class NotesProvider2 extends ContentProvider{
 
     private static final String AUTHORITY = "com.example.stanza.notesprovider2";
-    private static final String BASE_PATH = "friends";
+    private static final String BASE_PATH = "myFriends";
     public static Uri CONTENT_URI =
             Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH );
 

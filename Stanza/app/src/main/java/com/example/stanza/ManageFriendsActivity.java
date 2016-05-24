@@ -55,10 +55,12 @@ public class ManageFriendsActivity extends AppCompatActivity
             public void bindView(View view, Context context, Cursor cursor) {
                 String friend = cursor.getString(
                         cursor.getColumnIndex(DBOpen2.FRIEND));
+
                 int pos = friend.indexOf(10);
                 if(pos != -1){
                     friend = friend.substring(0, pos) + "...";
-                }
+            }
+
                 TextView tv = (TextView) view.findViewById(R.id.tvFriend);
                 tv.setText(friend);
 
