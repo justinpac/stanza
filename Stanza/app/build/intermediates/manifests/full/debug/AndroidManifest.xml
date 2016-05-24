@@ -32,6 +32,10 @@
             android:name="com.example.stanza.NotesProvider"
             android:authorities="com.example.stanza.notesprovider"
             android:exported="false" />
+        <provider
+            android:name="com.example.stanza.NotesProvider2"
+            android:authorities="com.example.stanza.notesprovider2"
+            android:exported="false" />
 
         <activity
             android:name="com.example.stanza.EditPoemActivity"
@@ -45,6 +49,14 @@
         <activity
             android:name="com.example.stanza.ViewPoemActivity"
             android:label="@string/view_friends_poem"
+            android:parentActivityName="com.example.stanza.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.stanza.ManageFriendsActivity"
+            android:label="Manage Friends"
             android:parentActivityName="com.example.stanza.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

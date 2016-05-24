@@ -5,10 +5,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.StringTokenizer;
 
-/**
- * Created by Brianna on 4/27/2016.
- */
-
 //adding to git
 
 /**
@@ -28,6 +24,7 @@ public class Poem {
      * A string for holding the body text of the poem in <code>Poem</code>
      */
     String text;
+    String author;
 
     //constructors
 
@@ -36,9 +33,11 @@ public class Poem {
      * @param t1 the title of the poem
      * @param t2 the text of the poem
      */
-    public Poem(String t1, String t2){
+
+    public Poem(String t1, String t2, String a){
         title = t1;
         text = t2;
+        author = a;
     }
 
 
@@ -62,6 +61,7 @@ public class Poem {
         title = st.nextToken();
      //   System.out.println("in constructor title is " + title);
         text = st.nextToken();
+        author = st.nextToken();
     }
 
     /**
@@ -97,6 +97,7 @@ public class Poem {
 
         title = st.nextToken();
         text = st.nextToken();
+        author = st.nextToken();
     }
 
     //methods
@@ -134,7 +135,7 @@ public class Poem {
      * @return the poem title and text in a single string, with debugging text
      */
     public String toString(){
-        return "[title = " + title + ", text = " + text + "]";
+        return "[title = " + title + ", text = " + text + ", author " + author + "]";
     }
 
     /**
@@ -143,7 +144,7 @@ public class Poem {
      * @return the byte-ified string holding the poem's info.
      */
     public byte[] getBytes(){
-        String temp = title + fieldTerminator + text + fieldTerminator;
+        String temp = title + fieldTerminator + text + fieldTerminator + author + fieldTerminator;
         byte [] bytes = temp.getBytes();
         return bytes;
     }

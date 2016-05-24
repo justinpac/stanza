@@ -34,7 +34,7 @@ public class NotesProvider extends ContentProvider{
      */
     private static final int NOTES = 1;   //get data
     /**
-     * A constant used to intify the requested operation in <code>NotesProvider</code>
+     * A constant used to identify the requested operation in <code>NotesProvider</code>
      */
     private static final int NOTES_ID = 2;  //deals with only single record
 
@@ -79,9 +79,9 @@ public class NotesProvider extends ContentProvider{
     /**
      * Allows for dynamic access to the database based on cursor position.
      * @param uri identifies the table.
-     * @param projection ???
-     * @param selection The text selected???
-     * @param selectionArgs the text that is selected???
+     * @param projection The columns of the database we would like returned
+     * @param selection The selection clause of the query
+     * @param selectionArgs The selection arguments of the query
      * @param sortOrder How we want the return to be sorted
      * @return The database query results
      */

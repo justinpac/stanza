@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.stanza"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="23" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name="com.android.tools.fd.runtime.BootstrapApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Stanza"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.stanza.MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="com.example.stanza.NotesProvider"
+            android:authorities="com.example.stanza.notesprovider"
+            android:exported="false" />
+        <provider
+            android:name="com.example.stanza.NotesProvider2"
+            android:authorities="com.example.stanza.notesprovider2"
+            android:exported="false" />
+
+        <activity
+            android:name="com.example.stanza.EditPoemActivity"
+            android:isScrollContainer="true"
+            android:label="@string/poetry_editor"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.stanza.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.stanza.ViewPoemActivity"
+            android:label="@string/view_friends_poem"
+            android:parentActivityName="com.example.stanza.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.stanza.ManageFriendsActivity"
+            android:label="Manage Friends"
+            android:parentActivityName="com.example.stanza.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.stanza.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.stanza.SignupActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <meta-data
+            android:name="userapp.AppId"
+            android:value="YOUR-APP-ID" />
+    </application>
+
+</manifest>

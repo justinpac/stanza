@@ -1,6 +1,5 @@
 package com.example.stanza;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Patterns;
@@ -11,26 +10,71 @@ import android.view.View;
 import android.widget.Toast;
 
 /**
- * Created by Brianna on 5/11/2016.
+ * A class to allow a user to create an account for the Stanza app.
+ * @author Brianna Cunniff
  */
+
 public class SignupActivity extends AppCompatActivity
 implements AccountCommInterface{
 
-    private static final String TAG = "SignupActivity";
+    //state variables
 
+    /**
+     * The text field into which the user will enter a username in this instance of <code>SignupActivity</code>
+     */
     EditText nameText;
+
+    /**
+     * The text field into which the user will enter an email in this instance of <code>SignupActivity</code>
+     */
     EditText emailText;
+
+    /**
+     * The text field into which the user will enter a password in this instance of <code>SignupActivity</code>
+     */
     EditText passwordText;
+
+    /**
+     * A button that will when pressed will initiate the process of verifying this is a valid account
+     * and creating said account in this instance of <code>SignupActivity</code>
+     */
     Button signupButton;
+
+    /**
+     * This links to the LoginActivity and when pressed will take the user to the LoginActivity
+     */
     TextView loginLink;
 
+    /**
+     * The minimum character length for a username
+     */
     int minNameLength = 3;
+
+    /**
+     * The minimum character length for a password
+     */
     int minPasswordLength = 5;
+
+    /**
+     * The maximum character length for a password
+     */
     int maxPasswordLength = 13;
 
+    /**
+     * An instance of AccountCommThread. Used to verify that this is a valid account the user is
+     * trying to create and to store the account information in the backend server.
+     */
     AccountCommThread act;
-   // ProgressDialog progressDialog;
 
+
+    //methods
+
+    /**
+     * Upon creation of the activity, all view fields (for username, email, and password) are
+     * initiated and onClickListeners for the signup button and login link are set up. An instance
+     * of AccountCommThread is initiated for communication with the backend.
+     * @param savedInstanceState a reference to a Bundle object passed into the Activity
+     */
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -60,6 +104,9 @@ implements AccountCommInterface{
         act.start();
     }
 
+    /**
+     * Upon restarting the activity, an instance of AccountCommThread will be initialized.
+     */
     @Override
     public void onRestart(){
         super.onRestart();
@@ -67,49 +114,40 @@ implements AccountCommInterface{
         act.start();
     }
 
+    /**
+     * Called when the signup button is pressed. First checks if the account information is valid.
+     * If it is, then an AccountCommThread is initiated to check whether the account information is
+     * already being used. If it is not, then the account information will be saved to the backend.
+     */
     public void signup(){
         if(!validate()){
             invalidAccount();;
             return;
         }
 
-        System.out.println("valid fields");
         signupButton.setEnabled(false);
-
-      /*  progressDialog = new ProgressDialog(SignupActivity.this,
-                R.style.AppTheme);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Creating Account...");
-        progressDialog.show();
-        */
 
         String name = nameText.getText().toString();
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
 
-        System.out.println("add account to queue");
         act.thisAccount(name, email, password);
-        //it will call either onSignupSuccess() or onSignupFailed()
-
-        //currently we're just going to automatically call onSignupSuccess() here
-     /*   new android.os.Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                onSignupSuccess();
-                //onSignupFailed();
-                progressDialog.dismiss();
-            }
-        }, 3000);*/
-
     }
 
-
+    /**
+     * Called if the account information is invalid. Displays a message to the user to this effect.
+     */
     public void invalidAccount(){
         Toast.makeText(getBaseContext(), "Invalid account information", Toast.LENGTH_LONG).show();
-
         signupButton.setEnabled(true);
     }
 
+    /**
+     * Ensure that the information (username, email, and password) are all valid entries. Specifically,
+     * that the username and password meet the minimum/maximum character requirements and that the email
+     * is actually an email. Set an error message if any of these conditions are not satisfied
+     * @return True/false depending on whether the account information entered is valid.
+     */
     public boolean validate(){
         boolean valid = true;
 
@@ -117,6 +155,7 @@ implements AccountCommInterface{
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
 
+        //username must exist and be a minimum number of characters
         if(name.isEmpty() || name.length() < minNameLength){
             nameText.setError("At least " + minNameLength + " characters.");
             valid = false;
@@ -124,6 +163,7 @@ implements AccountCommInterface{
             nameText.setError(null);
         }
 
+        //email must exist and follow email address patterns
         if(email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             emailText.setError("Enter a valid email address.");
             valid = false;
@@ -131,6 +171,7 @@ implements AccountCommInterface{
             emailText.setError(null);
         }
 
+        //password must exist and meet min/max character limits
         if(password.isEmpty() || password.length() < minPasswordLength || password.length() > maxPasswordLength){
             passwordText.setError("Password must be between " + minPasswordLength + " and " + maxPasswordLength + " characters.");
             valid = false;
@@ -141,37 +182,41 @@ implements AccountCommInterface{
         return valid;
     }
 
-
+    /**
+     * Called from an instance of AccountCommThread if connection to the backend is unsuccessful.
+     */
     @Override
     public void onServerDisconnected() {
         Toast.makeText(getBaseContext(), "Server disconnected. Cannot create account.", Toast.LENGTH_LONG).show();
-
     }
 
-    @Override
-    public void onLoginSuccess() {
-
-    }
-
-    @Override
-    public void onLoginFailed(String error_message) {
-
-    }
-
+    /**
+     * Called from an instance of AccountCommThread if sign-up is sucessful. Upon success, the user
+     * will be logged into the app, and his/her account information would have been stored in the
+     * accounts table in the backend.
+     */
     public void onSignupSuccess(){
-       // progressDialog.dismiss();
-      //  Toast.makeText(getBaseContext(), "Account created.", Toast.LENGTH_SHORT).show();
         signupButton.setEnabled(true);
         setResult(RESULT_OK, null);
         finish();
     }
 
+    /**
+     * Called from an instance of AccountCommThread if sign-up fails. This will occur if either
+     * the username or email are already used and stored in the accounts table in the backend.
+     *
+     * @param error_message A message describing what the sign-up error was
+     */
     @Override
     public void onSignupFailed(String error_message) {
-       // progressDialog.dismiss();
         signupButton.setEnabled(true);
         Toast.makeText(getBaseContext(), error_message, Toast.LENGTH_LONG).show();
         onRestart();
-
     }
+
+    //these interface methods are not implemented in SignupActivity
+    @Override public void onLoginSuccess() {}
+    @Override public void onLoginFailed(String error_message) {}
+    @Override public void onFriendSuccess(String name) {}
+    @Override public void onFriendFailure(String error_message) {}
 }

@@ -30,4 +30,6 @@ public interface AccountCommInterface {
      * @param error_message given if app sign up fails (perhaps due to server issues)
      */
     void onSignupFailed(String error_message);
+    void onFriendSuccess(String name);
+    void onFriendFailure(String error_message);
 }

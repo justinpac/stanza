@@ -16,13 +16,13 @@ public class ViewPoemActivity extends AppCompatActivity{
     /**
      * TextViews which hold the poem's title and text, respectively.
      */
-    private TextView title, text;
+    private TextView title, text, author;
     /**
      * Strings which hold the values of the poem's text and title, as well as
      * <code>noteFilter</code>, which is used to pull the proper values
      * from the database.
      */
-    String poemText, poemTitle, noteFilter;
+    String poemText, poemTitle, poemAuthor, noteFilter;
 
     /**
      * Called when the view is created. Populates the <code>title</code> and
@@ -47,6 +47,7 @@ public class ViewPoemActivity extends AppCompatActivity{
 
         title = (TextView) findViewById(R.id.friend_poem_title);
         text = (TextView) findViewById(R.id.friend_poem_text);
+        author = (TextView) findViewById(R.id.friend_poem_author);
 
         /**
          * Holds the string value of the uri
@@ -69,6 +70,7 @@ public class ViewPoemActivity extends AppCompatActivity{
             cursor.moveToFirst();
             poemText = cursor.getString(cursor.getColumnIndex(DBOpenHelper.POEM_TEXT));
             poemTitle = cursor.getString(cursor.getColumnIndex(DBOpenHelper.POEM_TITLE));
+            poemAuthor = cursor.getString(cursor.getColumnIndex(DBOpenHelper.CREATOR));
         }catch(RuntimeException e){
             e.printStackTrace();
         }
@@ -76,6 +78,8 @@ public class ViewPoemActivity extends AppCompatActivity{
         title.requestFocus();
         text.setText(poemText);
         text.requestFocus();
+        author.setText(poemAuthor);
+        author.requestFocus();
     }
 
 

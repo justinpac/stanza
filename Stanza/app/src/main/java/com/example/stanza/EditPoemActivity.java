@@ -7,24 +7,39 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Spannable;
+import android.util.JsonReader;
 import android.util.Log;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.stanza.DBOpenHelper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.BufferedInputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -103,6 +118,10 @@ implements CommInterface{
      * Creates a <code>CommThread</code>, for communication with the
      * backend server. Allows for pushing a poem to the server.
      */
+    String user;
+
+
+ //   private Button publish;
     private CommThread ct;
 
     /** Called on the creation of an <code>EditPoemActivity</code>.
@@ -128,6 +147,69 @@ implements CommInterface{
          * text.
          */
         editor = (EditText) findViewById(R.id.editText);
+
+        user = LoginActivity.user;
+
+
+
+/*        rhymeSpinner = (Spinner) findViewById(R.id.rhymeSpinner);
+        spinnerList = new String[] { "rhymes" };
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>
+                (this, android.R.layout.simple_spinner_item, spinnerList);
+        spinnerAdapter
+                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        rhymeSpinner.setAdapter(spinnerAdapter);
+
+        firstSpinnerCall = true;
+        rhymeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (firstSpinnerCall) {
+                    firstSpinnerCall = false;
+                } else {
+                    String selectedText = (String) parent.getItemAtPosition(position);
+                    replaceText(selectedText);
+                    //Log.v("item", (String) parent.getItemAtPosition(position));
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });*/
+
+        /*editor.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                int startSelection = editor.getSelectionStart();
+                int selectLength = 0;
+
+                for (String currentWord : editor.getText().toString().split(" ")) {
+                    selectLength = selectLength + currentWord.length() + 1;
+                    if (selectLength > startSelection) {
+                        Log.d("currentWord", currentWord);
+                        if (currentWord != lookupWord) {
+                            lookupWord = currentWord;
+                            new rhymeTask().execute(); //Make api call!
+                        }
+                        break;
+                    }
+
+                }
+
+
+                return false;
+            }
+        });*/
+
+
+
+       // publish = (Button) findViewById(R.id.publish_poem_button);
+
+
 
         /**
          * Initializes the <code>HorizontalScrollView</code> which
@@ -158,7 +240,6 @@ implements CommInterface{
             setTitle(getString(R.string.new_note));
         } else {
             action = Intent.ACTION_EDIT;
-            System.out.println("URI IS " + uri.toString());
             String path = uri.toString();
             String idStr = path.substring(path.lastIndexOf('/') + 1);
             noteFilter = DBOpenHelper.POEM_ID + "=" + idStr;
@@ -651,7 +732,7 @@ implements CommInterface{
          * Initializes a poem object with <code>poemTitle</code> and
          * <code>poemText</code>, to be sent to the backend database.
          */
-        Poem poem = new Poem(poemTitle, poemText);
+        Poem poem = new Poem(poemTitle, poemText, user);
         /**
          * Starts a <code>CommThread</code> to send <code>poem</code>
          * to the backend database.
