@@ -141,13 +141,13 @@ implements AccountCommInterface{
         //REMOVE THIS BEFORE TURNING IN
 
         //currently we're still just calling onLoginSuccess() here
-        new android.os.Handler().postDelayed(new Runnable() {
+/*        new android.os.Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 onLoginSuccess();
                // progressDialog.dismiss();
             }
-        },1000);
+        },1000);*/
     }
 
     /**

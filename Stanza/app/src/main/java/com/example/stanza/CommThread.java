@@ -20,8 +20,7 @@ import java.util.Vector;
  */
 public class CommThread extends Thread
 implements Runnable{
-    String host = "rns202-13.cs.stolaf.edu";
-    int port = 28414;
+    String host = "rns202-7.cs.stolaf.edu";
 
 
     Queue<Poem> poemQ2 = new LinkedList<Poem>();

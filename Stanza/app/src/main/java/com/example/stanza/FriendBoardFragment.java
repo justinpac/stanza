@@ -161,7 +161,6 @@ implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface, AccountCommInte
             @Override
             public void onRefresh() {
                 pullPoems();
-                //new Handler().post(new CommThread(this,FriendBoardFragment.this));
             }
         });
         super.onActivityCreated(savedInstanceState);

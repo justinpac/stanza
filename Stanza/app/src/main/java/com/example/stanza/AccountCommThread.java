@@ -55,7 +55,7 @@ implements Runnable{
     /**
      * The host name of the backend server.
      */
-    String host = "rns202-13.cs.stolaf.edu";
+    String host = "rns202-7.cs.stolaf.edu";
 
     /**
      * An instance of an InputStream to communicate with the backend server.
