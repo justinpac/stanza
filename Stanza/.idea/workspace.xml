@@ -2127,7 +2127,13 @@
       <option name="project" value="LOCAL" />
       <updated>1464134138114</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Some files untracked in final commit.">
+      <created>1464134147834</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1464134147834</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
