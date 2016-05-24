@@ -19,7 +19,7 @@ import java.util.Queue;
  */
 public class CommThread extends Thread
 implements Runnable{
-    String host = "rns202-17.cs.stolaf.edu";
+    String host = "rns202-7.cs.stolaf.edu";
 
     Queue<Poem> poemQ2 = new LinkedList<Poem>();
 
@@ -31,7 +31,7 @@ implements Runnable{
     InputStream inputStream;
     OutputStream outputStream;
 
-    int port = 28411;
+    int port = 28414;
 
     Queue<Poem> poemQ = new LinkedList<Poem>();
     int task_id = 0;
