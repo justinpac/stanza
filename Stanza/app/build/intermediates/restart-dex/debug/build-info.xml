@@ -4,41 +4,49 @@
     api-level="23"
     density="560dpi"
     format="7"
-    timestamp="111905063309203" >
+    timestamp="112795332193917"
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="1406" />
     <task
         name="instant-run-dex"
-        duration="0" />
+        duration="1137" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="124" />
     <task
         name="verifier"
-        duration="0" />
+        duration="17" />
 
     <artifact
-        location="C:\Users\Brianna\AndroidStudioProjects\final_project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
-        type="DEX" />
+        location="C:\Users\Brianna\AndroidStudioProjects\final_project\Stanza\app\build\intermediates\reload-dex\debug\classes.dex"
+        type="RELOAD_DEX" />
 
     <build timestamp="111702693171160" >
         <artifact
             location="C:\Users\Brianna\AndroidStudioProjects\final_project\Stanza\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
     </build>
-    <build
-        timestamp="111882049094803"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="C:\Users\Brianna\AndroidStudioProjects\final_project\Stanza\app\build\intermediates\builds\debug\111882049094803\classes.dex"
-            type="RELOAD_DEX" />
-    </build>
     <build timestamp="111905063309203" >
         <artifact
             location="C:\Users\Brianna\AndroidStudioProjects\final_project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
             type="DEX" />
+    </build>
+    <build
+        timestamp="112672332956426"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Brianna\AndroidStudioProjects\final_project\Stanza\app\build\intermediates\builds\debug\112672332956426\classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+    <build
+        timestamp="112795332193917"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="C:\Users\Brianna\AndroidStudioProjects\final_project\Stanza\app\build\intermediates\reload-dex\debug\classes.dex"
+            type="RELOAD_DEX" />
     </build>
 
 </instant-run>
