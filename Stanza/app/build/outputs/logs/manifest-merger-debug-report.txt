@@ -48,7 +48,7 @@ MERGED from [com.android.support:support-v4:23.3.0] C:\Users\theamazingandroman\
 	android:allowBackup
 		ADDED from C:\Users\theamazingandroman\poem\Stanza\app\src\main\AndroidManifest.xml:10:9-35
 	android:icon
-		ADDED from C:\Users\theamazingandroman\poem\Stanza\app\src\main\AndroidManifest.xml:11:9-43
+		ADDED from C:\Users\theamazingandroman\poem\Stanza\app\src\main\AndroidManifest.xml:11:9-51
 	android:theme
 		ADDED from C:\Users\theamazingandroman\poem\Stanza\app\src\main\AndroidManifest.xml:13:9-40
 activity#com.example.stanza.MainActivity
