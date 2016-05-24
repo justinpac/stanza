@@ -1,11 +1,9 @@
 package com.example.stanza;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -44,40 +42,108 @@ import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/** A class for editing personal poems, with added rhyming functionality
+ * from the Wordnik api.
+ * @author A. Altmaier and A. Kilbo, 4/2016
+ */
 
 public class EditPoemActivity extends AppCompatActivity
 implements CommInterface{
 
-    private String action;
-    private EditText editorTitle;
-    private EditText editor;
-    private TextView rhymeList;
-    private String noteFilter;
-    private String oldText;
-    private String oldTitle;
-    private Toolbar toolbar;
-    String[] spinnerList;
-    public String apiWord;
-    URL url;                        //api url
-    Spinner rhymeSpinner;
-    boolean firstSpinnerCall;
-    String lookupWord = "";              //Word sent to api for lookup
-    //String currentWord;             //Currently selected word
-    Timer timerTest = new Timer();
+    // state variables
 
+    /**
+     * String which holds the intent for the poem:
+     * <code>ACTION_INSERT</code> for a newly created poem, and
+     * <code>ACTION_EDIT</code> for editing an existing poem.
+     */
+    private String action;
+    /**
+     * EditText field which contains the poem's title.
+     */
+    private EditText editorTitle;
+    /**
+     * EditText field which contains the poem's text.
+     */
+    private EditText editor;
+    /**
+     * Used to properly identify the particular poem when pulling
+     * its title and text from the local database.
+     */
+    private String noteFilter;
+    /**
+     * Used to set <code>editor's</code> text to the previously
+     * saved poem text when the editor is started.
+     */
+    private String oldText;
+    /**
+     * Used to set <code>editorTitle's</code> text to the previously
+     * saved poem title when the editor is started.
+     */
+    private String oldTitle;
+    /**
+     * Holds the list of rhyme suggestions for the current word
+     * in <code>editor</code>.
+     */
+    String[] rhymeList;
+    /**
+     * Specifies the URL for the api call (in this case, to Wordnik,
+     * but that could be changed).
+     */
+    URL url;                             //api url
+    /**
+     * The word most recently sent to Wordnik for the api call.
+     */
+    String lookupWord = "";              //Word sent to api for lookup
+    /**
+     * A timer which makes a Wordnik api call once per second.
+     * This api call is done on an AsyncTask, so as to not slow the
+     * UI thread.
+     */
+    Timer rhymeTime = new Timer();
+    /**
+     * The scrollable view which contains the list of suggested rhymes
+     * for the current word in <code>editor</code>.
+     */
+    HorizontalScrollView rhymeView;
+    /**
+     * The internal view of <code>rhymeView</code>, which contains
+     * the list of suggested rhymes for the selected word.
+     */
+    LinearLayout rhymeBar;
+
+    /**
+     * Creates a <code>CommThread</code>, for communication with the
+     * backend server. Allows for pushing a poem to the server.
+     */
     String user;
 
 
  //   private Button publish;
     private CommThread ct;
 
-
+    /** Called on the creation of an <code>EditPoemActivity</code>.
+     * Initializes <code>EditText</code> fields for the poem's title and
+     * text and fills them with the values stored in the local database,
+     * then initializes the <code>HorizontalScrollView</code> and
+     * <code>LinearLayout</code> which will contain rhyme suggestions.
+     *
+     * @param savedInstanceState allows us to call Android's onCreate
+     *                           function in addition to ours.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
-
+        /**
+         * Initializes the <code>EditText</code> which holds the poem's
+         * title.
+         */
         editorTitle = (EditText) findViewById(R.id.editText2);
+        /**
+         * Initializes the <code>EditText</code> which holds the poem's
+         * text.
+         */
         editor = (EditText) findViewById(R.id.editText);
 
         user = LoginActivity.user;
@@ -143,17 +209,35 @@ implements CommInterface{
 
 
 
+        /**
+         * Initializes the <code>HorizontalScrollView</code> which
+         * holds the <code>LinearLayout</code> containing rhyme suggestions.
+         */
+        rhymeView = (HorizontalScrollView) findViewById(R.id.rhymeView);
+        /**
+         * Initializes the <code>LinearLayout</code> which contains rhyme
+         * suggestions.
+         */
+        rhymeBar = (LinearLayout)findViewById(R.id.rhymeLayout);
 
         /* This section was changed to intent.getLongExtra(..), but it created a bug where the
         * old text and title were not being displayed. These subsequent changes fixed that bug. */
+        /**
+         * Contains the intent that started this activity.
+         */
         Intent intent = getIntent();
+        /**
+         * Tries to find the uri for the current poem. If it exists,
+         * loads in the poem title and text using <code>action</code>.
+         * If it does not, creates default values for poem title and text,
+         * also using <code>action</code>.
+         */
         Uri uri = intent.getParcelableExtra(NotesProvider.CONTENT_ITEM_TYPE);
         if (uri == null) {
             action = Intent.ACTION_INSERT;
             setTitle(getString(R.string.new_note));
         } else {
             action = Intent.ACTION_EDIT;
-            //System.out.println("URI IS " + uri.toString());
             String path = uri.toString();
             String idStr = path.substring(path.lastIndexOf('/') + 1);
             noteFilter = DBOpenHelper.POEM_ID + "=" + idStr;
@@ -171,11 +255,26 @@ implements CommInterface{
 
 
     }
-    //AsyncTask to make api calls
 
     //AsnycTask to make call to Wordnik api
+
+    /**
+     * AsyncTask which makes a call to the Wordnik api, parses a received
+     * json, then fills <code>rhymeBar</code> with the resulting suggestions.
+     */
     class rhymeTask extends AsyncTask<String, Void, String> {
-        String rhymeList;
+        /**
+         * Holds the value for the json list resulting from the api call.
+         */
+        String jsonList;
+
+        /** Overrides Android's doInBackground for this async task.
+         * Makes an api call using <code>lookupWord</code> and reads json data
+         * into <code>jsonList</code>.
+         *
+         * @param params Parameters passed by the caller of this task.
+         * @return The populated json string from the api call.
+         */
         @Override
         protected String doInBackground(String... params) {
             try {
@@ -183,36 +282,51 @@ implements CommInterface{
                         + "/relatedWords?useCanonical=false&limitPerRelationshipType=10&api_key="
                         + "34b85c60a34e51f8ffa4a6f3bfe056794ea70f73f26e33123";
 
+                /**
+                 * url for the api call
+                 */
                 url = new URL(request);
+                /**
+                 * Opens a connection to read input, using <code>in</code>.
+                 */
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                /**
+                 * Reads json data from Wordnik.
+                 */
                 InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                rhymeList =  new Scanner(in, "UTF-8").useDelimiter("\\A").next();
+                jsonList =  new Scanner(in, "UTF-8").useDelimiter("\\A").next();
                 in.close();
-                return rhymeList;
-
-
-
+                return jsonList;
             }catch (Exception e) {
                 e.printStackTrace();
             }
-            return rhymeList;
+            return jsonList;
         }
+
+        /**
+         * Called when <code>doInBackground</code> returns. Parses the json
+         * from the api, then populates <code>rhymeBar</code> with its results.
+         * @param result Value returned from <code>doInBackground</code>, namely,
+         *               <code>jsonList</code>.
+         */
         @Override
         protected void onPostExecute(String result) {
-            parseJson(rhymeList);
-            /*for (int i = 0; i < spinnerList.length; i++){
-                Log.d("spinnerList", spinnerList[i]);
-            } */
-
-            ArrayAdapter<String> newSpinnerAdapter = new ArrayAdapter<String>
-                    (getApplicationContext(), android.R.layout.simple_spinner_item, spinnerList);
-            newSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            rhymeSpinner.setAdapter(newSpinnerAdapter);
-            firstSpinnerCall = true;
-
+            parseJson(jsonList);
+            refillRhymeBar();
         }
 
-        protected String[] parseJson(String strJson) {
+        /**
+         * Parses the json object from the api call, extracting the list of
+         * words under the "rhyme" relationship for <code>lookupWord</code>
+         * and stores them in <code>rhymeList</code>.
+         * @param strJson The json string to be parsed.
+         */
+        protected void parseJson(String strJson) {
+            /**
+             * Holds the list of rhyme suggestions contained in
+             * <code>strJson</code>. Originally holds the expression "No rhymes",
+             * in case <code>strJson</code> is empty.
+             */
             String[] returnArray = new String[1];
             returnArray[0] = "No rhymes";
             try {
@@ -234,28 +348,24 @@ implements CommInterface{
                 }
             } catch (JSONException e) {e.printStackTrace();}
 
-            //set spinnerList up for suggestions
-            int returnLen = returnArray.length + 1;
-            String[] tempArray = new String[returnLen];
-            tempArray[0] = "rhymes:";  //add title item to spinner
-            for (int i = 0; i < returnArray.length; i++) {
-                tempArray[i+1] = returnArray[i];
-            }
-            for (int i = 0; i < tempArray.length; i++) {
-                tempArray[i] = tempArray[i].toLowerCase();
-            }
-            spinnerList = tempArray;
-            return returnArray;
+            //set rhymeList up to contain the rhyming list
+            rhymeList = returnArray;
         }
 
     }
 
     //=======Timer handling for api calls!
+
+    /**
+     * Called whenever the app resumes. Re-schedules the <code>TimerTask</code>
+     * which checks every second to see whether the selected word has changed,
+     * and if so, creates a new <code>rhymeTask()</code>, getting rhyme suggestions
+     * for the new word.
+     */
     @Override
     public void onResume() {
         super.onResume();
-        firstSpinnerCall = true;
-        timerTest.schedule(new TimerTask() {
+        rhymeTime.schedule(new TimerTask() {
             @Override
             public void run() {
                 int startSelection = editor.getSelectionStart();
@@ -266,9 +376,11 @@ implements CommInterface{
                         selectLength = selectLength + currentWord.length() + 1;
                         if (selectLength > startSelection) {
                             currentWord = currentWord.replaceAll("[\",.;!?(){}\\<>%]", "");
-                            Log.d("currentWord", currentWord);
+                            //Log.d("currentWord", currentWord);
                             if (currentWord.intern() != lookupWord.intern()) {
                                 lookupWord = currentWord;
+
+                                refillRhymeBar();
                                 new rhymeTask().execute(); //Make api call!
                             }
                             break;
@@ -276,24 +388,39 @@ implements CommInterface{
                     }
                 }
             }
-        }, 0, 2000);
+        }, 0, 1000);
     }
+
+    /**
+     * If the activity is paused, cancels <code>rhymeTime</code>.
+     */
     @Override
     public void onPause() {
         super.onPause();
-        timerTest.cancel();
+        rhymeTime.cancel();
     }
+    /**
+     * If the activity is stopped, cancels <code>rhymeTime</code>.
+     */
     @Override
     public void onStop() {
         super.onStop();
-        timerTest.cancel();
+        rhymeTime.cancel();
     }
+    /**
+     * If the activity is destroyed, cancels <code>rhymeTime</code>.
+     */
     @Override
     public void onDestroy() {
         super.onDestroy();
-        timerTest.cancel();
+        rhymeTime.cancel();
     }
 
+    /**
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (action.equals(Intent.ACTION_EDIT)) {
@@ -376,19 +503,43 @@ implements CommInterface{
         setResult(RESULT_OK);
     }
 
+    private void refillRhymeBar() {
+        //First, clear all existing TextViews...
+        runOnUiThread(new Runnable() {
 
-    /*public void myClickHandler(View view) {
-        String stringUrl1 = getString(R.string.url_chunk_1);
-        String stringUrl2 = getString(R.string.url_chunk_1);
-        ConnectivityManager connMgr = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {
-            //fetch data
-        } else {
-            //display error
+            @Override
+            public void run() {
+                rhymeBar.removeAllViews();
+            }
+        });
+        //Then, add new TextViews to the bar, if appropriate
+        if (rhymeList != null){    //Check whether rhymeList has been initialized
+            for (int i = 0; i < rhymeList.length; i++) {
+                final TextView tv = new TextView(getApplicationContext());
+                tv.setText(rhymeList[i]);
+                Log.d("SETTEXT", tv.getText().toString());
+                assert rhymeBar != null;
+                tv.setTextColor(Color.BLACK);
+                tv.setPadding(20, 0, 0, 20);
+                final int finalI = i;
+                tv.setOnClickListener(new  View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String selectedText = rhymeList[finalI];
+                        replaceText(selectedText);
+                    }
+                });
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        rhymeBar.addView(tv);
+                    }
+                });
+
+            }
         }
-    }*/
+
+    }
 
     private void replaceText(String newText) {
         String punctuation;
@@ -430,7 +581,7 @@ implements CommInterface{
         if (indexVal != -1) return ".";
 
         indexVal = checkText.indexOf(",");
-        if (indexVal != -1) return ".";
+        if (indexVal != -1) return ",";
 
         indexVal = checkText.indexOf("!");
         if (indexVal != -1) return "!";

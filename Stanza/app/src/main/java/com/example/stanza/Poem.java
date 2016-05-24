@@ -5,23 +5,47 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.StringTokenizer;
 
-/**
- * Created by Brianna on 4/27/2016.
- */
-
 //adding to git
+
+/**
+ * A class for sending a poem over the network to the database
+ */
 public class Poem {
+    // state variables
+    /**
+     * A delimiter for seperating the title from the body of the poem in <code>Poem</code>
+     */
     static String fieldTerminator = "\001";
+    /**
+     * A string holding the title of the poem in <code>Poem</code>
+     */
     String title;
+    /**
+     * A string for holding the body text of the poem in <code>Poem</code>
+     */
     String text;
     String author;
 
+    //constructors
+
+    /**
+     * A constructor for making a poem given the title and text
+     * @param t1 the title of the poem
+     * @param t2 the text of the poem
+     */
+    public Poem(String t1, String t2){
     public Poem(String t1, String t2, String a){
         title = t1;
         text = t2;
         author = a;
     }
 
+
+    /**
+     * A constructor for contructing a poem given an inputstream. It is parsed in order to get the
+     *      poem title and text
+     * @param is the incoming poem title and text in a inpustream form
+     */
     public Poem(InputStream is){
         byte[] b = new byte[8192];
         try{
@@ -39,6 +63,12 @@ public class Poem {
         text = st.nextToken();
         author = st.nextToken();
     }
+
+    /**
+     * A constructor for creating a poem via inputstream parsing and given the poem length
+     * @param is the poem in an inputstream form, will be parsed
+     * @param poemLength the length of the incoming poem
+     */
 
     public Poem(InputStream is, int poemLength){
         byte[] b = new byte[8192];
@@ -70,7 +100,13 @@ public class Poem {
         author = st.nextToken();
     }
 
+    //methods
 
+    /**
+     * A method for sending a poem to the backend server
+     * @param os The output stream used to send the poem, contains the poems title and text separated
+     *           by delimiters
+     */
     public void send(OutputStream os){
         byte[] b = getBytes();
         int bytes_to_send = b.length;
@@ -94,10 +130,19 @@ public class Poem {
 
     }
 
+    /**
+     * A method for translating the poem title and text into a single string for debugging
+     * @return the poem title and text in a single string, with debugging text
+     */
     public String toString(){
         return "[title = " + title + ", text = " + text + ", author " + author + "]";
     }
 
+    /**
+     * A way to turn the poem into a byte array for conversion to a stream in preparation for seding
+     *      to a backend.
+     * @return the byte-ified string holding the poem's info.
+     */
     public byte[] getBytes(){
         String temp = title + fieldTerminator + text + fieldTerminator + author + fieldTerminator;
         byte [] bytes = temp.getBytes();

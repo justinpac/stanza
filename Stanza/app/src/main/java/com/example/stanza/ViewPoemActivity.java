@@ -7,14 +7,32 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-/**
- * Created by Brianna on 4/22/2016.
+/** A class for viewing poems without editing them.
+ * @author Brianna, 4/22/2016.
  */
 public class ViewPoemActivity extends AppCompatActivity{
 
     private TextView title, text, author;
     String poemText, poemTitle, poemAuthor, noteFilter;
+    // state variables
+    /**
+     * TextViews which hold the poem's title and text, respectively.
+     */
+    private TextView title, text;
+    /**
+     * Strings which hold the values of the poem's text and title, as well as
+     * <code>noteFilter</code>, which is used to pull the proper values
+     * from the database.
+     */
+    String poemText, poemTitle, noteFilter;
 
+    /**
+     * Called when the view is created. Populates the <code>title</code> and
+     * <code>text</code> <code>TextViews</code> with the proper poem's values,
+     * pulled from the local database.
+     * @param savedInstanceState Used to run Android's onCreate in addition
+     *                           to ours.
+     */
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewer);

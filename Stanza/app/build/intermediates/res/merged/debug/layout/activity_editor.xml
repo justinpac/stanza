@@ -18,7 +18,7 @@
         android:fillViewport="true"
         android:layout_alignParentTop="true"
         android:isScrollContainer="false"
-        android:layout_above="@+id/rhymeSpinner">
+        android:layout_above="@+id/rhymeView">
 
         <LinearLayout
 
@@ -50,13 +50,22 @@
 
     </ScrollView>
 
-    <Spinner
-        android:background="@color/spinner_bkg"
+    <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/rhymeSpinner"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_alignParentBottom="true" />
+        android:id="@+id/rhymeView"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:background="@color/spinner_bkg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/rhymeLayout"
+            android:gravity="center">
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
 
 </RelativeLayout>
