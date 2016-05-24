@@ -1,3 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
+        <dex dex="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.3.0_98415e0aa4dcc4c97df6fc0a257dddaa6f389314\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
+        <dex dex="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.3.0_dd4ce179fc0fcc652b43bc962ac1174857a8e4dc\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="82ce13fd19cdfde0e392f03c27edeba8d4333648">
+        <dex dex="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-23.3.0_153ad2e3c0f5c6b1b7f8e2d429f93bf23f897536\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="9da71882bf39452a7d707115c65002ba43638748">
+        <dex dex="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_a9a8959af282c91d43759307632faec3d96c4321\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="19f5977526348a4184ade2b4001cecfba243c658">
+        <dex dex="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_55122628a5f304d55f0aac2a03eaf41e2a5981f5\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\exploded-aar\com.android.support\design\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f0001e71cea6ae432a00021c6f727f5ef0f3d27e">
+        <dex dex="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-23.3.0_2973c3fe81240fc88c45dde8c439fe79324475d3\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\exploded-aar\com.github.markushi\circlebutton\1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ebe3b1f14fa79ba3cd1588acda4e6517ee9fe611">
+        <dex dex="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.github.markushi-circlebutton-1.1_840e952f1d83795cc001819d7b1ef37d37120123\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Justin\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.3.0\support-annotations-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
+        <dex dex="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.3.0_926a7b016d491dc0307bc54f96555af33401648e\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.3.0\jars\libs\internal_impl-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
+        <dex dex="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.3.0_a2822c2369805dcc784f8f5115f92bad564faf49\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
+        <dex dex="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.3.0_e30bdc5f2c86e0a57053e10130533be5af134d61\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
+        <dex dex="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.3.0_6ee48ceaf9c42c2de6c23b752b061e2ab57ee445\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.3.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="debf30ce0a7560396b6235edef77e447006454c2">
+        <dex dex="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-23.3.0_e04f45d7afa9aed9e85ba73bf73d4a41ea2f0dfc\classes.dex" />
+    </item>
+
+</items>
