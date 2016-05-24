@@ -116,6 +116,10 @@
         "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\abc_screen_simple.xml"
     },
     {
+        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_manage_friends.xml",
+        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\src\\main\\res\\layout\\activity_manage_friends.xml"
+    },
+    {
         "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_viewer.xml",
         "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\src\\main\\res\\layout\\activity_viewer.xml"
     },
@@ -226,5 +230,9 @@
     {
         "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines.xml",
         "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_template_lines.xml"
+    },
+    {
+        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\friend_list_item.xml",
+        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\src\\main\\res\\layout\\friend_list_item.xml"
     }
 ]

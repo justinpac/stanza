@@ -65,6 +65,8 @@ implements CommInterface{
     //String currentWord;             //Currently selected word
     Timer timerTest = new Timer();
 
+    String user;
+
 
  //   private Button publish;
     private CommThread ct;
@@ -78,7 +80,7 @@ implements CommInterface{
         editorTitle = (EditText) findViewById(R.id.editText2);
         editor = (EditText) findViewById(R.id.editText);
 
-
+        user = LoginActivity.user;
 
 
 
@@ -151,7 +153,7 @@ implements CommInterface{
             setTitle(getString(R.string.new_note));
         } else {
             action = Intent.ACTION_EDIT;
-            System.out.println("URI IS " + uri.toString());
+            //System.out.println("URI IS " + uri.toString());
             String path = uri.toString();
             String idStr = path.substring(path.lastIndexOf('/') + 1);
             noteFilter = DBOpenHelper.POEM_ID + "=" + idStr;
@@ -457,7 +459,7 @@ implements CommInterface{
 
     public void pushPoem(String poemTitle, String poemText) {
 
-        Poem poem = new Poem(poemTitle, poemText);
+        Poem poem = new Poem(poemTitle, poemText, user);
         ct = new CommThread(this, EditPoemActivity.this);
         ct.start();
         ct.addPoem(poem);

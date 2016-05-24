@@ -11,7 +11,8 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import java.util.MissingResourceException;
-import java.util.Vector; 
+import java.util.Vector;
+import java.util.StringTokenizer; 
 
 
 public class Backend {
@@ -90,50 +91,83 @@ class Worker implements Runnable{
 
 
 
-    public void pullPoems(){
+    public void pullPoems(int numFriends){
 	Poem ack = null;
-	String title, text; 
+	String title, text, author, temp_friend; 
 
 	System.out.println("pulling poems");
+	byte [] friend_list = new byte [8192];
+	String [] all_friends = new String[numFriends];  
+
+	
+	
 	    
 	try{
-	    ResultSet rs = pullFromDatabase();
-		  
+	    inStream.read(friend_list);
+	    String temp = new String(friend_list);
+	    StringTokenizer st = new StringTokenizer(temp, "\001", false);
+
+	    for(int i=0; i<numFriends; i++){
+		temp_friend = st.nextToken();
+		all_friends[i] = temp_friend;
+		System.out.println("current friend is " + temp_friend); 
+	    }
+
+
+	    System.out.println("successfully received all friends from client"); 
+	    
+	    ResultSet rs = pullFromDatabase(all_friends, numFriends);
+
+	    int numPoems = 0; 
 	    while(rs.next()){
 		title = rs.getString(2);
-		text = rs.getString(3); 
+		text = rs.getString(3);
+		author = rs.getString(5); 
 		//	System.out.println("title " + title);
 		
-		Poem p = new Poem(title, text);
+		Poem p = new Poem(title, text, author);
 		int poemLength = p.getBytes().length; 
-		Poem logistics = new Poem("poem_length", String.valueOf(poemLength)); 
+		Poem logistics = new Poem("poem_length", String.valueOf(poemLength), null); 
 		logistics.send(outStream); 
 		ack = new Poem(inStream); 
 		p.send(outStream);
 		ack = new Poem(inStream);
-		System.out.println(ack.title + " " + p.title); 
+		System.out.println(ack.title + " " + p.title);
+		numPoems++; 
 	    
 	    }
+
+	    if(numPoems < 10){
+		Poem endPoems = new Poem("END_PULL", null, null);
+		endPoems.send(outStream); 
+	    }
+	    
+	    
 	    rs.close();
 		 
 	}
 	catch(SQLException e){
 	    System.out.println("SQL Exception");
 	    System.out.println(e.getMessage());
-	}      
+	}
+	catch(IOException e){
+	    System.out.println(e.getMessage()); 
+	}
 	
     }
 
     
 
-    public void pushPoems(String title, String text){
+    public void pushPoems(String title, String text, String author){
 
 	System.out.println("save to database"); 
-       	storeToDatabase(title, text);
+       	storeToDatabase(title, text, author);
 	
-       	ack = new Poem(title, "Saved to server"); 
+       	ack = new Poem(title, "Saved to server", null); 
        	ack.send(outStream);
     }
+
+    
 
     public void run(){
    	
@@ -179,18 +213,21 @@ class Worker implements Runnable{
 	  
 		String title = p.title; 
 		String text = p.text;
+		String author = p.author; 
 		System.out.println(title);
 		System.out.println(text); 
 
-		if(title.equals("pull_poems"))
-		    pullPoems();
+		if(title.equals("pull_poems")){
+		    int numFriends = Integer.parseInt(text); 
+		    pullPoems(numFriends);
+		}
 		else{
 		    System.out.println("in push poem");
 		    System.out.println("p title " + p.title);
 		    p.send(outStream); 
 		    Poem read_in = new Poem(inStream, poemLength); 
 
-		    pushPoems(read_in.title, read_in.text); 
+		    pushPoems(read_in.title, read_in.text, read_in.author); 
 		}		
 	    } 		
 	    else{
@@ -241,6 +278,20 @@ class Worker implements Runnable{
 			verification.send(outStream); 
 		    }
 		}
+		else if(task.equals("ADD_FRIEND")){
+		    String resultFriend = addFriend(username);
+		    if(resultFriend.equals("VALID")){
+			System.out.println("friend exists");
+			verification = new Account("FRIEND_ACCEPTED", null, null);
+			verification.send(outStream); 
+			}
+		    else if(resultFriend.equals("INVALID")){
+			System.out.println("Friend Does Not Exist");
+			verification = new Account("Friend Does Not Exist", null, null); 
+			verification.send(outStream); 
+		    }
+			
+		}
 		else{
 		    //user is trying to login--is this a correct email/password combination?
 		    System.out.println("in authenticate account");
@@ -273,7 +324,7 @@ class Worker implements Runnable{
 		
 	    }
 	}catch(IOException e){
-		nack = new Poem(p.title, "Poem not saved."); 
+	    nack = new Poem(p.title, "Poem not saved.", null); 
 		nack.send(outStream);
 	    
 		System.err.println("Receiver failed.");
@@ -285,13 +336,14 @@ class Worker implements Runnable{
 
    
 
-     public ResultSet pullFromDatabase(){
+    public ResultSet pullFromDatabase(String[] friends, int numFriends){
 	ResourceBundle bundle;
 	Connection con;
 	Statement st;
-	ResultSet rs;
+	ResultSet rs; 
 
 	int count = 0;
+	String whereClause = "author  = '" + friends[0] + "'"; 
 	
 	try{
 	    Class.forName("org.postgresql.Driver"); 
@@ -300,7 +352,17 @@ class Worker implements Runnable{
 	    st = con.createStatement();
 	    st.executeUpdate("set search_path to poem");
 
-	    rs = st.executeQuery("SELECT * FROM poems ORDER BY poemCreated DESC LIMIT 10;");
+	    
+	    for(int i=1; i<numFriends; i++){
+		whereClause = whereClause + " OR author = '" + friends[i] + "'"; 
+	    }
+
+	    System.out.println("where clause: " + whereClause);
+	    String query = "SELECT * FROM poems WHERE " + whereClause + " ORDER BY poemCreated DESC LIMIT 10;"; 
+
+	    System.out.println("query: " + query); 
+	    rs = st.executeQuery(query);
+	 
 	    return rs; 
 	    
 	}
@@ -315,12 +377,13 @@ class Worker implements Runnable{
     }
 
 
+    
 
 
     
 
 
-    public void storeToDatabase(String title, String text){
+    public void storeToDatabase(String title, String text, String author){
 	ResourceBundle bundle;
 	Connection con;
 	Statement st;
@@ -337,6 +400,7 @@ class Worker implements Runnable{
 	    //assert--successful connection to the SQL database
 	    
 	    st = con.createStatement();
+	    
 	    //assert--sucessful creation of a statement
 
 	    st.executeUpdate("set search_path to poem");
@@ -347,10 +411,14 @@ class Worker implements Runnable{
 	    text = text.replace(";", ",");
 	    text = text.replace("\0", ""); 
 	    title = title.replace("'","''");
-	    
+
+	    rs = st.executeQuery("select * from accounts where account_email = '" + author + "';"); 
+	    while(rs.next()){
+		author = rs.getString(1); 
+	    }
 	    	    
-	    st.executeUpdate("INSERT INTO poems (poemtitle, poemtext) VALUES('" +
-	        title + "', '" + text + "');");
+	    st.executeUpdate("INSERT INTO poems (poemtitle, poemtext, author) VALUES('" +
+	        title + "', '" + text + "', '" + author + "');");
 	    System.out.println("Inserted into database");
 
 	    st.close(); 
@@ -504,13 +572,7 @@ public void storeAccountToDatabase(String username, String email, String passw){
 
 	    rs = st.executeQuery("select * from accounts where account_email = '" + email + "' OR account_password = '" + passw + "';"); 
 	    
-	    //   rs = st.executeQuery("SELECT * FROM accounts WHERE account_email LIKE " +  email + " OR account_password LIKE " + passw + ";");
-
-	
-		//insert logic of what whether or not we found the account
-
-
-
+	    
 	     while(rs.next()){
 		String name_result = rs.getString(1);
 		String email_result = rs.getString(2);
@@ -551,6 +613,68 @@ public void storeAccountToDatabase(String username, String email, String passw){
 	return "CANCEL"; 
     }
 
+
+    public String addFriend(String username){
+
+	//check if friend exists in the database
+
+       	ResourceBundle bundle;
+	Connection con;
+	Statement st;
+	ResultSet rs;
+
+	int count = 0;
+
+	String result = "CANCEL"; 
+
+	
+	try{
+
+	    Class.forName("org.postgresql.Driver"); 
+	    con = DriverManager.getConnection(url, user, password);
+	    System.out.println("JDBC Connection Successful");
+	    //assert--successful connection to the SQL database
+	    
+	    st = con.createStatement();
+	    //assert--sucessful creation of a statement
+
+	    st.executeUpdate("set search_path to poem");	   
+
+	    rs = st.executeQuery("select * from accounts;"); 
+	    
+	    
+	     while(rs.next()){
+		String name_result = rs.getString(1);
+
+		//	System.out.println("in rs"); 
+
+
+		if(name_result.equals(username)){
+		    result = "VALID";
+		    break; 
+		}
+		else
+		    result = "INVALID"; 
+       			   
+	    }
+
+	    st.close();
+	    rs.close(); 
+
+	    return result; 
+			   
+	    
+	}
+	catch(NullPointerException e){System.out.println(e.getMessage()); }
+	catch(MissingResourceException e){System.out.println(e.getMessage());}
+	catch (ClassNotFoundException e){System.out.println("Class not found"); e.getMessage();}
+	catch (SQLException e){
+	    System.out.println("SQL Exception");
+	    System.out.println(e.getMessage());}
+
+	return "INVALID"; 
+    
+    }
 
 
 

@@ -12,8 +12,8 @@ import android.widget.TextView;
  */
 public class ViewPoemActivity extends AppCompatActivity{
 
-    private TextView title, text;
-    String poemText, poemTitle, noteFilter;
+    private TextView title, text, author;
+    String poemText, poemTitle, poemAuthor, noteFilter;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -25,6 +25,7 @@ public class ViewPoemActivity extends AppCompatActivity{
 
         title = (TextView) findViewById(R.id.friend_poem_title);
         text = (TextView) findViewById(R.id.friend_poem_text);
+        author = (TextView) findViewById(R.id.friend_poem_author);
 
 
         String path = uri.toString();
@@ -39,6 +40,7 @@ public class ViewPoemActivity extends AppCompatActivity{
             cursor.moveToFirst();
             poemText = cursor.getString(cursor.getColumnIndex(DBOpenHelper.POEM_TEXT));
             poemTitle = cursor.getString(cursor.getColumnIndex(DBOpenHelper.POEM_TITLE));
+            poemAuthor = cursor.getString(cursor.getColumnIndex(DBOpenHelper.CREATOR));
         }catch(RuntimeException e){
             e.printStackTrace();
         }
@@ -46,6 +48,8 @@ public class ViewPoemActivity extends AppCompatActivity{
         title.requestFocus();
         text.setText(poemText);
         text.requestFocus();
+        author.setText(poemAuthor);
+        author.requestFocus();
     }
 
 

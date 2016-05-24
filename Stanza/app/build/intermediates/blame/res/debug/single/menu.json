@@ -1,5 +1,13 @@
 [
     {
+        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_manage_friends.xml",
+        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\src\\main\\res\\menu\\menu_manage_friends.xml"
+    },
+    {
+        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_friendboardfragment.xml",
+        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\src\\main\\res\\menu\\menu_friendboardfragment.xml"
+    },
+    {
         "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_editor.xml",
         "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\src\\main\\res\\menu\\menu_editor.xml"
     },

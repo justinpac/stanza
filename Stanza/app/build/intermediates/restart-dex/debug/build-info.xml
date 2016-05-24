@@ -4,29 +4,34 @@
     api-level="23"
     density="560dpi"
     format="7"
-    timestamp="522365406566773" >
+    timestamp="521785773022755" >
 
     <task
         name="javac"
-        duration="607" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="908" />
+        duration="0" />
     <task
         name="verifier"
-        duration="314" />
+        duration="0" />
 
     <artifact
-        location="C:\Users\Justin\MCA\poemProj\Stanza\app\build\outputs\apk\app-debug.apk"
-        type="MAIN" />
+        location="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\res\resources-debug.ap_"
+        type="RESOURCES" />
 
-    <build timestamp="522365406566773" >
+    <build timestamp="521074279684794" >
         <artifact
             location="C:\Users\Justin\MCA\poemProj\Stanza\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
+    </build>
+    <build timestamp="521785773022755" >
+        <artifact
+            location="C:\Users\Justin\MCA\poemProj\Stanza\app\build\intermediates\res\resources-debug.ap_"
+            type="RESOURCES" />
     </build>
 
 </instant-run>

@@ -13,15 +13,19 @@ import java.net.Socket;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.Queue;
+import java.util.Vector;
 
 /**
  * Created by Brianna on 4/27/2016.
  */
 public class CommThread extends Thread
 implements Runnable{
-    String host = "rns202-7.cs.stolaf.edu";
+    String host = "rns202-13.cs.stolaf.edu";
+    int port = 28414;
+
 
     Queue<Poem> poemQ2 = new LinkedList<Poem>();
+    Queue<String> friendQ = new LinkedList<String>();
 
     boolean done = false;
     boolean done2 = false;
@@ -31,10 +35,11 @@ implements Runnable{
     InputStream inputStream;
     OutputStream outputStream;
 
-    int port = 28411;
+    int port = 28414;
 
     Queue<Poem> poemQ = new LinkedList<Poem>();
     int task_id = 0;
+    int numFriends = 0;
 
 
     CommThread(CommInterface ci, EditPoemActivity epa){
@@ -60,13 +65,22 @@ implements Runnable{
         this.notify();
     }
 
+    public synchronized void addFriend(Vector<String> friends){
+        System.out.println("sending friends to backend");
+        for(int i=0; i<friends.size(); i++){
+            friendQ.add(friends.elementAt(i));
+        }
+        numFriends = friends.size();
+        this.notify();
+    }
+
     void processOnePoem(){
         System.out.println("process poem");
         Poem poem = poemQ.remove();
         Poem receive = null;
         try {
             System.out.println(poem.getBytes().length);
-            Poem logistics = new Poem("poem_length", String.valueOf(poem.getBytes().length));
+            Poem logistics = new Poem("poem_length", String.valueOf(poem.getBytes().length), null);
             logistics.send(outputStream);
             receive = new Poem(inputStream);
             poem.send(outputStream);
@@ -99,12 +113,13 @@ implements Runnable{
         System.out.println("process poem from backend method");
         Poem receive = null;
         Poem logistics = null;
-        Poem ack = new Poem("received_poem", "");
+        Poem ack = new Poem("received_poem", "", null);
 
         try {
-                Poem request = new Poem("pull_poems", "");
+                Poem request = new Poem("pull_poems", Integer.toString(numFriends), null);
                 request.send(outputStream);
                 System.out.println("sent: " + request.title);
+                sendFriendList();
 
                 for (int i = 0; i < 10; i++) {
                     System.out.println("getting new poem");
@@ -112,6 +127,8 @@ implements Runnable{
                     ack.send(outputStream);
                     int poemLength = Integer.parseInt((logistics.text));
                     receive = new Poem(inputStream, poemLength);
+                    if(receive.title.equals("END_PULL"))
+                        break;
                     poemQ2.add(receive);
                     ack.send(outputStream);
                     System.out.println("receive poem number " + (i+1) + ": " + receive.title);
@@ -124,6 +141,22 @@ implements Runnable{
     }
 
 
+    public void sendFriendList(){
+        String all_friends = "";
+        while(!friendQ.isEmpty()){
+            String friend = friendQ.remove();
+            System.out.println("next friend is " + friend);
+            all_friends = all_friends + friend + "\001";
+        }
+        byte [] friend_bytes = all_friends.getBytes();
+        try {
+            outputStream.write(friend_bytes);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
 
     public synchronized void storeToLocalDatabase(Poem poem) {
 
@@ -132,11 +165,12 @@ implements Runnable{
         else{
             String text = poem.text;
             String title = poem.title;
-            System.out.println("Store to database: " + title);
+            String author = poem.author;
+            System.out.println("Store to database: " + author);
             ContentValues values = new ContentValues();
             values.put(DBOpenHelper.POEM_TEXT, text);
             values.put(DBOpenHelper.POEM_TITLE, title);
-            values.put(DBOpenHelper.CREATOR, "friend");
+            values.put(DBOpenHelper.CREATOR, author);
 
             friendBoardFragment.getContext().getContentResolver().insert(NotesProvider.CONTENT_URI, values);
         }
@@ -174,7 +208,7 @@ implements Runnable{
                 System.out.println("CommThread terminating");
             } else if (task_id == 2) { //do stuff for friendboard
                 System.out.println("about to save poems");
-                String filter = DBOpenHelper.CREATOR + "='friend'";
+                String filter = DBOpenHelper.CREATOR + "!='self'";
                 friendBoardFragment.getActivity().getContentResolver().delete(NotesProvider.CONTENT_URI, filter, null);
                 while (!done2) {
                     processOnePoem2();
