@@ -34,7 +34,13 @@ public class ViewPoemActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewer);
+        /**
+         * Holds the intent that started this activity.
+         */
         Intent intent = getIntent();
+        /**
+         * Sets up the uri for this activity to access the local database.
+         */
         Uri uri = intent.getParcelableExtra(NotesProvider.CONTENT_ITEM_TYPE);
        // long id = intent.getLongExtra(NotesProvider.CONTENT_ITEM_TYPE, -1);
 
@@ -42,13 +48,21 @@ public class ViewPoemActivity extends AppCompatActivity{
         title = (TextView) findViewById(R.id.friend_poem_title);
         text = (TextView) findViewById(R.id.friend_poem_text);
 
-
+        /**
+         * Holds the string value of the uri
+         */
         String path = uri.toString();
         String idStr = path.substring(path.lastIndexOf('/') + 1);
         noteFilter = DBOpenHelper.POEM_ID + "=" + idStr;
 
+        /**
+         * Sorts the existing poems by "friend"; only shows friend poems
+         */
         String sortOrder = "friend";
 
+        /**
+         * Queries the local database for the proper poem, matched by id
+         */
         Cursor cursor = getContentResolver().query(uri, DBOpenHelper.ALL_COLUMNS
                 , noteFilter, null, sortOrder);
         try {
