@@ -12,8 +12,6 @@ import java.util.Queue;
  * This class is used to communicate with the backend server regarding accounts.
  * Namely, it is used in conjunction with the LoginActivity, SignupActivity, and
  * FriendBoardFragment to create accounts, authenticate accounts, and add friends.
- *
- * @author Brianna
  */
 public class AccountCommThread extends Thread
         implements Runnable{

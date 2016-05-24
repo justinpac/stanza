@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 /**
  * A class to allow the user to login to the Stanza ap.
- * @author Brianna
  */
 public class LoginActivity extends AppCompatActivity
 implements AccountCommInterface{

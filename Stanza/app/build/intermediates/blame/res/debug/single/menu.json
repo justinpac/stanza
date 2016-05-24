@@ -1,22 +1,22 @@
 [
     {
-        "merged": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_manage_friends.xml",
-        "source": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\src\\main\\res\\menu\\menu_manage_friends.xml"
+        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_manage_friends.xml",
+        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\src\\main\\res\\menu\\menu_manage_friends.xml"
     },
     {
-        "merged": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
-        "source": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\src\\main\\res\\menu\\menu_main.xml"
+        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_friendboardfragment.xml",
+        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\src\\main\\res\\menu\\menu_friendboardfragment.xml"
     },
     {
-        "merged": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_friendboardfragment.xml",
-        "source": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\src\\main\\res\\menu\\menu_friendboardfragment.xml"
+        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_editor.xml",
+        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\src\\main\\res\\menu\\menu_editor.xml"
     },
     {
-        "merged": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_editor.xml",
-        "source": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\src\\main\\res\\menu\\menu_editor.xml"
+        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_userpoemfragment.xml",
+        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\src\\main\\res\\menu\\menu_userpoemfragment.xml"
     },
     {
-        "merged": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_userpoemfragment.xml",
-        "source": "C:\\Users\\theamazingandroman\\poem\\Stanza\\app\\src\\main\\res\\menu\\menu_userpoemfragment.xml"
+        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
+        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\src\\main\\res\\menu\\menu_main.xml"
     }
 ]

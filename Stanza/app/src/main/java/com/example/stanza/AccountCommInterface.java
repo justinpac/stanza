@@ -1,7 +1,6 @@
 package com.example.stanza;
 
 /** Interface for the sign-in page.
- * @author Brianna, 5/12/2016
  */
 
 

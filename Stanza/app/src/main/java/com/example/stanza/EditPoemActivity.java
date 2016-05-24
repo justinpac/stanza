@@ -31,7 +31,6 @@ import java.util.TimerTask;
 
 /** A class for editing personal poems, with added rhyming functionality
  * from the Wordnik api.
- * @author A. Altmaier and A. Kilbo, 4/2016
  */
 
 public class EditPoemActivity extends AppCompatActivity

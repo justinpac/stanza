@@ -1,47 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="x86"
+    abi="armeabi-v7a,armeabi"
     api-level="23"
     density="560dpi"
     format="7"
-    timestamp="116359946487519"
-    verifier="COMPATIBLE" >
+    timestamp="538349482479957" >
 
     <task
         name="javac"
-        duration="1454" />
+        duration="738" />
     <task
         name="instant-run-dex"
-        duration="597" />
+        duration="0" />
     <task
         name="instant-run-transform"
-        duration="18" />
+        duration="712" />
     <task
         name="verifier"
-        duration="18" />
+        duration="216" />
 
     <artifact
-        location="C:\Users\Brianna\AndroidStudioProjects\final_project\Stanza\app\build\intermediates\reload-dex\debug\classes.dex"
-        type="RELOAD_DEX" />
+        location="C:\Users\Justin\MCA\poemProj\Stanza\app\build\outputs\apk\app-debug.apk"
+        type="MAIN" />
 
-    <build timestamp="111702693171160" >
+    <build timestamp="538349482479957" >
         <artifact
-            location="C:\Users\Brianna\AndroidStudioProjects\final_project\Stanza\app\build\outputs\apk\app-debug.apk"
+            location="C:\Users\Justin\MCA\poemProj\Stanza\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
-    </build>
-    <build
-        timestamp="113149982873269"
-        verifier="FIELD_REMOVED" >
-        <artifact
-            location="C:\Users\Brianna\AndroidStudioProjects\final_project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
-            type="DEX" />
-    </build>
-    <build
-        timestamp="116359946487519"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="C:\Users\Brianna\AndroidStudioProjects\final_project\Stanza\app\build\intermediates\reload-dex\debug\classes.dex"
-            type="RELOAD_DEX" />
     </build>
 
 </instant-run>

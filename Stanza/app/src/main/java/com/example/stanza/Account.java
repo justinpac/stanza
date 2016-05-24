@@ -9,7 +9,6 @@ import java.util.StringTokenizer;
 
 /**
  * This class authenticates the user
- * Created by Brianna on 5/12/2016.
  */
 public class Account {
     // class variables

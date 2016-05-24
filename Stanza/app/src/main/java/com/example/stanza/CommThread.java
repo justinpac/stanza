@@ -15,8 +15,6 @@ import java.util.Vector;
  * This class is used to communicate with the backend server regarding poems.
  * Namely, it is used in conjunction with the EditPoemActivity and the FriendBoardFragement to
  * save poems to the bckend server as well as pull friend poems from the backend server.
- *
- * @author Brianna
  */
 public class CommThread extends Thread
         implements Runnable{

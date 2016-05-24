@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 /** A class for viewing poems without editing them.
- * @author Brianna, 4/22/2016.
  */
 public class ViewPoemActivity extends AppCompatActivity{
 

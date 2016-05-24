@@ -14,7 +14,7 @@
     <application
         android:name="com.android.tools.fd.runtime.BootstrapApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/file_document_box"
         android:label="Stanza"
         android:theme="@style/AppTheme" >
         <activity

@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 /**
  * A class to allow a user to create an account for the Stanza app.
- * @author Brianna Cunniff
  */
 
 public class SignupActivity extends AppCompatActivity
