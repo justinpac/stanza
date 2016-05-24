@@ -2,54 +2,46 @@
 <instant-run
     abi="x86"
     api-level="23"
-    density="xxhdpi"
+    density="560dpi"
     format="7"
-    timestamp="165451939433472" >
+    timestamp="116359946487519"
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
-        duration="690" />
+        duration="1454" />
     <task
         name="instant-run-dex"
-        duration="0" />
+        duration="597" />
     <task
         name="instant-run-transform"
-        duration="178" />
+        duration="18" />
     <task
         name="verifier"
-        duration="24" />
+        duration="18" />
 
     <artifact
-        location="C:\Users\theamazingandroman\poem\Stanza\app\build\intermediates\res\resources-debug.ap_"
-        type="RESOURCES" />
-    <artifact
-        location="C:\Users\theamazingandroman\poem\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_2\classes.dex"
-        type="DEX" />
-    <artifact
-        location="C:\Users\theamazingandroman\poem\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_0\classes.dex"
-        type="DEX" />
-    <artifact
-        location="C:\Users\theamazingandroman\poem\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
-        type="DEX" />
+        location="C:\Users\Brianna\AndroidStudioProjects\final_project\Stanza\app\build\intermediates\reload-dex\debug\classes.dex"
+        type="RELOAD_DEX" />
 
-    <build timestamp="164922648033143" >
+    <build timestamp="111702693171160" >
         <artifact
-            location="C:\Users\theamazingandroman\poem\Stanza\app\build\outputs\apk\app-debug.apk"
+            location="C:\Users\Brianna\AndroidStudioProjects\final_project\Stanza\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
     </build>
-    <build timestamp="165451939433472" >
+    <build
+        timestamp="113149982873269"
+        verifier="FIELD_REMOVED" >
         <artifact
-            location="C:\Users\theamazingandroman\poem\Stanza\app\build\intermediates\res\resources-debug.ap_"
-            type="RESOURCES" />
-        <artifact
-            location="C:\Users\theamazingandroman\poem\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_2\classes.dex"
+            location="C:\Users\Brianna\AndroidStudioProjects\final_project\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
             type="DEX" />
+    </build>
+    <build
+        timestamp="116359946487519"
+        verifier="COMPATIBLE" >
         <artifact
-            location="C:\Users\theamazingandroman\poem\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_0\classes.dex"
-            type="DEX" />
-        <artifact
-            location="C:\Users\theamazingandroman\poem\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_8\classes.dex"
-            type="DEX" />
+            location="C:\Users\Brianna\AndroidStudioProjects\final_project\Stanza\app\build\intermediates\reload-dex\debug\classes.dex"
+            type="RELOAD_DEX" />
     </build>
 
 </instant-run>
