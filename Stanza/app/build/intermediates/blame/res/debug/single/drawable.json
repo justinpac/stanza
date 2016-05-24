@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_textfield_search_material.xml",
-        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable\\abc_textfield_search_material.xml"
-    },
-    {
         "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_dark.xml",
         "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable\\abc_list_selector_holo_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_textfield_search_material.xml",
+        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\drawable\\abc_textfield_search_material.xml"
     },
     {
         "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_light.xml",
