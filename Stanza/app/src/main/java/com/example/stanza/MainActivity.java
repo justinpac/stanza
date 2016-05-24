@@ -14,7 +14,10 @@ import java.util.Vector;
 
 public class MainActivity extends AppCompatActivity
 {
-    
+    /**
+     * The layout manager that allows the user to flip left and right between the fragments
+     * for each tab in the dashboard page.
+     */
     ViewPager viewPager;
     Toolbar toolbar;
     FloatingActionButton fab;
@@ -65,6 +68,7 @@ public class MainActivity extends AppCompatActivity
 
             }
 
+
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
 
@@ -78,12 +82,18 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    /**
+     * Initialize the contents of the Activity's standard options menu.
+     * @param menu The options menu in which items are placed
+     * @return True for the menu to be displayed, false for the menu to not be shown.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
