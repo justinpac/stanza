@@ -1,3 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\theamazingandroman\poem\Stanza\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="9ecd642cb1f8e45d6df53769ce9754ca16220d2b">
+        <dex dex="C:\Users\theamazingandroman\poem\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_04dd119f55fca9bd6be9bc152eec4c5c3122d1f4\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\theamazingandroman\poem\Stanza\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="0d3180663130cb3fc38b802df6e26556b1c8b4d9">
+        <dex dex="C:\Users\theamazingandroman\poem\Stanza\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_74015ef88e76b48e4af0dd60b9db698217f52c3e\classes.dex" />
+    </item>
+
+</items>
