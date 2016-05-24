@@ -19,6 +19,9 @@ public class MainActivity extends AppCompatActivity
      * for each tab in the dashboard page.
      */
     ViewPager viewPager;
+    /**
+     * A toolbar to appear at the top of the activity UI
+     */
     Toolbar toolbar;
     FloatingActionButton fab;
 
