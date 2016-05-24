@@ -16,9 +16,9 @@ import java.util.Queue;
  * @author Brianna
  */
 public class AccountCommThread extends Thread
-implements Runnable{
+        implements Runnable{
 
-    //state variables
+    //class variables
     /**
      * Code to signify the task is creating an account.
      */
@@ -45,7 +45,7 @@ implements Runnable{
     private static final String addFriendManage = "ADD_FRIEND_MANAGER";
 
 
-    //class variables
+    //state variables
 
     /**
      * The port that is used to connect to the backend server
@@ -83,34 +83,85 @@ implements Runnable{
      * with LoginActivity.
      */
     LoginActivity loginActivity;
+
+    /**
+     * An instance of FriendBoardFragment to perform backend tasks in conjunction
+     * with LoginActivity.
+     */
     FriendBoardFragment friendBoardFragment;
+
+    /**
+     * An instance of ManageFriendsActivity to perform backend tasks in conjunction
+     * with LoginActivity.
+     */
     ManageFriendsActivity manageFriendsActivity;
 
+    /**
+     * Code that designates which task is being performed by the AccountCommThread
+     */
     String task_id;
+
+    /**
+     * Identifies the error message if the username/email already existed or it was not a valid
+     * email/password combination used in LoginActivity.
+     */
     String error_message;
 
+    /**
+     * Determines when the thread should stop running.
+     */
     boolean done = false;
 
+    /**
+     * Holds the account that is being created, being authenticated, or being added as a friend.
+     */
     Queue<Account> accountQueue = new LinkedList<Account>();
 
 
+    //constructors
+
+    /**
+     * Creates an instance of AccountCommThread to enable communication between the backend server
+     * and SignupActivity.
+     * @param aci An instance of AccountCommInterface
+     * @param sa An instance of SignupActivity
+     */
     AccountCommThread(AccountCommInterface aci, SignupActivity sa){
         accountCommInterface = aci;
         signupActivity = sa;
         task_id = createAccount;
     }
 
+    /**
+     * Creates an instance of AccountCommThread to enable communication between the backend server
+     * and LoginActivity.
+     * @param aci An instance of AccountCommInterface.
+     * @param la An instance of LoginActivity.
+     */
     AccountCommThread(AccountCommInterface aci, LoginActivity la){
         accountCommInterface = aci;
         loginActivity = la;
         task_id = accessAccount;
     }
 
+    /**
+     * Creates an instance of AccountCommThread to enable communication between the backend server
+     * and FriendBoardFragment.
+     * @param aci An instance of AccountCommInterface.
+     * @param fb An instance of FriendBoardFragment.
+     */
     AccountCommThread(AccountCommInterface aci, FriendBoardFragment fb){
         accountCommInterface = aci;
         friendBoardFragment = fb;
         task_id = addFriend;
     }
+
+    /**
+     * Creates an instance of AccountCommThread to enable communication between the backend server
+     * and ManagerFriendsAcivity.
+     * @param aci An instance of AccountCommInterface
+     * @param mfa An instance of ManageFriendsActivity
+     */
     AccountCommThread(AccountCommInterface aci, ManageFriendsActivity mfa){
         accountCommInterface = aci;
         manageFriendsActivity = mfa;
@@ -118,6 +169,15 @@ implements Runnable{
     }
 
 
+
+    //methods
+
+    /**
+     * Adds an account to the account queue. Notifies the thread that it is time to work.
+     * @param u The username.
+     * @param e The email.
+     * @param p The password.
+     */
     public synchronized void thisAccount(String u, String e, String p){
         Account account = new Account(u, e, p);
         accountQueue.add(account);
@@ -127,6 +187,13 @@ implements Runnable{
         System.out.println("account in system");
     }
 
+    /**
+     * Sends the account information to the backend server and receives verification of whether
+     * or nothis account exists. Called as part of the login process.
+     * @param account The account that is being verified. Specifically, does this email/password
+     *                combination exist.
+     * @return True/false depending on whether or not the account exists.
+     */
     public boolean verifyAccount(Account account){
         Account code = new Account(verifyAccount, null, null);
         Account verification = null;
@@ -151,6 +218,12 @@ implements Runnable{
         return false;
     }
 
+    /**
+     * Sends account information to the backend server (containing the username of the friend)
+     * and receives verification of whether or not the friend's account exists.
+     * @param account An instance of Account containing the desired friend's username.
+     * @return True/false depending on whether the friend's account exists.
+     */
     public boolean addFriend(Account account){
         Account code = new Account(addFriend, null, null);
         Account verification = null;
@@ -175,6 +248,14 @@ implements Runnable{
         return false;
     }
 
+    /**
+     * Sends an account to the backend and receives verification of whether or not the account
+     * already exists. Used as part of the signup process.
+     * @param account An instance of account containing the account information for that account
+     *                which the user is trying to create.
+     * @return True if the user can create the account with that username/email or false if the
+     * account is invalid (the username or email has already been taken).
+     */
     public boolean accountExists(Account account){
         Account code = new Account(createAccount, null, null);
         Account verification = null;
@@ -205,32 +286,34 @@ implements Runnable{
 
     }
 
-
+    /**
+     * Takes care of all communication with the backend when there is an account in the accounts
+     * queue. Utitlizes the task_id that has been defined in the constructors to determine which
+     * task is currently being handled--creating an account, authenticating an account, or
+     * adding a friend. Sends a message to the backend telling it which task is being performed.
+     * Then sends the account information to the backend. Finally, it receives a true/false
+     * validation regarding the success of the task and informs the proper activity.
+     */
     public void run() {
         boolean valid;
-        System.out.println("in run");
 
         try {
             Socket socket = new Socket(host, port);
             inputStream = socket.getInputStream();
             outputStream = socket.getOutputStream();
-            System.out.println("Set up socket");
-
-            System.out.println("sockets set up");
-
             while(!done) {
-              //  System.out.println("hi");
-
-
+                //do work when there is an account in the queue
                 while (!accountQueue.isEmpty()) {
+                    //tell the backend we're working with accounts and not poems
                     String ACCOUNTS = "ACCOUNTS";
                     byte[] b = ACCOUNTS.getBytes();
                     outputStream.write(b);
                     Account account = accountQueue.remove();
-                    System.out.println("action is true");
+
+                    //CREATING AN ACCOUNT
                     if (task_id.equals(createAccount)) {
-                        System.out.println("create account");
                         valid = accountExists(account);
+                        //if successful, inform SignupActivity and allow the user into the app
                         if (valid) {
                             signupActivity.runOnUiThread(new Runnable() {
                                 @Override
@@ -239,9 +322,9 @@ implements Runnable{
                                 }
                             });
                             done = true;
-
-                        } else {
-                            //account already exists --username already used or email already used
+                        }
+                        //if not successful, inform SignupActivity what the error was
+                        else {
                             signupActivity.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -249,10 +332,13 @@ implements Runnable{
                                 }
                             });
                             done = true;
-
                         }
-                    } else if (task_id.equals(accessAccount)) {
+                    }
+
+                    //AUTHENTICATING AN ACCOUNT
+                    else if (task_id.equals(accessAccount)) {
                         valid = verifyAccount(account);
+                        //if successful, inform LoginActivity and let the user into the app
                         if (valid) {
                             loginActivity.runOnUiThread(new Runnable() {
                                 @Override
@@ -261,9 +347,9 @@ implements Runnable{
                                 }
                             });
                             done = true;
-
-                        } else {
-                            //account does not exist
+                        }
+                        //if not successful, inform LoginActivity what the error was
+                        else {
                             loginActivity.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -271,14 +357,15 @@ implements Runnable{
                                 }
                             });
                             done = true;
-
                         }
                     }
+
+                    //ADDING A FRIEND
                     else if(task_id.equals(addFriend)){
                         valid = addFriend(account);
+                        //if successful, inform FriendBoardFragment so the friend can be added to the local database
                         if(valid){
                             final String name = account.username;
-                            //friend exists; add friend to friend list
                             friendBoardFragment.getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -287,8 +374,8 @@ implements Runnable{
                             });
                             done = true;
                         }
+                        //if not successful, inform FriendBoardFragment that friend doesn't exist
                         else{
-                            //friend doesn't exist; error message
                             friendBoardFragment.getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -297,11 +384,14 @@ implements Runnable{
                             });
                             done = true;
                         }
-                    }else if(task_id.equals(addFriendManage)){
+                    }
+
+                    //ADDING A FRIEND VIA THE FRIEND_MANAGER_ACTIVITY
+                    else if(task_id.equals(addFriendManage)){
                         valid = addFriend(account);
+                        //if successful, inform FriendManagerActivity so that friend can be added to local database
                         if(valid){
                             final String name = account.username;
-                            //friend exists; add friend to friend list
                             manageFriendsActivity.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -310,8 +400,8 @@ implements Runnable{
                             });
                             done = true;
                         }
+                        //if not successful, inform FriendManager that friend does not exist
                         else{
-                            //friend doesn't exist; error message
                             manageFriendsActivity.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -323,6 +413,7 @@ implements Runnable{
                     }
                 }
 
+                //if there is not yet an account added to the queue, wait for the account
                 try {
                     synchronized (this) {
                         while (accountQueue.isEmpty() && !done)
@@ -331,9 +422,11 @@ implements Runnable{
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
             }
-        } catch (ConnectException e) {
+        }
+
+        //display server disconnected messages on UI thread if the server is disconnected
+        catch (ConnectException e) {
             e.printStackTrace();
             if (task_id.equals(createAccount)) {
                 signupActivity.runOnUiThread(new Runnable() {
@@ -357,7 +450,4 @@ implements Runnable{
         }
 
     }
-
-
-
 }

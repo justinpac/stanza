@@ -4,28 +4,51 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.StringTokenizer;
 
-/**
- * Created by Brianna on 4/27/2016.
- */
-
 //adding to git
+
+/**
+ * A class for sending a poem over the network to the database
+ */
 public class Poem {
+    // state variables
+    /**
+     * A delimiter for seperating the title from the body of the poem in <code>Poem</code>
+     */
     static String fieldTerminator = "\001";
+    /**
+     * A string holding the title of the poem in <code>Poem</code>
+     */
     String title;
+    /**
+     * A string for holding the body text of the poem in <code>Poem</code>
+     */
     String text;
-    String author; 
+    String author;
+
+    //constructors
+
+    /**
+     * A constructor for making a poem given the title and text
+     * @param t1 the title of the poem
+     * @param t2 the text of the poem
+     */
 
     public Poem(String t1, String t2, String a){
         title = t1;
         text = t2;
-	author = a; 
+        author = a;
     }
 
+
+    /**
+     * A constructor for contructing a poem given an inputstream. It is parsed in order to get the
+     *      poem title and text
+     * @param is the incoming poem title and text in a inpustream form
+     */
     public Poem(InputStream is){
         byte[] b = new byte[8192];
         try{
             is.read(b);
-	    System.out.println("after read in"); 
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -35,13 +58,18 @@ public class Poem {
 
        // System.out.println("IN CONSTRUCTOR\n" + temp);
         title = st.nextToken();
-        //  System.out.println("in constructor title is " + title);
+     //   System.out.println("in constructor title is " + title);
         text = st.nextToken();
-	author = st.nextToken(); 
+        author = st.nextToken();
     }
 
+    /**
+     * A constructor for creating a poem via inputstream parsing and given the poem length
+     * @param is the poem in an inputstream form, will be parsed
+     * @param poemLength the length of the incoming poem
+     */
+
     public Poem(InputStream is, int poemLength){
-	System.out.println("length is " + poemLength); 
         byte[] b = new byte[8192];
         int bytes_read = 0;
         int bytes_not_yet_read = poemLength;
@@ -50,65 +78,34 @@ public class Poem {
         String temp = "";
         String partial_temp = "";
 
-	System.out.println("bytes not read is " + bytes_not_yet_read);
-	System.out.println("bytes read is " + bytes_read);
-
         try{
             while(bytes_not_yet_read != 0){
-		
-		if(bytes_not_yet_read < max_bytes){
-		    byte[] final_b = new byte[bytes_not_yet_read];
-
-		    bytes_read = is.read(final_b);
-		    bytes_not_yet_read -= bytes_read;
-		    total_bytes += bytes_read;
-		    partial_temp = new String(final_b);
-		    System.out.println("partial is " + partial_temp);
-		    temp = temp + partial_temp;
-		    		    
-		}
-		else{
-		    bytes_read = is.read(b);
-		    //   System.out.println("after read step"); 
-		    bytes_not_yet_read -= bytes_read;
-		    total_bytes += bytes_read;
-		    partial_temp = new String(b);
-		    System.out.println("partial is " + partial_temp);
-		    temp = temp + partial_temp;
-
-		}
-
-		
-		//	bytes_read = is.read(b); 
-		// bytes_read = is.read(b);
-		//	System.out.println("text prior to addition: " + temp); 
-		// temp = temp + "(me) In her tomb by the sounding sea.\001";
-
-
-		//partial_temp;
-
-		System.out.println("bytes not read is " + bytes_not_yet_read);
-		System.out.println("bytes read is " + bytes_read);
+                bytes_read = is.read(b);
+                bytes_not_yet_read -= bytes_read;
+                total_bytes += bytes_read;
+                partial_temp = new String(b);
+                temp = temp + partial_temp;
             }
           //  is.read(b);
         }catch(IOException e){
-	    System.out.println("in catch"); 
             e.printStackTrace();
         }
 
        // String temp = new String(b);
-	//	System.out.println("temp is\n" + temp); 
         StringTokenizer st = new StringTokenizer(temp, fieldTerminator, false);
 
         title = st.nextToken();
         text = st.nextToken();
-	author = st.nextToken(); 
-	//	System.out.println("text\n" + text); 
-	//System.out.println("text length is " + text.length());
-	//System.out.println("this poem length " + this.getBytes().length); 
+        author = st.nextToken();
     }
 
+    //methods
 
+    /**
+     * A method for sending a poem to the backend server
+     * @param os The output stream used to send the poem, contains the poems title and text separated
+     *           by delimiters
+     */
     public void send(OutputStream os){
         byte[] b = getBytes();
         int bytes_to_send = b.length;
@@ -132,14 +129,22 @@ public class Poem {
 
     }
 
+    /**
+     * A method for translating the poem title and text into a single string for debugging
+     * @return the poem title and text in a single string, with debugging text
+     */
     public String toString(){
-        return "[title = " + title + ", text = " + text + ", author" + author + "]";
+        return "[title = " + title + ", text = " + text + ", author " + author + "]";
     }
 
+    /**
+     * A way to turn the poem into a byte array for conversion to a stream in preparation for seding
+     *      to a backend.
+     * @return the byte-ified string holding the poem's info.
+     */
     public byte[] getBytes(){
-        String temp = title + fieldTerminator + text + fieldTerminator + author + fieldTerminator; ;
+        String temp = title + fieldTerminator + text + fieldTerminator + author + fieldTerminator;
         byte [] bytes = temp.getBytes();
         return bytes;
     }
 }
-

@@ -10,8 +10,7 @@
         android:scrollbars="vertical"
         android:fillViewport="true"
         android:layout_alignParentTop="true"
-        android:isScrollContainer="false"
-        android:layout_above="@+id/rhymeSpinner">
+        android:isScrollContainer="false">
 
         <LinearLayout
 
