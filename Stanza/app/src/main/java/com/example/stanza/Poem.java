@@ -33,7 +33,7 @@ public class Poem {
      * @param t1 the title of the poem
      * @param t2 the text of the poem
      */
-    public Poem(String t1, String t2){
+
     public Poem(String t1, String t2, String a){
         title = t1;
         text = t2;

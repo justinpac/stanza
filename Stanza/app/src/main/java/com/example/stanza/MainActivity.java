@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity
 
     /**
      * Initialize the contents of the Activity's standard options menu.
-     * @param menu The options menu in which items are placed
+     * @param menu The options menu in which items are placed.
      * @return True for the menu to be displayed, false for the menu to not be shown.
      */
     @Override
@@ -94,20 +94,16 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-
+    /**
+     *
+     * @param viewPager
+     */
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new UserPoemFragment(), "MY POEMS");
         adapter.addFrag(new FriendBoardFragment(),"FRIEND BOARD");
         viewPager.setAdapter(adapter);
 
-    }
-
-    private void deletePoems() {
-        getContentResolver().delete(NotesProvider.CONTENT_URI,
-                null, null);
-
-        finish();
     }
 
 

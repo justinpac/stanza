@@ -21,6 +21,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -150,7 +152,7 @@ implements CommInterface{
 
 
 
-        rhymeSpinner = (Spinner) findViewById(R.id.rhymeSpinner);
+/*        rhymeSpinner = (Spinner) findViewById(R.id.rhymeSpinner);
         spinnerList = new String[] { "rhymes" };
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_item, spinnerList);
@@ -176,7 +178,7 @@ implements CommInterface{
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
+        });*/
 
         /*editor.setOnLongClickListener(new View.OnLongClickListener() {
             @Override

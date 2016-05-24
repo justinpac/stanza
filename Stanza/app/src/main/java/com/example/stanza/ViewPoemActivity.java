@@ -12,19 +12,17 @@ import android.widget.TextView;
  */
 public class ViewPoemActivity extends AppCompatActivity{
 
-    private TextView title, text, author;
-    String poemText, poemTitle, poemAuthor, noteFilter;
     // state variables
     /**
      * TextViews which hold the poem's title and text, respectively.
      */
-    private TextView title, text;
+    private TextView title, text, author;
     /**
      * Strings which hold the values of the poem's text and title, as well as
      * <code>noteFilter</code>, which is used to pull the proper values
      * from the database.
      */
-    String poemText, poemTitle, noteFilter;
+    String poemText, poemTitle, poemAuthor, noteFilter;
 
     /**
      * Called when the view is created. Populates the <code>title</code> and
