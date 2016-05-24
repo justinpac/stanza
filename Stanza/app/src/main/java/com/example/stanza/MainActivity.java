@@ -12,11 +12,19 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
+    
     ViewPager viewPager;
     Toolbar toolbar;
     FloatingActionButton fab;
 
 
+    /**
+     * Called when the activiy is starting. Here is wherewe inflate the activity's UI using <code>setContentView(int)</code>
+     * and programmatically set up UI elements, such as the floating action button and the tabs.
+     * @param savedInstanceState  If the activity is being re-initialized after previously being shut down then
+     *                            this Bundle contains the data it most recently supplied in <code>onSaveInstanceState(Bundle)</code>.
+     *                            Otherwise, savedInstanceState is null.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
