@@ -23,10 +23,10 @@ public class NotesProvider2 extends ContentProvider{
 
     public static final String CONTENT_ITEM_TYPE = "Poem";
 
-   static {
-       uriMatcher.addURI(AUTHORITY, BASE_PATH, NOTES);
-       uriMatcher.addURI(AUTHORITY, BASE_PATH +  "/#", NOTES_ID);
-   }
+    static {
+        uriMatcher.addURI(AUTHORITY, BASE_PATH, NOTES);
+        uriMatcher.addURI(AUTHORITY, BASE_PATH + "/#", NOTES_ID);
+    }
 
     private SQLiteDatabase database;
 
@@ -42,7 +42,7 @@ public class NotesProvider2 extends ContentProvider{
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 
         return database.query(DBOpen2.TABLE_FRIENDS, DBOpen2.ALL_COLUMNS,
-                selection, null, null, null, null);
+                null, null, null, null, null);
     }
 
 

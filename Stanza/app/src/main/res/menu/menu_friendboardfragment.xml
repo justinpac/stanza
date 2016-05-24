@@ -6,4 +6,9 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
         android:icon="@drawable/ic_action_add"
         android:orderInCategory="101"
         app:showAsAction="never" />
+    <item android:id="@+id/action_manage_friends"
+        android:title="@string/manage_friends"
+        android:icon="@drawable/ic_action_add"
+        android:orderInCategory="102"
+        app:showAsAction="never" />
 </menu>

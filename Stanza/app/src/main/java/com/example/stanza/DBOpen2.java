@@ -8,17 +8,19 @@ public class DBOpen2 extends SQLiteOpenHelper{
 
     //Constants for db name and version
     private static final String DATABASE_NAME = "friends.db";
-    private static final int DATABASE_VERSION = 14;
+    private static final int DATABASE_VERSION = 19;
 
     //Constants for identifying table and columns
     public static final String TABLE_FRIENDS = "myFriends";
     public static final String FRIEND = "friend";
+    public static final String FRIEND_ID = "_id";
 
-    public static final String[] ALL_COLUMNS = {FRIEND};
+
+    public static final String[] ALL_COLUMNS = {FRIEND_ID, FRIEND};
 
     //SQL to create table
     private static final String TABLE_CREATE =
-            "CREATE TABLE " + TABLE_FRIENDS + " (" + FRIEND + " TEXT)";
+            "CREATE TABLE " + TABLE_FRIENDS + " (" + FRIEND_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + FRIEND + " TEXT)";
 
     public DBOpen2(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

@@ -184,6 +184,10 @@
         "source": "C:\\Users\\Brianna\\AndroidStudioProjects\\proj\\Stanza\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
+        "merged": "C:\\Users\\Brianna\\AndroidStudioProjects\\proj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_manage_friends.xml",
+        "source": "C:\\Users\\Brianna\\AndroidStudioProjects\\proj\\Stanza\\app\\src\\main\\res\\layout\\activity_manage_friends.xml"
+    },
+    {
         "merged": "C:\\Users\\Brianna\\AndroidStudioProjects\\proj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_narrow.xml",
         "source": "C:\\Users\\Brianna\\AndroidStudioProjects\\proj\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_template_big_media_narrow.xml"
     },
@@ -222,6 +226,10 @@
     {
         "merged": "C:\\Users\\Brianna\\AndroidStudioProjects\\proj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_action.xml",
         "source": "C:\\Users\\Brianna\\AndroidStudioProjects\\proj\\Stanza\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.3.0\\res\\layout\\notification_media_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\Brianna\\AndroidStudioProjects\\proj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\friend_list_item.xml",
+        "source": "C:\\Users\\Brianna\\AndroidStudioProjects\\proj\\Stanza\\app\\src\\main\\res\\layout\\friend_list_item.xml"
     },
     {
         "merged": "C:\\Users\\Brianna\\AndroidStudioProjects\\proj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",

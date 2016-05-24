@@ -89,7 +89,6 @@ implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface, AccountCommInte
 
         switch (id) {
             case R.id.action_request_friend:
-                //TODO: dialog box to type in username
 
                 alert = new AlertDialog.Builder(getContext());
                 alert.setMessage("Enter your friend's username.");
@@ -105,7 +104,6 @@ implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface, AccountCommInte
 
 
 
-                        //send to backend to check if the username exists
                     }
                 });
 
@@ -117,6 +115,10 @@ implements LoaderManager.LoaderCallbacks<Cursor>, CommInterface, AccountCommInte
                 });
 
                 alert.show();
+                break;
+            case R.id.action_manage_friends:
+                Intent intent = new Intent(getActivity(), ManageFriendsActivity.class);
+                startActivity(intent);
                 break;
         }
         return super.onOptionsItemSelected(item);

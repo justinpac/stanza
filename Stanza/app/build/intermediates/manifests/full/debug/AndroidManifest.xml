@@ -55,6 +55,14 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
+            android:name="com.example.stanza.ManageFriendsActivity"
+            android:label="Manage Friends"
+            android:parentActivityName="com.example.stanza.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
             android:name="com.example.stanza.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
