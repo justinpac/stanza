@@ -4,7 +4,15 @@
         "source": "C:\\Users\\Brianna\\AndroidStudioProjects\\final_project\\Stanza\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi-v4\\ic_document.png",
+        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_document.png"
+    },
+    {
         "merged": "C:\\Users\\Brianna\\AndroidStudioProjects\\final_project\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi-v4\\ic_document.png",
         "source": "C:\\Users\\Brianna\\AndroidStudioProjects\\final_project\\Stanza\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_document.png"
+    },
+    {
+        "merged": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\Justin\\MCA\\poemProj\\Stanza\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     }
 ]

@@ -98,8 +98,10 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
-     *
-     * @param viewPager
+     *  Sets up the dashboard <code>ViewPager</code>, which manages the fragments
+     *  that correspond to each tab.
+     * @param viewPager The layout manager that allows the user to flip left and right between the fragments
+     * for each tab in the dashboard page.
      */
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
