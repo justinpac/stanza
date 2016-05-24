@@ -87,16 +87,19 @@ implements AccountCommInterface{
         act.thisAccount(null, email, password);
         //will either call onLoginSuccess() or onLoginFailed();
 
+        //BELOW LETS YOU PAST THE LOGIN SCREEN WITH ANY EMAIL + PASSWORD
+        //REMOVE THIS BEFORE TURNING IN
+
         //currently we're still just calling onLoginSuccess() here
-     /*   new android.os.Handler().postDelayed(new Runnable() {
+        new android.os.Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 onLoginSuccess();
-                progressDialog.dismiss();
+                //progressDialog.dismiss();
             }
         },3000);
 
-        */
+
     }
 
     @Override
