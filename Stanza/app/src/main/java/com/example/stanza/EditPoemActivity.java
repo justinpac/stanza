@@ -419,9 +419,13 @@ implements CommInterface{
     }
 
     /**
+     * Creates the options bar with the <code>home</code>,
+     * <code>delete</code> and <code>publish_poem_to_server</code>
+     * buttons. Only creates this bar for edited poems; does not create
+     * this bar for new poems.
+     * @param menu The options menu to be created.
      *
-     * @param menu
-     * @return
+     * @return <code>true</code>, every time this is called.
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -431,8 +435,20 @@ implements CommInterface{
         return true;
     }
 
+    /**
+     * Depending on which menu item was selected, take the appropriate
+     * action. If <code>home</code>, go home. If <code>delete</code>, do
+     * delete confirmation and then delete the poem. If
+     * <code>publish_poem_to_server</code>, publish the poem to the server.
+     * @param item The options item that was selected.
+     * @return <code>true</code>, every time this is called.
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        /**
+         * The id of the selected <code>MenuItem</code>. Used to determine
+         * appropriate action.
+         */
         int id = item.getItemId();
 
         switch (id) {
@@ -452,6 +468,10 @@ implements CommInterface{
         return true;
     }
 
+    /**
+     * Called if the delete menu item is selected. Deletes the current
+     * poem, removing it from the local database.
+     */
     private void deleteNote() {
         getContentResolver().delete(NotesProvider.CONTENT_URI,
                 noteFilter, null);
@@ -461,8 +481,21 @@ implements CommInterface{
         finish();
     }
 
+    /**
+     * Called when the home menu icon is selected, or when the back
+     * button is pressed. If <code>editor</code> and <code>editorTitle</code>
+     * are blank, the poem is not saved. If only <code>editorTitle</code> is
+     * blank, it is saved with value "Untitled". If only
+     * <code>editorText</code> is blank, it is saved with value " ".
+     */
     private void finishEditing() {
+        /**
+         * Gets saved text, if any, from <code>editor</code>.
+         */
         String newText = editor.getText().toString().trim();
+        /**
+         * Gets saved text, if any, from <code>editorTitle</code>.
+         */
         String newTitle = editorTitle.getText().toString().trim();
 
         switch (action) {
@@ -492,7 +525,19 @@ implements CommInterface{
         finish();
     }
 
+    /**
+     * Saves new values for <code>editor</code> and <code>editorTitle</code>
+     * to the local database.
+     * @param poemText Contains value that will be saved as
+     *                 <code>POEM_TEXT</code> in the local database.
+     * @param poemTitle Contains value that will be saved as
+     *                  <code>POEM_TITLE</code> in the local database.
+     */
     private void updateNote(String poemText, String poemTitle) {
+        /**
+         * Holds the content values of <code>POEM_TEXT</code> and
+         * <code>POEM_TITLE</code>.
+         */
         ContentValues values = new ContentValues();
         values.put(DBOpenHelper.POEM_TEXT, poemText);
         values.put(DBOpenHelper.POEM_TITLE,poemTitle);
@@ -505,6 +550,9 @@ implements CommInterface{
         setResult(RESULT_OK);
     }
 
+    /**
+     * Fills <code>rhymeBar</code> with the values in <code>rhymeList</code>.
+     */
     private void refillRhymeBar() {
         //First, clear all existing TextViews...
         runOnUiThread(new Runnable() {
@@ -543,19 +591,56 @@ implements CommInterface{
 
     }
 
+    /**
+     * Replaces the word the cursor is in with a word from
+     * <code>rhymeBar</code>.
+     * @param newText The text that will replace the currently selected
+     *                word. Taken from <code>rhymeBar</code>.
+     */
     private void replaceText(String newText) {
+        /**
+         * Will contain the return value from <code>checkPunctuation()</code>.
+         */
         String punctuation;
+        /**
+         * Holds the entire text of <code>editor</code>, for manipulation.
+         */
         String s = editor.getText().toString();
+        /**
+         * Holds the initial location of the cursor.
+         */
         int selectionStart = editor.getSelectionStart();
+        /**
+         * Holds the portion of <code>s</code> before <code>selectionStart</code>.
+         */
         String beforeCursor = s.substring(0, selectionStart);
+        /**
+         * Holds the portion of <code>s</code> after <code>selectionStart</code>.
+         */
         String afterCursor = s.substring(selectionStart, s.length());
 
+        /**
+         * Will hold the final string value, with the proper word replaced by
+         * <code>newText</code>. Uses "garbage" characters to handle the
+         * cases where <code>selectionStart</code> was at the beginning or
+         * the end of the word to be replaced.
+         */
         String finalString = beforeCursor + "garbage" + afterCursor;
+        /**
+         * Offsets <code>selectionStart</code> to place it inside those "garbage"
+         * characters.
+         */
         int selectionStart1 = selectionStart + 3;
         beforeCursor = finalString.substring(0, selectionStart1);
         afterCursor = finalString.substring(selectionStart1, finalString.length());
 
+        /**
+         * Holds all words in <code>beforeCursor</code>, split by whitespace.
+         */
         String[] beforeWords = beforeCursor.split("\\s");
+        /**
+         * Holds all words in <code>afterCursor</code>, split by whitespace.
+         */
         String[] afterWords = afterCursor.split("\\s");
 
         int arrayLength = beforeWords.length;
@@ -577,7 +662,17 @@ implements CommInterface{
         }
     }
 
+    /**
+     * Checks whether or not a word segment contains punctuation, and if
+     * so, preserves it.
+     * @param checkText The word segment to be checked.
+     * @return The value of any punctuation found.
+     */
     private String checkPunctuation(String checkText) {
+        /**
+         * Used to check for the existence of punctuation in the word
+         * segment.
+         */
         int indexVal;
         indexVal = checkText.indexOf(".");
         if (indexVal != -1) return ".";
@@ -594,7 +689,19 @@ implements CommInterface{
         return "";
     }
 
+    /**
+     * Inserts the poem title and text into the local database.
+     * @param poemText The value to be inserted into the local database under
+     *                 <code>POEM_TEXT</code>.
+     * @param poemTitle The value to be inserted into the local database under
+     *                 <code>POEM_TITLE</code>.
+     */
     private void insertNote(String poemText, String poemTitle) {
+        /**
+         * Holds the values for the poem's text, title and creator, to be stored
+         * under <code>POEM_TEXT</code>, <code>POEM_TITLE</code> and
+         * <code>POEM_CREATOR</code>.
+         */
         ContentValues values = new ContentValues();
         values.put(DBOpenHelper.POEM_TEXT, poemText);
         values.put(DBOpenHelper.POEM_TITLE, poemTitle);
@@ -603,33 +710,59 @@ implements CommInterface{
         setResult(RESULT_OK);
     }
 
-
-
+    /**
+     * Called when the device's back button is pressed. Saves any changes to
+     * the poem's text or title, or deletes it if both are empty.
+     */
     @Override
     public void onBackPressed() {
         finishEditing();
     }
 
+    /**
+     * Pushes a poem to the backend database, to be shared with friends.
+     * Starts and interrupts a <code>CommThread</code> to do this.
+     * @param poemTitle The value to be inserted into the local database under
+     *                 <code>POEM_TEXT</code>.
+     * @param poemText The value to be inserted into the local database under
+     *                 <code>POEM_TITLE</code>.
+     */
     public void pushPoem(String poemTitle, String poemText) {
-
+        /**
+         * Initializes a poem object with <code>poemTitle</code> and
+         * <code>poemText</code>, to be sent to the backend database.
+         */
         Poem poem = new Poem(poemTitle, poemText, user);
+        /**
+         * Starts a <code>CommThread</code> to send <code>poem</code>
+         * to the backend database.
+         */
         ct = new CommThread(this, EditPoemActivity.this);
         ct.start();
         ct.addPoem(poem);
         ct.interrupt();
     }
 
-
+    /**
+     * Displays the proper message if a poem is saved to the database.
+     * @param output Gives this output if poem is saved.
+     */
     @Override
     public void poemSaved(String output) {
         Toast.makeText(getApplicationContext(), output, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Displays the shown message if the server is disconnected.
+     */
     @Override
     public void serverDisconnected() {
         Toast.makeText(getApplication(), "Server not connected. Cannot save poems to server.", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Called when Pull is Finished. Does nothing.
+     */
     @Override
     public void onPullFinished() {
 
