@@ -1,6 +1,6 @@
-/* Example of network communication:  Receiver.java -- RAB 1/99 
-   Requires one command line arg:  
-     1.  port number to use (on this machine). */
+/**
+
+ **/
 
 import java.io.*;
 import java.net.*;
@@ -34,6 +34,7 @@ public class Backend {
       System.out.println("Waiting for an incoming connection... ");
 
       while(true){
+
 	  Socket inSock = servSock.accept();
 	  Thread t = new Thread(new Worker(inSock));
 	  t.start();   
@@ -71,26 +72,7 @@ class Worker implements Runnable{
     Worker(Socket s){sock = s;};
 
 
-    /*
-    public String storeAccountIfPossible(String username, String email, String password){
-	String result = checkDatabase(username, email, password); 
-
-	if(result.equals("OK")){
-		storeAccountToDatabase(username, email, password); 
-		return "ACCOUNT_CREATED"; 
-	}
-	else if(result.equals("USERNAME"))
-		return "USERNAME_ALREADY_USED"; 
-	else
-	    return "EMAIL_ALREADY_USED";
-		
-    }
-    */
-
-   
-
-
-
+  
     public void pullPoems(int numFriends){
 	Poem ack = null;
 	String title, text, author, temp_friend; 
@@ -99,7 +81,13 @@ class Worker implements Runnable{
 	byte [] friend_list = new byte [8192];
 	String [] all_friends = new String[numFriends];  
 
-	
+	System.out.println("num friends is " + numFriends); 
+
+	 if(numFriends == 0){
+		Poem endPoems = new Poem("END_PULL", null, null);
+		endPoems.send(outStream); 
+		return;
+	 }
 	
 	    
 	try{
@@ -107,6 +95,8 @@ class Worker implements Runnable{
 	    String temp = new String(friend_list);
 	    StringTokenizer st = new StringTokenizer(temp, "\001", false);
 
+	   
+	    
 	    for(int i=0; i<numFriends; i++){
 		temp_friend = st.nextToken();
 		all_friends[i] = temp_friend;
@@ -114,12 +104,29 @@ class Worker implements Runnable{
 	    }
 
 
-	    System.out.println("successfully received all friends from client"); 
 	    
 	    ResultSet rs = pullFromDatabase(all_friends, numFriends);
 
+	    // System.out.println("num peoms is " + rs.getRow());
+
+	    
+	    
+	    
+
+	    
+
 	    int numPoems = 0; 
 	    while(rs.next()){
+		System.out.println("row number " + rs.getRow()); 
+
+		if(rs.getRow() == 0){
+		    System.out.println("in here"); 
+		    Poem endPoems = new Poem("END_PULL", null, null);
+		    endPoems.send(outStream);
+		    System.out.println("sent end"); 
+		    return;
+		}
+		
 		title = rs.getString(2);
 		text = rs.getString(3);
 		author = rs.getString(5); 
@@ -220,6 +227,7 @@ class Worker implements Runnable{
 		if(title.equals("pull_poems")){
 		    int numFriends = Integer.parseInt(text); 
 		    pullPoems(numFriends);
+		    System.out.println("finished pulling"); 
 		}
 		else{
 		    System.out.println("in push poem");
