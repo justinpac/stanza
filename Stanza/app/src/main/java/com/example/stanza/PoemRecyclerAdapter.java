@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by Justin on 5/15/2016.
  */
-public class PoemRecyclerAdapter extends RecyclerView.Adapter<PoemRecyclerAdapter.PoemViewHolder>{
+public class PoemRecyclerAdapter extends RecyclerView.Adapter<PoemRecyclerAdapter.PoemViewHolder> {
 
     Cursor poemCursor;
     Context context;

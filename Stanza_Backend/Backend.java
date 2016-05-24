@@ -33,7 +33,6 @@ public class Backend {
       System.out.println("Waiting for an incoming connection... ");
 
       while(true){
-
 	  Socket inSock = servSock.accept();
 	  Thread t = new Thread(new Worker(inSock));
 	  t.start();   

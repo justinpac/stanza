@@ -88,15 +88,15 @@ implements AccountCommInterface{
         //will either call onLoginSuccess() or onLoginFailed();
 
         //currently we're still just calling onLoginSuccess() here
-     /*   new android.os.Handler().postDelayed(new Runnable() {
+        new android.os.Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 onLoginSuccess();
-                progressDialog.dismiss();
+                //progressDialog.dismiss();
             }
         },3000);
 
-        */
+
     }
 
     @Override
