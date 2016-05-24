@@ -113,7 +113,7 @@ public class ManageFriendsActivity extends AppCompatActivity
 
                             getContentResolver().delete(NotesProvider2.CONTENT_URI,
                                     noteFilter, null);
-                            Toast.makeText(ManageFriendsActivity.this, "Delete Friend",
+                            Toast.makeText(ManageFriendsActivity.this, R.string.delete_friend,
                                     Toast.LENGTH_SHORT).show();
                             restartLoader();
 
@@ -125,8 +125,8 @@ public class ManageFriendsActivity extends AppCompatActivity
                 };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Would you like to delete this friend?");
-        builder.setPositiveButton("Delete Friend", dialogClickListener);
+        builder.setMessage(R.string.would_you_like_to_delete_friend);
+        builder.setPositiveButton(R.string.delete_friend, dialogClickListener);
         builder.setNegativeButton(getString(android.R.string.no), dialogClickListener);
         builder.show();
 
@@ -164,7 +164,6 @@ public class ManageFriendsActivity extends AppCompatActivity
     }
 
     private void addToFriendList(String friend) {
-        System.out.println("HERE!!!!!!!!");
         ContentValues values = new ContentValues();
         values.put(DBOpen2.FRIEND, friend);
         getContentResolver().insert(NotesProvider2.CONTENT_URI, values);

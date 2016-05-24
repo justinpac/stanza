@@ -304,6 +304,7 @@
     <string name="create_sample_data">Create sample data</string>
     <string name="delete_all_friends">Delete All Friends</string>
     <string name="delete_all_notes">Delete all poems</string>
+    <string name="delete_friend">Delete Friend</string>
     <string name="email">Email</string>
     <string name="friend_board">Friend Board</string>
     <string name="hello_world">Hello world!</string>
@@ -319,10 +320,12 @@
     <string name="password">Password</string>
     <string name="poetry_editor">Poetry Editor</string>
     <string name="share_poem">Share poem</string>
+    <string name="stanza">Stanza</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="title_activity_editor">EditorActivity</string>
     <string name="unnamed_poem">Untitled</string>
     <string name="view_friends_poem">View Friend\'s Poem</string>
+    <string name="would_you_like_to_delete_friend">Would you like to delete this friend?</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>

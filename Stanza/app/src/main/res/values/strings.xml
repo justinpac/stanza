@@ -30,6 +30,9 @@
     <string name="add_a_friend">Add a Friend</string>
     <string name="delete_all_friends">Delete All Friends</string>
     <string name="manage_friends">Manage Friends</string>
+    <string name="would_you_like_to_delete_friend">Would you like to delete this friend?</string>
+    <string name="delete_friend">Delete Friend</string>
+    <string name="stanza">Stanza</string>
 
     <!--<string name="url_chunk_1">"http://api.wordnik.com:80/v4/word.json/"</string>
     <string name="url_chunk_2">"/relatedWords?useCanonical=false&limitPerRelationshipType=10&api_key="</string>
