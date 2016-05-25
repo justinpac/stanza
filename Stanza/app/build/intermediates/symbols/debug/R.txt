@@ -613,9 +613,8 @@ int id action_bar_spinner 0x7f0b0001
 int id action_bar_subtitle 0x7f0b003b
 int id action_bar_title 0x7f0b003a
 int id action_context_bar 0x7f0b005b
-int id action_create_sample 0x7f0b00a1
 int id action_delete 0x7f0b009b
-int id action_delete_all 0x7f0b00a2
+int id action_delete_all 0x7f0b00a1
 int id action_delete_all_friends 0x7f0b00a0
 int id action_divider 0x7f0b008e
 int id action_manage_friends 0x7f0b009e

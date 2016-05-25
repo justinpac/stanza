@@ -2423,9 +2423,8 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f0b003b;
         public static final int action_bar_title=0x7f0b003a;
         public static final int action_context_bar=0x7f0b005b;
-        public static final int action_create_sample=0x7f0b00a1;
         public static final int action_delete=0x7f0b009b;
-        public static final int action_delete_all=0x7f0b00a2;
+        public static final int action_delete_all=0x7f0b00a1;
         public static final int action_delete_all_friends=0x7f0b00a0;
         public static final int action_divider=0x7f0b008e;
         public static final int action_manage_friends=0x7f0b009e;
